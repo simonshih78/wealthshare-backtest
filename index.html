@@ -1,0 +1,1974 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>富同投資 WealthShare｜2010–2026 Q3 歷年年季報統整與量化回測終端</title>
+<meta name="description" content="基於富同投資 2010–2026 Q3 共 41 份官方年報、季報與會計師查核報告之 16.75 年深度量化回測、風險歸因、逆週期資產配置、績效酬勞法證與 19 份致股東報告書全文統整。">
+<meta property="og:title" content="富同投資 WealthShare｜2010–2026 Q3 量化回測與年季報深度終端">
+<meta property="og:description" content="16 年年化 9.5% 淨報酬、夏普 1.01、4/4 空頭年 100% 完勝 vs 2023–2026 AI 狂潮考驗。收錄 41 份官方 PDF 法證數據與 19 份致股東信全文。">
+<meta property="og:type" content="website">
+<style>
+:root {
+  --bg: #050811;
+  --bg-2: #0a1020;
+  --surface: rgba(13, 20, 36, 0.88);
+  --surface-solid: #0d1424;
+  --surface-hi: #131d33;
+  --border: rgba(56, 189, 248, 0.16);
+  --border-hi: rgba(56, 189, 248, 0.38);
+  --ink: #e8eef8;
+  --ink-2: #9fb0cc;
+  --ink-3: #6c7f9e;
+  --cyan: #22d3ee;
+  --cyan-soft: rgba(34, 211, 238, 0.14);
+  --emerald: #10b981;
+  --emerald-soft: rgba(16, 185, 129, 0.15);
+  --amber: #f59e0b;
+  --amber-soft: rgba(245, 158, 11, 0.15);
+  --rose: #f43f5e;
+  --rose-soft: rgba(244, 63, 94, 0.15);
+  --indigo: #818cf8;
+  --indigo-soft: rgba(129, 140, 248, 0.16);
+  --grid-line: rgba(56, 189, 248, 0.045);
+  --shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+  --radius: 14px;
+  --mono: ui-monospace, "Cascadia Code", "JetBrains Mono", Consolas, monospace;
+  --sans: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, sans-serif;
+}
+html[data-theme="light"] {
+  --bg: #f4f7fb;
+  --bg-2: #eaf0f8;
+  --surface: rgba(255, 255, 255, 0.94);
+  --surface-solid: #ffffff;
+  --surface-hi: #f1f5fb;
+  --border: rgba(15, 23, 42, 0.11);
+  --border-hi: rgba(2, 132, 199, 0.42);
+  --ink: #0f172a;
+  --ink-2: #3b4a62;
+  --ink-3: #64748b;
+  --cyan: #0284c7;
+  --cyan-soft: rgba(2, 132, 199, 0.11);
+  --emerald: #059669;
+  --emerald-soft: rgba(5, 150, 105, 0.11);
+  --amber: #d97706;
+  --amber-soft: rgba(217, 119, 6, 0.12);
+  --rose: #e11d48;
+  --rose-soft: rgba(225, 29, 72, 0.11);
+  --indigo: #4f46e5;
+  --indigo-soft: rgba(79, 70, 229, 0.11);
+  --grid-line: rgba(15, 23, 42, 0.04);
+  --shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--sans);
+  color: var(--ink);
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 36px 36px;
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding-bottom: 84px;
+}
+a { color: var(--cyan); text-decoration: none; }
+a:hover { text-decoration: underline; }
+button { font-family: inherit; cursor: pointer; }
+
+/* TOPBAR */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: color-mix(in srgb, var(--bg-2) 86%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+.topbar-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+.brand-mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, rgba(34,211,238,0.22), rgba(16,185,129,0.22));
+  border: 1px solid var(--border-hi);
+  display: grid;
+  place-items: center;
+  color: var(--cyan);
+  flex-shrink: 0;
+}
+.brand-text { min-width: 0; }
+.brand-title {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.brand-sub {
+  font-size: 11px;
+  font-family: var(--mono);
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.top-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.seg-ctrl {
+  display: inline-flex;
+  background: var(--surface-solid);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 2px;
+  gap: 2px;
+}
+.seg-btn {
+  border: none;
+  background: transparent;
+  color: var(--ink-2);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 7px;
+  transition: all 0.16s ease;
+  white-space: nowrap;
+}
+.seg-btn.active {
+  background: var(--cyan-soft);
+  color: var(--cyan);
+  box-shadow: inset 0 0 0 1px var(--border-hi);
+}
+.icon-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  border: 1px solid var(--border);
+  background: var(--surface-solid);
+  color: var(--ink-2);
+  display: grid;
+  place-items: center;
+  transition: all 0.16s ease;
+}
+.icon-btn:hover { border-color: var(--border-hi); color: var(--cyan); }
+
+/* DESKTOP TABS */
+.desk-tabs {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  gap: 6px;
+  border-top: 1px solid var(--border);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.desk-tabs::-webkit-scrollbar { display: none; }
+.dtab {
+  border: none;
+  background: transparent;
+  color: var(--ink-2);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 11px 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: all 0.16s ease;
+}
+.dtab:hover { color: var(--ink); }
+.dtab.active {
+  color: var(--cyan);
+  border-bottom-color: var(--cyan);
+}
+.dtab svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+/* MAIN CONTAINER */
+.wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 18px 16px 32px;
+}
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* HERO BANNER */
+.hero {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--surface-solid) 94%, var(--cyan) 6%), var(--surface-solid));
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px 22px;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cyan), var(--emerald), var(--indigo));
+}
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: var(--mono);
+  padding: 3px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-hi);
+  color: var(--ink-2);
+}
+.pill.cyan { color: var(--cyan); background: var(--cyan-soft); border-color: var(--border-hi); }
+.pill.emerald { color: var(--emerald); background: var(--emerald-soft); border-color: rgba(16,185,129,0.35); }
+.pill.amber { color: var(--amber); background: var(--amber-soft); border-color: rgba(245,158,11,0.35); }
+.pill.rose { color: var(--rose); background: var(--rose-soft); border-color: rgba(244,63,94,0.35); }
+.pill.indigo { color: var(--indigo); background: var(--indigo-soft); border-color: rgba(129,140,248,0.35); }
+
+.hero h1 {
+  margin: 0 0 8px;
+  font-size: clamp(20px, 3vw, 27px);
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+.hero-desc {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 14px;
+  max-width: 960px;
+}
+.hero-period-note {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 12.5px;
+  color: var(--ink-3);
+}
+
+/* CARDS & GRIDS */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.kpi {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 15px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  position: relative;
+}
+.kpi-label {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--ink-3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+.kpi-val {
+  font-size: 24px;
+  font-weight: 800;
+  font-family: var(--mono);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+.kpi-sub {
+  font-size: 11.5px;
+  color: var(--ink-2);
+  line-height: 1.4;
+}
+.c-cyan { color: var(--cyan); }
+.c-emerald { color: var(--emerald); }
+.c-amber { color: var(--amber); }
+.c-rose { color: var(--rose); }
+.c-indigo { color: var(--indigo); }
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+  margin-bottom: 18px;
+  min-width: 0;
+}
+.grid-2 > .card, .grid-3 > .card { margin-bottom: 0; }
+.card-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.card-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-title svg { width: 17px; height: 17px; color: var(--cyan); flex-shrink: 0; }
+.card-sub {
+  margin: 3px 0 0;
+  font-size: 12.5px;
+  color: var(--ink-3);
+}
+
+/* CHART CONTAINERS */
+.chart-box {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.chart-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  user-select: none;
+}
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  color: var(--ink-2);
+}
+.leg-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+}
+.leg-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.leg-line {
+  width: 14px;
+  height: 3px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.chart-tip {
+  position: fixed;
+  z-index: 120;
+  pointer-events: none;
+  background: color-mix(in srgb, var(--surface-solid) 96%, var(--cyan) 4%);
+  border: 1px solid var(--border-hi);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 12px;
+  color: var(--ink);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+  min-width: 190px;
+  max-width: 280px;
+  opacity: 0;
+  transition: opacity 0.12s ease;
+}
+.chart-tip.show { opacity: 1; }
+.tip-hd { font-weight: 800; font-family: var(--mono); color: var(--cyan); margin-bottom: 6px; border-bottom: 1px solid var(--border); padding-bottom: 4px; }
+.tip-row { display: flex; justify-content: space-between; gap: 12px; margin: 2px 0; }
+.tip-k { color: var(--ink-2); }
+.tip-v { font-family: var(--mono); font-weight: 700; }
+
+/* TABLES */
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-solid);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+  white-space: nowrap;
+}
+th, td {
+  padding: 9px 11px;
+  border-bottom: 1px solid var(--border);
+  text-align: right;
+}
+th {
+  background: var(--surface-hi);
+  color: var(--ink-2);
+  font-weight: 700;
+  font-size: 11.5px;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+th:first-child, td:first-child {
+  text-align: left;
+  position: sticky;
+  left: 0;
+  background: var(--surface-solid);
+  z-index: 1;
+  font-weight: 700;
+  border-right: 1px solid var(--border);
+}
+th:first-child { background: var(--surface-hi); z-index: 3; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: color-mix(in srgb, var(--surface-hi) 65%, transparent); }
+tr.bear-row td { background: rgba(16, 185, 129, 0.06); }
+tr.q-row td { background: rgba(34, 211, 238, 0.05); }
+tr.hl-row td { background: rgba(129, 140, 248, 0.08); font-weight: 700; }
+.num { font-family: var(--mono); }
+.pos { color: var(--emerald); font-weight: 700; }
+.neg { color: var(--rose); font-weight: 700; }
+.warn { color: var(--amber); font-weight: 700; }
+
+/* CALLOUTS */
+.callout {
+  border-radius: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  background: var(--surface-hi);
+  font-size: 13.5px;
+  line-height: 1.65;
+  margin-bottom: 14px;
+}
+.callout.cyan { border-left: 3px solid var(--cyan); background: color-mix(in srgb, var(--surface-hi) 88%, var(--cyan) 12%); }
+.callout.emerald { border-left: 3px solid var(--emerald); background: color-mix(in srgb, var(--surface-hi) 88%, var(--emerald) 12%); }
+.callout.amber { border-left: 3px solid var(--amber); background: color-mix(in srgb, var(--surface-hi) 88%, var(--amber) 12%); }
+.callout.rose { border-left: 3px solid var(--rose); background: color-mix(in srgb, var(--surface-hi) 88%, var(--rose) 12%); }
+.callout-title {
+  font-weight: 800;
+  font-size: 14px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+/* REPORTS ARCHIVE */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.search-wrap {
+  position: relative;
+  flex: 1 1 240px;
+  max-width: 420px;
+}
+.search-wrap svg {
+  position: absolute;
+  left: 11px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 15px;
+  color: var(--ink-3);
+}
+.search-input {
+  width: 100%;
+  padding: 9px 12px 9px 34px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface-solid);
+  color: var(--ink);
+  font-size: 13.5px;
+  outline: none;
+}
+.search-input:focus { border-color: var(--cyan); }
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.chip {
+  border: 1px solid var(--border);
+  background: var(--surface-solid);
+  color: var(--ink-2);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 11px;
+  border-radius: 999px;
+  transition: all 0.15s ease;
+}
+.chip.active {
+  background: var(--cyan-soft);
+  color: var(--cyan);
+  border-color: var(--border-hi);
+}
+.report-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.rep-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  padding: 16px 18px;
+  transition: border-color 0.15s ease;
+}
+.rep-card:hover { border-color: var(--border-hi); }
+.rep-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.rep-id-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.rep-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--ink);
+}
+.rep-date {
+  font-size: 11.5px;
+  font-family: var(--mono);
+  color: var(--ink-3);
+}
+.rep-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.rep-headline {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 8px;
+}
+.rep-quote {
+  margin: 0 0 10px;
+  padding: 9px 13px;
+  border-left: 3px solid var(--cyan);
+  background: var(--surface-hi);
+  border-radius: 0 8px 8px 0;
+  font-size: 13px;
+  color: var(--ink);
+  font-style: normal;
+}
+.rep-summary {
+  margin: 0 0 12px;
+  font-size: 13.5px;
+  color: var(--ink-2);
+  line-height: 1.68;
+}
+.rep-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.btn-sm {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface-hi);
+  color: var(--ink);
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+.btn-sm:hover { border-color: var(--cyan); color: var(--cyan); text-decoration: none; }
+.btn-sm.primary { background: var(--cyan-soft); color: var(--cyan); border-color: var(--border-hi); }
+.rep-letter-box {
+  display: none;
+  margin-top: 12px;
+  padding: 16px;
+  border-radius: 10px;
+  background: var(--surface-solid);
+  border: 1px solid var(--border);
+  white-space: pre-wrap;
+  font-size: 13.5px;
+  line-height: 1.85;
+  color: var(--ink);
+  max-height: 520px;
+  overflow-y: auto;
+}
+.rep-letter-box.open { display: block; }
+
+/* VERDICT LISTS */
+.v-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.v-list li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 13.5px;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+.v-list strong { color: var(--ink); }
+.v-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-top: 7px;
+  flex-shrink: 0;
+}
+
+/* STAT ROW IN CARDS */
+.mini-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.mini-grid-5 {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.brand-title-mob { display: none; }
+.mini-stat {
+  background: var(--surface-hi);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 11px 12px;
+}
+.mini-k { font-size: 11px; color: var(--ink-3); font-weight: 700; margin-bottom: 3px; }
+.mini-v { font-size: 18px; font-weight: 800; font-family: var(--mono); }
+.mini-s { font-size: 11px; color: var(--ink-2); margin-top: 2px; }
+
+/* MOBILE BOTTOM DOCK */
+.mob-dock {
+  display: none;
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 80;
+  background: color-mix(in srgb, var(--bg-2) 94%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid var(--border);
+  padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
+}
+.mob-dock-inner {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2px;
+  max-width: 560px;
+  margin: 0 auto;
+}
+.mtab {
+  border: none;
+  background: transparent;
+  color: var(--ink-3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 5px 2px;
+  border-radius: 9px;
+  font-size: 10.5px;
+  font-weight: 700;
+}
+.mtab svg { width: 18px; height: 18px; }
+.mtab.active {
+  color: var(--cyan);
+  background: var(--cyan-soft);
+}
+
+/* FOOTER */
+.footer {
+  max-width: 1280px;
+  margin: 8px auto 0;
+  padding: 18px 16px 24px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--ink-3);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1120px) {
+  .kpi-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 860px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .mini-grid, .mini-grid-5 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 680px) {
+  .desk-tabs { display: none; }
+  .mob-dock { display: block; }
+  .topbar-inner { padding: 8px 12px; }
+  .brand-sub { display: none; }
+  .brand-title-desk { display: none; }
+  .brand-title-mob { display: inline; }
+  .brand-title { font-size: 14.5px; }
+  .seg-btn { font-size: 11px; padding: 5px 7px; }
+  .wrap { padding: 12px 12px 24px; }
+  .hero { padding: 15px 14px; }
+  .kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+  .kpi { padding: 11px 12px; }
+  .kpi-val { font-size: 20px; }
+  .card { padding: 14px 12px; }
+  .rep-card { padding: 13px 12px; }
+  body { padding-bottom: 78px; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+      </div>
+      <div class="brand-text">
+        <div class="brand-title"><span class="brand-title-desk">富同投資 WealthShare 量化回測終端</span><span class="brand-title-mob">富同投資回測</span></div>
+        <div class="brand-sub">2010–2026 Q3 · 41 OFFICIAL PDFS AUDITED · ZERO SYNTHETIC DATA</div>
+      </div>
+    </div>
+    <div class="top-controls">
+      <div class="seg-ctrl" role="group" aria-label="回測期間切換">
+        <button class="seg-btn active" data-period="16y">16年(2010–25)</button>
+        <button class="seg-btn" data-period="1675y">含2026 Q3</button>
+      </div>
+      <button class="icon-btn" id="themeToggle" title="切換深色/淺色模式" aria-label="切換深色或淺色模式">
+        <svg id="themeIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="desk-tabs" aria-label="主分頁導覽">
+    <button class="dtab active" data-tab="overview">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      回測總覽
+    </button>
+    <button class="dtab" data-tab="risk">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      風險與滾動分析
+    </button>
+    <button class="dtab" data-tab="balance">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      資產配置與費用結構
+    </button>
+    <button class="dtab" data-tab="reports">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      歷年年季報統整 (19)
+    </button>
+    <button class="dtab" data-tab="verdict">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+      投資決策評估
+    </button>
+  </nav>
+</header>
+
+<main class="wrap">
+
+<!-- ====================================================================== -->
+<!-- TAB 1: OVERVIEW                                                        -->
+<!-- ====================================================================== -->
+<section id="tab-overview" class="tab-panel active">
+  <div class="hero">
+    <div class="hero-meta">
+      <span class="pill cyan">台版波克夏合夥制</span>
+      <span class="pill emerald">16年淨年化 9.5% · 夏普 1.01</span>
+      <span class="pill emerald">4/4 空頭年全勝（最大年跌 -0.9%）</span>
+      <span class="pill amber">2023–2026 Q3 AI 狂潮結構落後</span>
+      <span class="pill indigo">41 份官方財報 / CPA 查核驗證</span>
+    </div>
+    <h1>富同投資（WealthShare）16.75 年深度回測與年季報法證</h1>
+    <p class="hero-desc">
+      由執行合夥人吳卓逸於 2010 年創立、採 <strong>0% 固定管理費＋超額績效分潤＋90% 盈餘現金配息</strong> 的非公開價值投資公司。本終端完整解析其 2010–2025 共 16 份年報、13 份會計師查核報告及最新 2026 Q1–Q3 季報，呈現真實稅費後複利績效：它不是追逐台積電與 AI 飆股的激進型基金，而是極度罕見的 <strong>低 Beta (0.16) 熊市鐵壁與高配息價值錨</strong>。
+    </p>
+    <div class="hero-period-note">
+      <span id="periodSummaryText">目前檢視口徑：16 年完整日曆年度（2010–2025，均已完成 CPA 查核並扣除所得稅、交易費與董監績效酬勞）。</span>
+      <span>基準對照：台灣證交所官方「台股大盤報酬指數（含息，未扣交易成本）」與「台股加權股價指數」</span>
+    </div>
+  </div>
+
+  <div class="kpi-grid" id="overviewKpis"></div>
+
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <h2 class="card-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          NT$100 萬創始資本複利成長軌跡（2010–<span id="c1EndLbl">2025</span>）
+        </h2>
+        <p class="card-sub">完整比較「富同股利再投入」、「50/50 富同＋大盤報酬混合」、「台股大盤報酬指數」、「台股股價指數」與「富同純領 90% 現金息不投入」。移動或點擊節點檢視明細。</p>
+      </div>
+      <div class="seg-ctrl" role="group" aria-label="座標軸模式">
+        <button class="seg-btn active" data-scale="linear">線性座標</button>
+        <button class="seg-btn" data-scale="log">對數座標</button>
+      </div>
+    </div>
+    <div class="chart-legend">
+      <span class="leg-item"><span class="leg-line" style="background:var(--cyan)"></span>富同投資（全複利）</span>
+      <span class="leg-item"><span class="leg-line" style="background:var(--indigo)"></span>50% 富同 + 50% 報酬指數</span>
+      <span class="leg-item"><span class="leg-line" style="background:var(--amber)"></span>台股大盤報酬指數（含息）</span>
+      <span class="leg-item"><span class="leg-line" style="background:var(--ink-3)"></span>台股大盤股價指數</span>
+      <span class="leg-item"><span class="leg-line" style="background:var(--emerald);border-top:2px dashed var(--emerald);height:0"></span>富同純領息（淨值+累息）</span>
+    </div>
+    <div class="chart-box" id="chartWealth"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <h2 class="card-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          年度報酬與超額 Alpha 逐年對決（2010–2026 Q3）
+        </h2>
+        <p class="card-sub">淺綠底色標示台灣大盤 4 次空頭年（2011、2015、2018、2022）：富同 4 戰全勝，平均 +2.3% vs 報酬指數 -12.1%。2026 Q3 為前三季累計（尚未提列年底董監酬勞）。</p>
+      </div>
+      <div class="seg-ctrl" role="group" aria-label="柱狀圖檢視">
+        <button class="seg-btn active" data-barmode="compare">年度報酬對比</button>
+        <button class="seg-btn" data-barmode="alpha">相對報酬指數 Alpha</button>
+      </div>
+    </div>
+    <div class="chart-legend" id="barLegend"></div>
+    <div class="chart-box" id="chartAnnual"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <h2 class="card-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+          歷年官方績效與每股淨值總帳（2010–2026 Q3，共 19 期）
+        </h2>
+        <p class="card-sub">全數核對自 2025 年報 P3、P14–18 及 2026 Q1–Q3 季報；綠底為台股空頭年，藍底為 2026 最新季報（未經年度查核）。</p>
+      </div>
+    </div>
+    <div class="table-scroll">
+      <table id="tblLedger"></table>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================== -->
+<!-- TAB 2: RISK & ROLLING                                                  -->
+<!-- ====================================================================== -->
+<section id="tab-risk" class="tab-panel">
+  <div class="grid-3" id="eraCards"></div>
+
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <h2 class="card-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+          滾動期間年化報酬率（Rolling CAGR）與達標穩定度
+        </h2>
+        <p class="card-sub">檢驗「任一時間點進場持有 3 年、5 年、10 年」的真實體驗：富同在全部 3Y/5Y/10Y 滾動區間均 100% 正報酬，10 年期更 100% 穩居 8.25%–10.47%。</p>
+      </div>
+      <div class="seg-ctrl" role="group" aria-label="滾動期長">
+        <button class="seg-btn active" data-roll="3">3 年滾動</button>
+        <button class="seg-btn" data-roll="5">5 年滾動</button>
+        <button class="seg-btn" data-roll="10">10 年滾動</button>
+      </div>
+    </div>
+    <div class="mini-grid" id="rollStats"></div>
+    <div class="chart-legend">
+      <span class="leg-item"><span class="leg-line" style="background:var(--cyan)"></span>富同投資滾動 CAGR</span>
+      <span class="leg-item"><span class="leg-line" style="background:var(--amber)"></span>台股大盤報酬指數滾動 CAGR</span>
+      <span class="leg-item"><span class="leg-line" style="background:var(--emerald);border-top:2px dashed var(--emerald);height:0"></span>富同長期目標線（7.0%）</span>
+    </div>
+    <div class="chart-box" id="chartRolling"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <h2 class="card-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+          機構級風險調整績效矩陣與 50/50 槓鈴組合回測
+        </h2>
+        <p class="card-sub">波動率、夏普比率、Sortino、Calmar、Beta 與上下行捕獲率均基於 2010–2025 共 16 個完整日曆年度（無風險利率 Rf = 1.5%）；另並列含 2026 Q3 之 16.75 年複利成果。</p>
+      </div>
+    </div>
+    <div class="table-scroll">
+      <table id="tblRiskMatrix"></table>
+    </div>
+    <div class="callout emerald" style="margin-top:14px;margin-bottom:0">
+      <div class="callout-title">關鍵實證：為什麼「50% 富同 ＋ 50% 台股報酬指數（如 0050）」是最強風險報酬組合？</div>
+      富同與台股報酬指數的相關係數僅 <strong>0.34</strong>、Beta 僅 <strong>0.16</strong>，呈現罕見的低相關價值因子特性。將兩者 50/50 年度再平衡後：16 年年化報酬達 <strong>11.11%</strong>（含 2026 Q3 更達 <strong>12.71%</strong>），波動率從 17.02% 驟降至 <strong>10.61%</strong>，最大年度回撤由 -18.70% 大幅壓縮 61% 至 <strong>-7.35%</strong>，Calmar 比率由 0.65 躍升至 <strong>1.51</strong>——同時保有 AI 權值股的爆發上檔與空頭年的防禦緩衝。
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================== -->
+<!-- TAB 3: BALANCE SHEET & FEE FORENSICS                                   -->
+<!-- ====================================================================== -->
+<section id="tab-balance" class="tab-panel">
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <h2 class="card-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          19 期逆週期資產配置軌跡（2010–2026 Q3，會計師核閱/查核資產負債表）
+        </h2>
+        <p class="card-sub">完整還原 2010–2026 Q3 每一期股票持股比重、現金水位與負債比。2012 年起連續 15 年零銀行借款；2026 Q3 股票比重拉高至 89.50%，創 2015 年以來十年新高！</p>
+      </div>
+    </div>
+    <div class="chart-legend">
+      <span class="leg-item"><span class="leg-dot" style="background:var(--cyan)"></span>股票投資佔總資產（含設質/其他流動資產）</span>
+      <span class="leg-item"><span class="leg-dot" style="background:var(--emerald)"></span>現金及約當現金比重</span>
+      <span class="leg-item"><span class="leg-line" style="background:var(--amber)"></span>總負債佔總資產（右軸標記）</span>
+    </div>
+    <div class="chart-box" id="chartAlloc"></div>
+    <div class="mini-grid" style="margin-top:14px;margin-bottom:0">
+      <div class="mini-stat">
+        <div class="mini-k">2015 股災抄底水位</div>
+        <div class="mini-v c-cyan">96.18%</div>
+        <div class="mini-s">現金降至 3.82%，隔年 2016 逢高升回 25.8%</div>
+      </div>
+      <div class="mini-stat">
+        <div class="mini-k">2017 萬點史上最高現金</div>
+        <div class="mini-v c-emerald">31.31%</div>
+        <div class="mini-s">「在結冰湖面溜冰要靠岸邊」</div>
+      </div>
+      <div class="mini-stat">
+        <div class="mini-k">2022 熊市逆勢進場</div>
+        <div class="mini-v c-cyan">88.49%</div>
+        <div class="mini-s">現金由 22.4% 投入至 11.5%，隔年賺 +16.8%</div>
+      </div>
+      <div class="mini-stat">
+        <div class="mini-k">2026 Q3 十年最高持股</div>
+        <div class="mini-v c-amber">89.50%</div>
+        <div class="mini-s">大盤狂飆但千檔傳產破年線，逆向重押價值股</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <h2 class="card-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            波克夏式績效酬勞條款與 16 年費用審計
+          </h2>
+          <p class="card-sub">0% 固定管理費、100% 績效連動；但採「已實現稅前淨利」基礎。</p>
+        </div>
+      </div>
+      <div class="callout cyan">
+        <div class="callout-title">章程計算公式（2025 年報 P44–46）</div>
+        <div>門檻 <code>c</code> ＝ 過去 5 年台灣 10 年期公債平均殖利率 ＋ 2.0%（2025 年為 <strong>2.9%</strong>）</div>
+        <div>計算基礎 <code>a/b</code> ＝ 扣酬勞前「已實現稅前淨利」 ÷ 期初股東權益基準點</div>
+        <div>董監酬勞 ＝ <code>b × max(0, a/b − c) × 25%</code>（超過門檻部分，股東 75% / 董監 25%）</div>
+      </div>
+      <div class="mini-grid" style="grid-template-columns:repeat(2,1fr)">
+        <div class="mini-stat">
+          <div class="mini-k">16 年累計董監績效酬勞</div>
+          <div class="mini-v c-amber">NT$3,486 萬</div>
+          <div class="mini-s">2010–2025 合計 NT$34,856,000</div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-k">16 年年均實質費率</div>
+          <div class="mini-v c-emerald">1.44% / 年</div>
+          <div class="mini-s">佔期初淨值基準，遠低於主動基金 ~3.0%</div>
+        </div>
+      </div>
+      <div class="callout amber" style="margin-bottom:0">
+        <div class="callout-title">2025 年法證解析：淨值 -0.5% 卻提列 NT$925.7 萬酬勞（佔比 2.85%）</div>
+        2025 年富同帳面總報酬為 <strong>-0.5%</strong>，卻提列史上最高 <strong>NT$9,257,000</strong> 董監酬勞（佔 16 年總酬勞 26.6%）。原因在於富同採 FVOCI「已實現」會計基礎：2025 Q1 在關稅股災前逢高出售多檔長期累積獲利的持股（處分利益逾 NT$3,100 萬），使已實現稅前淨利衝上 <code>NT$4,642 萬 (a/b = 14.3%)</code>，同步配出史上次高的 <strong>9.8% 現金股利（NT$3,187 萬）</strong>，但帳面未實現利益因獲利了結轉出而減少 NT$3,711 萬。<br><br>
+        <strong>客觀雙面評價：</strong>吳卓逸於年報 P46–48 證明此制在 2008–2009 震盪期比「無高水位線（HWM）的市價計酬」少收一半費用；然而，若對標國際對沖基金的「淨值高水位線（NAV HWM）」，已實現制仍會造成單年度體感錯配（2025 扣酬勞前總報酬約 +2.3%，扣後變 -0.5%），投資人評估時須將「領息與已實現收割時點」併同檢視。
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <h2 class="card-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            16 年已實現報酬率 (a/b) vs 提列酬勞費率走勢
+          </h2>
+          <p class="card-sub">柱體為每年董監酬勞佔期初淨值比率（%），折線為該年已實現稅前報酬率 (a/b) 與門檻 (c)。</p>
+        </div>
+      </div>
+      <div class="chart-legend">
+        <span class="leg-item"><span class="leg-dot" style="background:var(--amber)"></span>董監酬勞佔期初淨值 %</span>
+        <span class="leg-item"><span class="leg-line" style="background:var(--cyan)"></span>已實現稅前報酬率 a/b（%）</span>
+        <span class="leg-item"><span class="leg-line" style="background:var(--rose);border-top:2px dashed var(--rose);height:0"></span>10Y公債+2% 門檻 c</span>
+      </div>
+      <div class="chart-box" id="chartFees"></div>
+      <div class="callout emerald" style="margin-top:12px;margin-bottom:0">
+        <div class="callout-title">90% 紀律配息＋零溢價淨值增資：再投入複利差額高達 NT$142.6 萬！</div>
+        2010–2025 累計稅後淨利 <strong>NT$1.733 億</strong>，累計配發現金股利 <strong>NT$1.560 億（精準 90.0% 配發率）</strong>，16 年平均現金殖利率 <strong>6.6%</strong>。創始股東若在 2010 年投入 <strong>NT$100 萬（100 股）</strong>：<br>
+        • <strong>純領現金息（不參與增資）</strong>：至 2026 Q3 持股淨值 NT$166.6 萬 ＋ 累計現金股利 NT$145.3 萬 ＝ <strong>NT$311.9 萬（+211.9%）</strong><br>
+        • <strong>股利全數依淨值再投入增資</strong>：至 2026 Q3 股數倍增至 272.81 股 ＝ <strong>NT$454.5 萬（+354.5%）</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <h2 class="card-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
+          歷年會計師資產負債表與費用明細（2010–2026 Q3）
+        </h2>
+        <p class="card-sub">單位：新台幣元（除股數、比例與每股金額外）。2013–2025 股票總額含資產負債表重分類之設質股票（受限制資產 / 其他流動資產）。</p>
+      </div>
+    </div>
+    <div class="table-scroll">
+      <table id="tblBalance"></table>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================== -->
+<!-- TAB 4: ALL 19 REPORTS ARCHIVE                                          -->
+<!-- ====================================================================== -->
+<section id="tab-reports" class="tab-panel">
+  <div class="callout cyan">
+    <div class="callout-title">官方檔案普查說明（共下載並解析 41 份原始 PDF）</div>
+    本終端完整抓取富同投資官網（<code>wealthshare.com.tw</code>）全部公開文件：包含 <strong>2010–2025 共 16 份年度年報</strong>、<strong>2026 Q1/Q2/Q3 共 3 份最新季報</strong>、<strong>2013–2025 共 13 份會計師查核報告</strong>，以及 9 份制度說明／績效對照／Q&A 文件（經主機實測確認 2010–2025 歷史單季報皆已彙整入各年度年報）。其中 2014 與 2015 年報因 macOS 自訂字體編碼導致文字層亂碼，已逐頁高解析影像還原校對，確保 19 份《致股東報告書》全文 100% 清晰無錯字。
+  </div>
+
+  <div class="filter-bar">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input class="search-input" id="repSearch" type="search" placeholder="搜尋 19 份年季報全文（如：巴菲特指標、台積電、當沖、AI、許文龍）">
+    </div>
+    <div class="chip-row" id="eraFilter">
+      <button class="chip active" data-era="all">全部 19 份</button>
+      <button class="chip" data-era="era3">AI 狂潮期 (2023–26Q3)</button>
+      <button class="chip" data-era="era2">穩健防禦期 (2016–22)</button>
+      <button class="chip" data-era="era1">黃金超額期 (2010–15)</button>
+    </div>
+  </div>
+
+  <div class="report-list" id="reportList"></div>
+</section>
+
+<!-- ====================================================================== -->
+<!-- TAB 5: INVESTMENT VERDICT                                              -->
+<!-- ====================================================================== -->
+<section id="tab-verdict" class="tab-panel">
+  <div class="hero">
+    <div class="hero-meta">
+      <span class="pill cyan">雙重視角盡職調查（產業研究員 × 基金經理人）</span>
+      <span class="pill indigo">2026 Q3 台股巴菲特指標 &gt; 500%</span>
+    </div>
+    <h1>核心定性：低 Beta 絕對報酬價值錨，而非大盤替代品</h1>
+    <p class="hero-desc">
+      經過 16.75 年完整實證，富同投資最珍貴的資產不是「每年打敗台股」，而是極少數台灣投資機構能做到的 <strong>行為一致性與利益綁定</strong>——16 年來從未追高殺低、4 次台股空頭全數完勝、0% 固定管理費、15 年零銀行負債，且創辦人將逾 80% 個人身家與 91 位合夥人鎖在同一艘船上。但這套系統也伴隨明確的代價：<strong>在台積電與 AI 壟斷台股權重的超級多頭年，機會成本極為龐大</strong>。
+    </p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <h2 class="card-title" style="color:var(--emerald)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--emerald)"><polyline points="20 6 9 17 4 12"/></svg>
+            五大已驗證核心優勢（Pros）
+          </h2>
+          <p class="card-sub">16.75 年會計師數據反覆驗證的護城河</p>
+        </div>
+      </div>
+      <ul class="v-list">
+        <li><span class="v-dot" style="background:var(--emerald)"></span><div><strong>史詩級熊市鐵壁（4/4 空頭年全勝）：</strong>2011 (-18.0%)、2015 (-6.9%)、2018 (-4.8%)、2022 (-18.7%) 四次大盤空頭年，富同平均逆勢獲利 <strong>+2.30%</strong>，歷史最大年度跌幅僅 <strong>-0.9%</strong>，下行捕獲率為負值（<strong>-18.4%</strong>）。</div></li>
+        <li><span class="v-dot" style="background:var(--emerald)"></span><div><strong>優異風險調整報酬與極致穩定度：</strong>16 年夏普比率 <strong>1.01</strong> 顯著勝過報酬指數 0.70；全部 3Y/5Y/10Y 滾動區間 <strong>100% 正報酬</strong>，全部 10 年期皆達標 7% 以上（穩居 8.25%–10.47%）。</div></li>
+        <li><span class="v-dot" style="background:var(--emerald)"></span><div><strong>逆週期資金紀律有帳可查：</strong>不是口頭喊價值——2015 崩跌滿倉 96.2%、2017 萬點降倉留 31.3% 現金、2022 熊市加碼至 88.5%、2026 Q3 在逾千檔非 AI 股跌破年線時將股票拉升至 89.5% 十年新高。</div></li>
+        <li><span class="v-dot" style="background:var(--emerald)"></span><div><strong>利益高度綁定＋極低費用磨耗：</strong>0% 固定管理費、16 年年均實質績效費率僅 1.44%，創辦人投入 &gt;80% 身家，每年固定 90% 盈餘配息（均殖利率 6.6%）且開放依期末淨值零溢價認購。</div></li>
+        <li><span class="v-dot" style="background:var(--emerald)"></span><div><strong>極佳資產配置互補性（Beta 0.16）：</strong>與台股報酬指數相關係數僅 0.34，與市值型 ETF 形成天然互補，50/50 混合即可將大盤最大回撤壓縮 61% 且保留 11%–12.7% 年化複利。</div></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <h2 class="card-title" style="color:var(--rose)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--rose)"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            五大結構風險與盲點（Cons &amp; Risks）
+          </h2>
+          <p class="card-sub">投入資金前必須正視的代價與制度限制</p>
+        </div>
+      </div>
+      <ul class="v-list">
+        <li><span class="v-dot" style="background:var(--rose)"></span><div><strong>零科技曝險之結構性機會成本：</strong>台灣股市高度集中於台積電（權重近 4 成）與 AI 供應鏈。富同嚴守非電子能力圈，在 2023–2026 Q3 僅累積 +25.6%，對比報酬指數 +277.2%，造成 16.75 年終值 NT$454 萬 vs NT$1,054 萬的巨大落差。</div></li>
+        <li><span class="v-dot" style="background:var(--rose)"></span><div><strong>非公開發行之低流動性鎖定：</strong>無集中市場報價，無法隨時贖回（僅每年一次現金增資）；若非 5–10 年以上閒置資金，急用變現時面臨流通性折價風險。</div></li>
+        <li><span class="v-dot" style="background:var(--rose)"></span><div><strong>單一關鍵人風險（Key-Person Risk）：</strong>截至 2026 Q3 規模 NT$3.36 億，投資決策高度集中於創辦人吳卓逸一人（員工人數僅 1 人），尚無公開制度化接班投資委員會。</div></li>
+        <li><span class="v-dot" style="background:var(--rose)"></span><div><strong>已實現計酬無高水位線（HWM）錯配：</strong>如 2025 年淨值 -0.5% 卻提列 NT$925.7 萬績效酬勞（2.85%），雖為過往未實現收益收割所致且同步配出 9.8% 高息，但單年體感易生摩擦。</div></li>
+        <li><span class="v-dot" style="background:var(--rose)"></span><div><strong>持股明細非公開（黑箱透明度限制）：</strong>年季報僅揭露總持股金額、加權本益比（2025 年底 12 倍）與早期檔數（17–25 檔），外部投資人無法逐檔檢視前十大持股與產業集中度。</div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <h2 class="card-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/></svg>
+          台股巴菲特指標（總市值 / GDP）與富同現金操作對照（2020–2026 Q3）
+        </h2>
+        <p class="card-sub">直接摘錄自富同各期年季報之市場過熱觀察：儘管大盤指標突破 500%，富同卻反常將持股拉高至 89.5%——透露極端「雙軌市場」訊號。</p>
+      </div>
+    </div>
+    <div class="mini-grid-5">
+      <div class="mini-stat"><div class="mini-k">2020 年底</div><div class="mini-v c-cyan">228%</div><div class="mini-s">現金 28.2%（歷史均值 153%）</div></div>
+      <div class="mini-stat"><div class="mini-k">2021 年底</div><div class="mini-v c-cyan">271%</div><div class="mini-s">現金 22.4%（隔年熊市大勝）</div></div>
+      <div class="mini-stat"><div class="mini-k">2024 年底</div><div class="mini-v c-amber">297%</div><div class="mini-s">現金 19.2%（非電子反跌 3%）</div></div>
+      <div class="mini-stat"><div class="mini-k">2025 年底</div><div class="mini-v c-amber">347%</div><div class="mini-s">現金 21.7%（持股 P/E 僅 12x）</div></div>
+      <div class="mini-stat"><div class="mini-k">2026 Q3</div><div class="mini-v c-rose">&gt;500%</div><div class="mini-s">現金降至 10.2%（重押破年線價值股）</div></div>
+    </div>
+    <div class="callout indigo" style="margin-bottom:0;border-left:3px solid var(--indigo)">
+      <div class="callout-title">2026 Q3 關鍵訊號解讀：為何大盤 48,601 點，富同反而接近滿倉（89.5%）？</div>
+      對照 2017 年萬點時富同把現金拉高至 31.3%（因為全面偏貴），2026 年的台股呈現極端 <strong>K 型分化</strong>：權值 AI 股把總市值/GDP 推上 500%，但資金排擠導致逾千家傳產與中小型績優股跌破年線、本益比壓縮至 ~12 倍且殖利率 &gt;5%。吳卓逸選擇在大盤最狂熱、非 AI 股最被遺棄的時刻大舉建倉（2026 Q1–Q3 現金從 21.7% 投入至 10.2%），這筆「逆向深值押注」將在未來 3–5 年成為檢驗富同能否重現 2011/2022 逆轉勝的關鍵戰役。
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <h3 class="card-title" style="font-size:15px;margin-bottom:8px"><span class="pill emerald">方案 A · 推薦核心架構</span></h3>
+      <div style="font-size:16px;font-weight:800;margin-bottom:6px">50/50 槓鈴配置（富同價值錨 ＋ 市值型 ETF）</div>
+      <p style="font-size:13px;color:var(--ink-2);margin:0 0 10px">以 30%–50% 部位配置類富同之低 Beta 高息價值核心，其餘 50%–70% 配置 0050 / 台股大盤或全球市值 ETF。</p>
+      <div class="mini-stat"><div class="mini-k">16 年回測實績 (50/50)</div><div class="mini-v c-emerald">11.11% CAGR</div><div class="mini-s">波動 10.6% · Sharpe 0.95 · MDD 僅 -7.35%</div></div>
+    </div>
+    <div class="card">
+      <h3 class="card-title" style="font-size:15px;margin-bottom:8px"><span class="pill cyan">方案 B · 退休防禦現金流</span></h3>
+      <div style="font-size:16px;font-weight:800;margin-bottom:6px">高資產保值與穩定領息族群（適合）</div>
+      <p style="font-size:13px;color:var(--ink-2);margin:0 0 10px">若您的首要目標是「絕不承受 -20% 以上劇烈腰斬」、追求長期 7%–9.5% 穩健複利與 5%–7% 現金股利，且資金可閒置 10 年以上並認同波克夏理念，富同實績已通過 16 年考驗。</p>
+      <div class="mini-stat"><div class="mini-k">10 年滾動達標率</div><div class="mini-v c-cyan">100% (&ge;7%)</div><div class="mini-s">歷史 10 年滾動區間極度收斂：8.25%–10.47%</div></div>
+    </div>
+    <div class="card">
+      <h3 class="card-title" style="font-size:15px;margin-bottom:8px"><span class="pill rose">方案 C · 不適合族群</span></h3>
+      <div style="font-size:16px;font-weight:800;margin-bottom:6px">追求高成長 / 需高流動性 / 看重相對排名者</div>
+      <p style="font-size:13px;color:var(--ink-2);margin:0 0 10px">若您無法忍受大盤飆漲 30%–68% 時帳面僅溫和上漲 1%–7% 的 FOMO 心理壓力，或 3 年內可能有資金變現需求、重視持股全透明與隨時賣出彈性，低費率市值 ETF 更適合您。</p>
+      <div class="mini-stat"><div class="mini-k">2023–2026 Q3 單期落差</div><div class="mini-v c-rose">-36.2%/年</div><div class="mini-s">考驗長期合夥人的極致心理耐受力</div></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div>資料來源：富同投資股份有限公司官方網站（wealthshare.com.tw）2010–2025 年報、2013–2025 會計師查核報告及 2026 Q1–Q3 季報（共 41 份原始 PDF）。</div>
+  <div>本報告為客觀公開數據整理與量化回測研究，不構成任何有價證券之買賣邀約或投資建議。</div>
+</footer>
+
+<nav class="mob-dock" aria-label="行動版分頁導覽">
+  <div class="mob-dock-inner">
+    <button class="mtab active" data-tab="overview">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      回測總覽
+    </button>
+    <button class="mtab" data-tab="risk">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      風險滾動
+    </button>
+    <button class="mtab" data-tab="balance">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      資產費用
+    </button>
+    <button class="mtab" data-tab="reports">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      年季報庫
+    </button>
+    <button class="mtab" data-tab="verdict">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+      決策評估
+    </button>
+  </div>
+</nav>
+
+<div class="chart-tip" id="chartTip"></div>
+
+<script>
+const WS_DATA = {"meta": {"company": "富同投資股份有限公司 (Wealthshare Investment Co., Ltd.)", "founder": "吳卓逸", "founded": "2010年4月", "data_cutoff": "2026 Q3 (2026-09-30)", "reports_analyzed": 41, "annual_reports": 16, "quarterly_reports": 3, "cpa_reports": 13, "rf_pct": 1.5, "shareholders_2026q1": 91, "shares_2026q3": 20170, "paid_in_capital_2026q3": 201700000, "nav_2026q3": 16659, "equity_2026q3": 336002817, "assets_2026q3": 336219124, "total_net_inc_16y": 173322807, "total_div_16y": 155972820, "avg_payout_16y": 89.99, "total_rem_16y": 34856000, "avg_rem_pct_16y": 1.44, "avg_div_yield_16y": 6.62, "avg_cash_pct_16y": 16.18}, "metrics_16y": {"years": 16.0, "ws": {"cum_pct": 325.67, "cagr_pct": 9.48, "final_1m": 4256684, "mean_pct": 9.76, "vol_pct": 8.14, "sharpe": 1.01, "sharpe_cagr": 0.98, "sortino": 10.53, "mdd_pct": -0.9, "calmar": 10.53, "best_yr": 22.6, "worst_yr": -0.9, "pos_years": 14, "gt7_years": 9, "beat_tr_years": 7, "beat_pr_years": 7, "bear_win": 4, "bear_total": 4, "bear_pos": 3, "bear_avg_ws": 2.3, "bear_avg_tr": -12.1, "beta": 0.16, "corr": 0.34, "tracking_error": 16.17, "info_ratio": -0.23, "up_capture": 55.1, "down_capture": -18.4, "curve": [1000000, 1226000, 1266458, 1485555, 1807921, 1936283, 1918857, 2112661, 2317589, 2347718, 2704571, 2856027, 3427232, 3615730, 4223173, 4278074, 4256684]}, "tr": {"cum_pct": 526.87, "cagr_pct": 12.16, "final_1m": 6268662, "mean_pct": 13.47, "vol_pct": 17.02, "sharpe": 0.7, "sharpe_cagr": 0.63, "sortino": 1.6, "mdd_pct": -18.7, "calmar": 0.65, "best_yr": 31.7, "worst_yr": -18.7, "curve": [1000000, 1136000, 931520, 1051686, 1210491, 1348487, 1255441, 1451290, 1734291, 1651045, 2128197, 2704939, 3437977, 2795076, 3675525, 4840666, 6268662]}, "pr": {"cum_pct": 253.72, "cagr_pct": 8.22, "final_1m": 3537184, "mean_pct": 9.54, "vol_pct": 16.76, "sharpe": 0.48, "mdd_pct": -22.4, "calmar": 0.37, "best_yr": 28.5, "worst_yr": -22.4, "curve": [1000000, 1096000, 863648, 940513, 1051493, 1136664, 1018451, 1130481, 1300053, 1188248, 1465110, 1799155, 2225555, 1727031, 2189875, 2813989, 3537184]}, "blend50": {"cum_pct": 439.83, "cagr_pct": 11.11, "final_1m": 5398310, "mean_pct": 11.61, "vol_pct": 10.61, "sharpe": 0.95, "sharpe_cagr": 0.91, "sortino": 2.98, "mdd_pct": -7.35, "calmar": 1.51, "best_yr": 24.1, "worst_yr": -7.3, "curve": [1000000, 1181000, 1094196, 1259420, 1491153, 1629085, 1565551, 1766724, 2024666, 1989234, 2427860, 2824816, 3490060, 3259716, 4046937, 4714682, 5398310]}, "blend30": {"cum_pct": 479.08, "cagr_pct": 11.6, "vol_pct": 12.95, "sharpe": 0.84, "mdd_pct": -11.61}}, "metrics_1675y": {"years": 16.75, "ws": {"cum_pct": 354.19, "cagr_pct": 9.46, "final_1m": 4541881, "mean_pct": 9.76, "vol_pct": 8.14, "sharpe": 1.01, "sharpe_cagr": 0.98, "sortino": 10.53, "mdd_pct": -0.9, "calmar": 10.51, "best_yr": 22.6, "worst_yr": -0.9, "pos_years": 14, "gt7_years": 9, "beat_tr_years": 7, "beat_pr_years": 7, "bear_win": 4, "bear_total": 4, "bear_pos": 3, "bear_avg_ws": 2.3, "bear_avg_tr": -12.1, "beta": 0.16, "corr": 0.34, "tracking_error": 16.17, "info_ratio": -0.23, "up_capture": 55.1, "down_capture": -18.4, "curve": [1000000, 1226000, 1266458, 1485555, 1807921, 1936283, 1918857, 2112661, 2317589, 2347718, 2704571, 2856027, 3427232, 3615730, 4223173, 4278074, 4256684, 4541881]}, "tr": {"cum_pct": 954.39, "cagr_pct": 15.1, "final_1m": 10543890, "mean_pct": 13.47, "vol_pct": 17.02, "sharpe": 0.7, "sharpe_cagr": 0.8, "sortino": 1.6, "mdd_pct": -18.7, "calmar": 0.81, "best_yr": 31.7, "worst_yr": -18.7, "curve": [1000000, 1136000, 931520, 1051686, 1210491, 1348487, 1255441, 1451290, 1734291, 1651045, 2128197, 2704939, 3437977, 2795076, 3675525, 4840666, 6268662, 10543890]}, "pr": {"cum_pct": 485.4, "cagr_pct": 11.13, "final_1m": 5854040, "mean_pct": 9.54, "vol_pct": 16.76, "sharpe": 0.48, "mdd_pct": -22.4, "calmar": 0.5, "best_yr": 28.5, "worst_yr": -22.4, "curve": [1000000, 1096000, 863648, 940513, 1051493, 1136664, 1018451, 1130481, 1300053, 1188248, 1465110, 1799155, 2225555, 1727031, 2189875, 2813989, 3537184, 5854040]}, "blend50": {"cum_pct": 642.0, "cagr_pct": 12.71, "final_1m": 7419978, "mean_pct": 11.61, "vol_pct": 10.61, "sharpe": 0.95, "sharpe_cagr": 1.06, "sortino": 2.98, "mdd_pct": -7.35, "calmar": 1.73, "best_yr": 24.1, "worst_yr": -7.3, "curve": [1000000, 1181000, 1094196, 1259420, 1491153, 1629085, 1565551, 1766724, 2024666, 1989234, 2427860, 2824816, 3490060, 3259716, 4046937, 4714682, 5398310, 7419978]}, "blend30": {"cum_pct": 767.17, "cagr_pct": 13.76, "vol_pct": 12.95, "sharpe": 0.84, "mdd_pct": -11.61}}, "cashflow_sim": {"no_reinv": [{"label": "2009底", "nav_val": 1000000, "cum_div": 0, "total": 1000000}, {"label": "2010", "yr_div": 49000, "nav_val": 1177000, "cum_div": 49000, "total": 1226000}, {"label": "2011", "yr_div": 88300, "nav_val": 1127500, "cum_div": 137300, "total": 1264800}, {"label": "2012", "yr_div": 107400, "nav_val": 1214800, "cum_div": 244700, "total": 1459500}, {"label": "2013", "yr_div": 156900, "nav_val": 1321600, "cum_div": 401600, "total": 1723200}, {"label": "2014", "yr_div": 89500, "nav_val": 1326000, "cum_div": 491100, "total": 1817100}, {"label": "2015", "yr_div": 106000, "nav_val": 1209200, "cum_div": 597100, "total": 1806300}, {"label": "2016", "yr_div": 50300, "nav_val": 1280800, "cum_div": 647400, "total": 1928200}, {"label": "2017", "yr_div": 54200, "nav_val": 1350300, "cum_div": 701600, "total": 2051900}, {"label": "2018", "yr_div": 74000, "nav_val": 1294200, "cum_div": 775600, "total": 2069800}, {"label": "2019", "yr_div": 75200, "nav_val": 1415700, "cum_div": 850800, "total": 2266500}, {"label": "2020", "yr_div": 57100, "nav_val": 1438100, "cum_div": 907900, "total": 2346000}, {"label": "2021", "yr_div": 92300, "nav_val": 1633000, "cum_div": 1000200, "total": 2633200}, {"label": "2022", "yr_div": 84200, "nav_val": 1639300, "cum_div": 1084400, "total": 2723700}, {"label": "2023", "yr_div": 71600, "nav_val": 1843000, "cum_div": 1156000, "total": 2999000}, {"label": "2024", "yr_div": 126200, "nav_val": 1740800, "cum_div": 1282200, "total": 3023000}, {"label": "2025", "yr_div": 170800, "nav_val": 1560900, "cum_div": 1453000, "total": 3013900}, {"label": "2026Q3", "yr_div": 0, "nav_val": 1665900, "cum_div": 1453000, "total": 3118900}], "reinv": [{"label": "2009底", "shares": 100.0, "total": 1000000}, {"label": "2010", "shares": 104.16, "total": 1226000}, {"label": "2011", "shares": 112.32, "total": 1266415}, {"label": "2012", "shares": 122.25, "total": 1485104}, {"label": "2013", "shares": 136.76, "total": 1807479}, {"label": "2014", "shares": 146.0, "total": 1935901}, {"label": "2015", "shares": 158.79, "total": 1920133}, {"label": "2016", "shares": 165.03, "total": 2113703}, {"label": "2017", "shares": 171.65, "total": 2317845}, {"label": "2018", "shares": 181.47, "total": 2348571}, {"label": "2019", "shares": 191.11, "total": 2705520}, {"label": "2020", "shares": 198.7, "total": 2857452}, {"label": "2021", "shares": 209.93, "total": 3428107}, {"label": "2022", "shares": 220.71, "total": 3618091}, {"label": "2023", "shares": 229.28, "total": 4225705}, {"label": "2024", "shares": 245.91, "total": 4280733}, {"label": "2025", "shares": 272.81, "total": 4258355}, {"label": "2026Q3", "shares": 272.81, "total": 4544810}]}, "rolling": {"3": {"rows": [{"period": "2010–2012", "end_year": 2012, "ws_cagr": 14.1, "tr_cagr": 1.69, "pr_cagr": -2.02, "alpha_tr": 12.41, "alpha_pr": 16.13}, {"period": "2011–2013", "end_year": 2013, "ws_cagr": 13.82, "tr_cagr": 2.14, "pr_cagr": -1.37, "alpha_tr": 11.68, "alpha_pr": 15.2}, {"period": "2012–2014", "end_year": 2014, "ws_cagr": 15.2, "tr_cagr": 13.12, "pr_cagr": 9.59, "alpha_tr": 2.08, "alpha_pr": 5.61}, {"period": "2013–2015", "end_year": 2015, "ws_cagr": 8.91, "tr_cagr": 6.08, "pr_cagr": 2.69, "alpha_tr": 2.83, "alpha_pr": 6.22}, {"period": "2014–2016", "end_year": 2016, "ws_cagr": 5.33, "tr_cagr": 6.23, "pr_cagr": 2.44, "alpha_tr": -0.9, "alpha_pr": 2.89}, {"period": "2015–2017", "end_year": 2017, "ws_cagr": 6.18, "tr_cagr": 8.75, "pr_cagr": 4.58, "alpha_tr": -2.57, "alpha_pr": 1.6}, {"period": "2016–2018", "end_year": 2018, "ws_cagr": 6.96, "tr_cagr": 9.56, "pr_cagr": 5.27, "alpha_tr": -2.61, "alpha_pr": 1.68}, {"period": "2017–2019", "end_year": 2019, "ws_cagr": 8.58, "tr_cagr": 13.61, "pr_cagr": 9.03, "alpha_tr": -5.03, "alpha_pr": -0.45}, {"period": "2018–2020", "end_year": 2020, "ws_cagr": 7.21, "tr_cagr": 15.97, "pr_cagr": 11.44, "alpha_tr": -8.76, "alpha_pr": -4.23}, {"period": "2019–2021", "end_year": 2021, "ws_cagr": 13.44, "tr_cagr": 27.7, "pr_cagr": 23.27, "alpha_tr": -14.26, "alpha_pr": -9.83}, {"period": "2020–2022", "end_year": 2022, "ws_cagr": 10.16, "tr_cagr": 9.51, "pr_cagr": 5.64, "alpha_tr": 0.65, "alpha_pr": 4.53}, {"period": "2021–2023", "end_year": 2023, "ws_cagr": 13.93, "tr_cagr": 10.76, "pr_cagr": 6.77, "alpha_tr": 3.17, "alpha_pr": 7.16}, {"period": "2022–2024", "end_year": 2024, "ws_cagr": 7.67, "tr_cagr": 12.08, "pr_cagr": 8.13, "alpha_tr": -4.41, "alpha_pr": -0.46}, {"period": "2023–2025", "end_year": 2025, "ws_cagr": 5.59, "tr_cagr": 30.9, "pr_cagr": 26.99, "alpha_tr": -25.31, "alpha_pr": -21.4}], "pos_pct": 100.0, "gt7_pct": 71.4, "beat_tr_pct": 42.9, "beat_pr_pct": 64.3, "ws_min": 5.33, "ws_max": 15.2, "tr_min": 1.69, "tr_max": 30.9}, "5": {"rows": [{"period": "2010–2014", "end_year": 2014, "ws_cagr": 14.13, "tr_cagr": 6.16, "pr_cagr": 2.6, "alpha_tr": 7.97, "alpha_pr": 11.53}, {"period": "2011–2015", "end_year": 2015, "ws_cagr": 9.37, "tr_cagr": 2.02, "pr_cagr": -1.46, "alpha_tr": 7.35, "alpha_pr": 10.83}, {"period": "2012–2016", "end_year": 2016, "ws_cagr": 10.78, "tr_cagr": 9.27, "pr_cagr": 5.53, "alpha_tr": 1.5, "alpha_pr": 5.24}, {"period": "2013–2017", "end_year": 2017, "ws_cagr": 9.3, "tr_cagr": 10.52, "pr_cagr": 6.69, "alpha_tr": -1.22, "alpha_pr": 2.61}, {"period": "2014–2018", "end_year": 2018, "ws_cagr": 5.36, "tr_cagr": 6.4, "pr_cagr": 2.48, "alpha_tr": -1.04, "alpha_pr": 2.89}, {"period": "2015–2019", "end_year": 2019, "ws_cagr": 6.91, "tr_cagr": 9.56, "pr_cagr": 5.21, "alpha_tr": -2.64, "alpha_pr": 1.7}, {"period": "2016–2020", "end_year": 2020, "ws_cagr": 8.28, "tr_cagr": 16.59, "pr_cagr": 12.05, "alpha_tr": -8.31, "alpha_pr": -3.77}, {"period": "2017–2021", "end_year": 2021, "ws_cagr": 10.16, "tr_cagr": 18.83, "pr_cagr": 14.51, "alpha_tr": -8.67, "alpha_pr": -4.35}, {"period": "2018–2022", "end_year": 2022, "ws_cagr": 9.3, "tr_cagr": 10.02, "pr_cagr": 5.84, "alpha_tr": -0.71, "alpha_pr": 3.46}, {"period": "2019–2023", "end_year": 2023, "ws_cagr": 12.46, "tr_cagr": 17.36, "pr_cagr": 13.01, "alpha_tr": -4.9, "alpha_pr": -0.55}, {"period": "2020–2024", "end_year": 2024, "ws_cagr": 9.6, "tr_cagr": 17.86, "pr_cagr": 13.94, "alpha_tr": -8.26, "alpha_pr": -4.34}, {"period": "2021–2025", "end_year": 2025, "ws_cagr": 8.31, "tr_cagr": 18.31, "pr_cagr": 14.48, "alpha_tr": -10.0, "alpha_pr": -6.17}], "pos_pct": 100.0, "gt7_pct": 83.3, "beat_tr_pct": 25.0, "beat_pr_pct": 58.3, "ws_min": 5.36, "ws_max": 14.13, "tr_min": 2.02, "tr_max": 18.83}, "10": {"rows": [{"period": "2010–2019", "end_year": 2019, "ws_cagr": 10.46, "tr_cagr": 7.85, "pr_cagr": 3.89, "alpha_tr": 2.62, "alpha_pr": 6.57}, {"period": "2011–2020", "end_year": 2020, "ws_cagr": 8.82, "tr_cagr": 9.06, "pr_cagr": 5.08, "alpha_tr": -0.24, "alpha_pr": 3.74}, {"period": "2012–2021", "end_year": 2021, "ws_cagr": 10.47, "tr_cagr": 13.95, "pr_cagr": 9.93, "alpha_tr": -3.48, "alpha_pr": 0.54}, {"period": "2013–2022", "end_year": 2022, "ws_cagr": 9.3, "tr_cagr": 10.27, "pr_cagr": 6.27, "alpha_tr": -0.97, "alpha_pr": 3.04}, {"period": "2014–2023", "end_year": 2023, "ws_cagr": 8.85, "tr_cagr": 11.75, "pr_cagr": 7.61, "alpha_tr": -2.89, "alpha_pr": 1.24}, {"period": "2015–2024", "end_year": 2024, "ws_cagr": 8.25, "tr_cagr": 13.63, "pr_cagr": 9.49, "alpha_tr": -5.38, "alpha_pr": -1.24}, {"period": "2016–2025", "end_year": 2025, "ws_cagr": 8.29, "tr_cagr": 17.45, "pr_cagr": 13.26, "alpha_tr": -9.15, "alpha_pr": -4.97}], "pos_pct": 100.0, "gt7_pct": 100.0, "beat_tr_pct": 14.3, "beat_pr_pct": 71.4, "ws_min": 8.25, "ws_max": 10.47, "tr_min": 7.85, "tr_max": 17.45}}, "eras": [{"name": "第一期：黃金超額期", "span": "2010–2015", "years": 6.0, "ws_cum": 91.9, "tr_cum": 25.5, "pr_cum": 1.8, "ws_cagr": 11.47, "tr_cagr": 3.86, "pr_cagr": 0.31, "alpha_tr_cagr": 7.61, "alpha_pr_cagr": 11.17, "avg_cash_pct": 7.7}, {"name": "第二期：穩健防禦期", "span": "2016–2022", "years": 7.0, "ws_cum": 88.4, "tr_cum": 122.6, "pr_cum": 69.6, "ws_cagr": 9.47, "tr_cagr": 12.11, "pr_cagr": 7.84, "alpha_tr_cagr": -2.64, "alpha_pr_cagr": 1.64, "avg_cash_pct": 21.4}, {"name": "第三期：AI 狂潮考驗期", "span": "2023–2026 Q3", "years": 3.75, "ws_cum": 25.6, "tr_cum": 277.2, "pr_cum": 239.0, "ws_cagr": 6.27, "tr_cagr": 42.48, "pr_cagr": 38.48, "alpha_tr_cagr": -36.21, "alpha_pr_cagr": -32.21, "avg_cash_pct": 18.3}], "series": [{"label": "2010", "is_quarterly": false, "ws": 22.6, "tr": 13.6, "pr": 9.6, "alpha_tr": 9.0, "alpha_pr": 13.0, "shares": 1400, "nav_start": 10000, "nav_pre": 12260, "nav_post": 11770, "base_eq": 14000000, "eq_pre": 17163960, "assets": 20840960, "cash": 1879811, "stocks": 18960100, "debt": 3677000, "bank_loan": 3600000, "oci": 2401738, "cash_pct": 9.02, "stock_pct": 90.98, "other_pct": 0.01, "debt_pct": 17.64, "net_inc": 762222, "eps": 544, "div_ps": 490, "div_total": 686000, "div_yield": 4.9, "payout_pct": 90.0, "rem_ntd": 72000, "hurdle": 3.9, "ab_pct": 5.96, "rem_pct": 0.51, "bs_source": "2010年報P16會計師核閱資產負債表"}, {"label": "2011", "is_quarterly": false, "ws": 3.3, "tr": -18.0, "pr": -21.2, "alpha_tr": 21.3, "alpha_pr": 24.5, "shares": 2170, "nav_start": 11770, "nav_pre": 12158, "nav_post": 11275, "base_eq": 25540860, "eq_pre": 26382818, "assets": 30793041, "cash": 440973, "stocks": 30211053, "debt": 4410223, "bank_loan": 4000000, "oci": 1112791, "cash_pct": 1.43, "stock_pct": 98.11, "other_pct": 0.46, "debt_pct": 14.32, "net_inc": 2130905, "eps": 982, "div_ps": 883, "div_total": 1916110, "div_yield": 7.5, "payout_pct": 89.92, "rem_ntd": 391000, "hurdle": 3.8, "ab_pct": 9.93, "rem_pct": 1.53, "bs_source": "2011年報P16會計師核閱資產負債表"}, {"label": "2012", "is_quarterly": false, "ws": 17.3, "tr": 12.9, "pr": 8.9, "alpha_tr": 4.4, "alpha_pr": 8.4, "shares": 2960, "nav_start": 11275, "nav_pre": 13222, "nav_post": 12148, "base_eq": 33373958, "eq_pre": 39135992, "assets": 39895992, "cash": 610842, "stocks": 38700216, "debt": 760000, "bank_loan": 0, "oci": 3343949, "cash_pct": 1.53, "stock_pct": 97.0, "other_pct": 1.47, "debt_pct": 1.9, "net_inc": 3530876, "eps": 1193, "div_ps": 1074, "div_total": 3179040, "div_yield": 9.5, "payout_pct": 90.04, "rem_ntd": 760000, "hurdle": 3.7, "ab_pct": 12.81, "rem_pct": 2.28, "bs_source": "2013 CPA財報比較欄(2012/12/31)"}, {"label": "2013", "is_quarterly": false, "ws": 21.7, "tr": 15.1, "pr": 11.8, "alpha_tr": 6.6, "alpha_pr": 9.9, "shares": 4340, "nav_start": 12148, "nav_pre": 14785, "nav_post": 13216, "base_eq": 52721192, "eq_pre": 64168080, "assets": 67481820, "cash": 11674762, "stocks": 54682598, "debt": 3313740, "bank_loan": 0, "oci": 7223575, "cash_pct": 17.3, "stock_pct": 81.03, "other_pct": 1.67, "debt_pct": 4.91, "net_inc": 7567262, "eps": 1744, "div_ps": 1569, "div_total": 6809460, "div_yield": 12.9, "payout_pct": 89.99, "rem_ntd": 2095000, "hurdle": 3.4, "ab_pct": 19.3, "rem_pct": 3.97, "bs_source": "2013 CPA查核報告"}, {"label": "2014", "is_quarterly": false, "ws": 7.1, "tr": 11.4, "pr": 8.1, "alpha_tr": -4.3, "alpha_pr": -1.0, "shares": 6670, "nav_start": 13216, "nav_pre": 14155, "nav_post": 13260, "base_eq": 88151900, "eq_pre": 94410856, "assets": 95783246, "cash": 12414421, "stocks": 83357350, "debt": 1372390, "bank_loan": 0, "oci": 6850626, "cash_pct": 12.96, "stock_pct": 87.03, "other_pct": 0.01, "debt_pct": 1.43, "net_inc": 6631905, "eps": 994, "div_ps": 895, "div_total": 5969650, "div_yield": 6.8, "payout_pct": 90.01, "rem_ntd": 1252000, "hurdle": 3.4, "ab_pct": 9.08, "rem_pct": 1.42, "bs_source": "2014 CPA查核報告"}, {"label": "2015", "is_quarterly": false, "ws": -0.9, "tr": -6.9, "pr": -10.4, "alpha_tr": 6.0, "alpha_pr": 9.5, "shares": 8300, "nav_start": 13260, "nav_pre": 13152, "nav_post": 12092, "base_eq": 110156776, "eq_pre": 109159481, "assets": 111699672, "cash": 4270827, "stocks": 107426845, "debt": 2540191, "bank_loan": 0, "oci": -3827284, "cash_pct": 3.82, "stock_pct": 96.17, "other_pct": 0.0, "debt_pct": 2.27, "net_inc": 9782385, "eps": 1179, "div_ps": 1060, "div_total": 8798000, "div_yield": 8.0, "payout_pct": 89.94, "rem_ntd": 2144000, "hurdle": 3.4, "ab_pct": 11.19, "rem_pct": 1.95, "bs_source": "2015 CPA查核報告"}, {"label": "2016", "is_quarterly": false, "ws": 10.1, "tr": 15.6, "pr": 11.0, "alpha_tr": -5.5, "alpha_pr": -0.9, "shares": 9720, "nav_start": 12092, "nav_pre": 13311, "nav_post": 12808, "base_eq": 117532121, "eq_pre": 129384496, "assets": 129863110, "cash": 33519189, "stocks": 96341023, "debt": 478614, "bank_loan": 0, "oci": 2590831, "cash_pct": 25.81, "stock_pct": 74.19, "other_pct": 0.0, "debt_pct": 0.37, "net_inc": 5434260, "eps": 559, "div_ps": 503, "div_total": 4889160, "div_yield": 4.2, "payout_pct": 89.97, "rem_ntd": 478000, "hurdle": 3.4, "ab_pct": 5.03, "rem_pct": 0.41, "bs_source": "2016 CPA查核報告"}, {"label": "2017", "is_quarterly": false, "ws": 9.7, "tr": 19.5, "pr": 15.0, "alpha_tr": -9.8, "alpha_pr": -5.3, "shares": 10460, "nav_start": 12808, "nav_pre": 14045, "nav_post": 13503, "base_eq": 133973256, "eq_pre": 146910714, "assets": 147532881, "cash": 46192208, "stocks": 101337674, "debt": 622167, "bank_loan": 0, "oci": 9234269, "cash_pct": 31.31, "stock_pct": 68.69, "other_pct": 0.0, "debt_pct": 0.42, "net_inc": 6294020, "eps": 602, "div_ps": 542, "div_total": 5669320, "div_yield": 4.2, "payout_pct": 90.07, "rem_ntd": 622000, "hurdle": 3.3, "ab_pct": 5.16, "rem_pct": 0.46, "bs_source": "2017 CPA查核報告"}, {"label": "2018", "is_quarterly": false, "ws": 1.3, "tr": -4.8, "pr": -8.6, "alpha_tr": 6.1, "alpha_pr": 9.9, "shares": 11330, "nav_start": 13503, "nav_pre": 13682, "nav_post": 12942, "base_eq": 152989004, "eq_pre": 155013294, "assets": 156584461, "cash": 25476983, "stocks": 131107478, "debt": 1571167, "bank_loan": 0, "oci": 1943823, "cash_pct": 16.27, "stock_pct": 83.73, "other_pct": 0.0, "debt_pct": 1.0, "net_inc": 9314736, "eps": 822, "div_ps": 740, "div_total": 8384200, "div_yield": 5.5, "payout_pct": 90.01, "rem_ntd": 1457000, "hurdle": 3.3, "ab_pct": 7.11, "rem_pct": 0.95, "bs_source": "2018 CPA查核報告"}, {"label": "2019", "is_quarterly": false, "ws": 15.2, "tr": 28.9, "pr": 23.3, "alpha_tr": -13.7, "alpha_pr": -8.1, "shares": 12610, "nav_start": 12942, "nav_pre": 14909, "nav_post": 14157, "base_eq": 163194854, "eq_pre": 188004705, "assets": 190068443, "cash": 27391748, "stocks": 162387762, "debt": 2063738, "bank_loan": 0, "oci": 16215035, "cash_pct": 14.41, "stock_pct": 85.44, "other_pct": 0.15, "debt_pct": 1.09, "net_inc": 10538639, "eps": 836, "div_ps": 752, "div_total": 9482720, "div_yield": 5.8, "payout_pct": 89.98, "rem_ntd": 1844000, "hurdle": 3.2, "ab_pct": 7.72, "rem_pct": 1.13, "bs_source": "2019 CPA查核報告"}, {"label": "2020", "is_quarterly": false, "ws": 5.6, "tr": 27.1, "pr": 22.8, "alpha_tr": -21.5, "alpha_pr": -17.2, "shares": 13720, "nav_start": 14157, "nav_pre": 14952, "nav_post": 14381, "base_eq": 194236255, "eq_pre": 205142097, "assets": 206922699, "cash": 58335087, "stocks": 148586962, "debt": 1780602, "bank_loan": 0, "oci": 18413739, "cash_pct": 28.19, "stock_pct": 71.81, "other_pct": 0.0, "debt_pct": 0.86, "net_inc": 8707138, "eps": 635, "div_ps": 571, "div_total": 7834120, "div_yield": 4.0, "payout_pct": 89.97, "rem_ntd": 980000, "hurdle": 3.0, "ab_pct": 5.02, "rem_pct": 0.5, "bs_source": "2020 CPA查核報告"}, {"label": "2021", "is_quarterly": false, "ws": 20.0, "tr": 27.1, "pr": 23.7, "alpha_tr": -7.1, "alpha_pr": -3.7, "shares": 14420, "nav_start": 14381, "nav_pre": 17253, "nav_post": 16330, "base_eq": 207374677, "eq_pre": 248788827, "assets": 252732296, "cash": 56704494, "stocks": 196026390, "debt": 3943469, "bank_loan": 0, "oci": 45038407, "cash_pct": 22.44, "stock_pct": 77.56, "other_pct": 0.0, "debt_pct": 1.56, "net_inc": 14789482, "eps": 1026, "div_ps": 923, "div_total": 13309660, "div_yield": 6.4, "payout_pct": 89.99, "rem_ntd": 3214000, "hurdle": 2.8, "ab_pct": 9.0, "rem_pct": 1.55, "bs_source": "2021 CPA查核報告"}, {"label": "2022", "is_quarterly": false, "ws": 5.5, "tr": -18.7, "pr": -22.4, "alpha_tr": 24.2, "alpha_pr": 27.9, "shares": 15490, "nav_start": 16330, "nav_pre": 17235, "nav_post": 16393, "base_eq": 252952267, "eq_pre": 266963354, "assets": 269703010, "cash": 31037474, "stocks": 238653775, "debt": 2739656, "bank_loan": 0, "oci": 44559502, "cash_pct": 11.51, "stock_pct": 88.49, "other_pct": 0.0, "debt_pct": 1.02, "net_inc": 14489992, "eps": 935, "div_ps": 842, "div_total": 13042580, "div_yield": 5.2, "payout_pct": 90.01, "rem_ntd": 2592000, "hurdle": 2.7, "ab_pct": 6.8, "rem_pct": 1.02, "bs_source": "2022 CPA查核報告"}, {"label": "2023", "is_quarterly": false, "ws": 16.8, "tr": 31.5, "pr": 26.8, "alpha_tr": -14.7, "alpha_pr": -10.0, "shares": 16860, "nav_start": 16393, "nav_pre": 19146, "nav_post": 18430, "base_eq": 276379184, "eq_pre": 322800989, "assets": 325312356, "cash": 71593440, "stocks": 253700882, "debt": 2511367, "bank_loan": 0, "oci": 77561891, "cash_pct": 22.01, "stock_pct": 77.99, "other_pct": 0.01, "debt_pct": 0.77, "net_inc": 13419416, "eps": 796, "div_ps": 716, "div_total": 12071760, "div_yield": 4.4, "payout_pct": 89.96, "rem_ntd": 2141000, "hurdle": 2.7, "ab_pct": 5.8, "rem_pct": 0.77, "bs_source": "2023 CPA查核報告"}, {"label": "2024", "is_quarterly": false, "ws": 1.3, "tr": 31.7, "pr": 28.5, "alpha_tr": -30.4, "alpha_pr": -27.2, "shares": 17480, "nav_start": 18430, "nav_pre": 18670, "nav_post": 17408, "base_eq": 322155829, "eq_pre": 326347651, "assets": 332978929, "cash": 63880497, "stocks": 269048917, "debt": 6631278, "bank_loan": 0, "oci": 57247427, "cash_pct": 19.18, "stock_pct": 80.8, "other_pct": 0.01, "debt_pct": 1.99, "net_inc": 24506286, "eps": 1402, "div_ps": 1262, "div_total": 22059760, "div_yield": 6.8, "payout_pct": 90.02, "rem_ntd": 5557000, "hurdle": 2.8, "ab_pct": 9.7, "rem_pct": 1.72, "bs_source": "2024 CPA查核報告"}, {"label": "2025", "is_quarterly": false, "ws": -0.5, "tr": 29.5, "pr": 25.7, "alpha_tr": -30.0, "alpha_pr": -26.2, "shares": 18660, "nav_start": 17408, "nav_pre": 17317, "nav_post": 15609, "base_eq": 324829331, "eq_pre": 323143772, "assets": 334226095, "cash": 72380146, "stocks": 261795949, "debt": 11082323, "bank_loan": 0, "oci": 20138585, "cash_pct": 21.66, "stock_pct": 78.33, "other_pct": 0.01, "debt_pct": 3.32, "net_inc": 35423283, "eps": 1898, "div_ps": 1708, "div_total": 31871280, "div_yield": 9.8, "payout_pct": 89.97, "rem_ntd": 9257000, "hurdle": 2.9, "ab_pct": 14.3, "rem_pct": 2.85, "bs_source": "2025 CPA查核報告"}, {"label": "2026 Q1", "is_quarterly": true, "date": "2026-03-31", "ws": -0.7, "tr": 9.8, "pr": 9.5, "alpha_tr": -10.5, "alpha_pr": -10.2, "shares": 20170, "nav_start": 15609, "nav_pre": 15505, "nav_post": null, "base_eq": 314842082, "eq_pre": 312745298, "assets": 315798499, "cash": 37935630, "stocks": 277591629, "debt": 3053201, "bank_loan": 0, "oci": null, "cash_pct": 12.01, "stock_pct": 87.9, "other_pct": 0.09, "debt_pct": 0.97, "net_inc": null, "eps": null, "div_ps": null, "div_total": null, "div_yield": null, "payout_pct": null, "rem_ntd": null, "hurdle": null, "ab_pct": null, "rem_pct": null, "bs_source": "2026 Q1 季報(蕭兆欽會計師核閱)"}, {"label": "2026 Q2", "is_quarterly": true, "date": "2026-06-30", "ws": 4.1, "tr": 60.3, "pr": 59.3, "alpha_tr": -56.2, "alpha_pr": -55.2, "shares": 20170, "nav_start": 15609, "nav_pre": 16245, "nav_post": null, "base_eq": 314842082, "eq_pre": 327653145, "assets": 328004672, "cash": 30037193, "stocks": 292498055, "debt": 0, "bank_loan": 0, "oci": null, "cash_pct": 9.16, "stock_pct": 89.17, "other_pct": 1.67, "debt_pct": 0.0, "net_inc": null, "eps": null, "div_ps": null, "div_total": null, "div_yield": null, "payout_pct": null, "rem_ntd": null, "hurdle": null, "ab_pct": null, "rem_pct": null, "bs_source": "2026 Q2 季報(蕭兆欽會計師核閱)"}, {"label": "2026 Q3", "is_quarterly": true, "date": "2026-09-30", "ws": 6.7, "tr": 68.2, "pr": 65.5, "alpha_tr": -61.5, "alpha_pr": -58.8, "shares": 20170, "nav_start": 15609, "nav_pre": 16659, "nav_post": null, "base_eq": 314842082, "eq_pre": 336002817, "assets": 336219124, "cash": 34198503, "stocks": 300900599, "debt": 216307, "bank_loan": 0, "oci": 9146526, "cash_pct": 10.17, "stock_pct": 89.5, "other_pct": 0.33, "debt_pct": 0.06, "net_inc": 32152794, "eps": 1594, "div_ps": null, "div_total": null, "div_yield": null, "payout_pct": null, "rem_ntd": null, "hurdle": null, "ab_pct": null, "rem_pct": null, "bs_source": "2026 Q3 季報(蕭兆欽會計師核閱)"}], "reports": [{"id": "2026Q3", "era": "era3", "title": "2026 Q3 季報（最新）", "date": "2026/10/06", "pdf_url": "http://www.wealthshare.com.tw/2026Q3.pdf", "ws": 6.7, "tr": 68.2, "pr": 65.5, "cash_pct": 10.17, "stock_pct": 89.5, "headline": "台股衝上 48,601 點、巴菲特指標破 500%，堅持不追 AI 並將股票水位推升至 89.5% 十年新高", "quote": "問題從來不是「AI 好不好」，而是：一家好公司，是否值得用任何價格買進？", "summary": "2026 前三季台股狂飆 18,977 點躍居全球第四大股市，台灣上半年 GDP 成長 14.15%。面對 +68.2% vs +6.7%（-61.5% Alpha）的歷史級落後考驗，吳卓逸引述巴菲特「附設賭場的教堂」比喻，表明絕不為了追趕短期排名放棄能力圈；同時逆勢在非 AI 價值股大舉建倉，股票持股比升至 89.50%（十年最高），前三季已實現淨利達 NT$3,215 萬。", "full_letter": "績效檢討與展望\n回顧 2026 年前三季,台灣股市展現了歷史罕見的狂飆行情。加權指數狂飆 18,977 點,一度衝上 \n48,601.53 點的歷史新高,創下台股史上最強勁的前三季紀錄;總市值更首度躍升為全球第四大\n資本市場,一舉超越印度、英國與韓國。\n若從傳統宏觀經濟學來看,美債殖利率的上升會提高市場無風險報酬率,透過折現率的提升與資\n金擠壓效應,如同「地心引力」般對高本益比的科技股與大盤估值形成強烈壓制。然而在今年,\n即便 30 年期美債殖利率觸及 24 年來的歷史高點,全球市場在 AI 算力需求爆發與半導體供應鏈\n紅利的驅動下,資金展現了極高度的風險偏好。投資人對「錯失行情(FOMO)」的焦慮感,顯\n然已全面凌駕於對估值風險的警覺之上。\n台灣恰好處於這場全球 AI 科技浪潮 的最核心。2026 年台灣上半年經濟成長率表現亮眼(第一\n季 15.43%、第二季 12.93%,累計上半年高達 14.15%),強勁的基本面數據推升台股今年漲幅超\n過六成。然而,隨之而來的是台股年線乖離率創下歷史新高;而被許多價值投資人視為長期估值\n重要錨定的「巴菲特指標」(股市總市值 / GDP),目前亦攀升至 500% 以上,遠遠超越了過往\n市場認定的極端高估區間。\n華倫·巴菲特曾將當今的股市比喻為「一間附設賭場的教堂」。教堂象徵著深耕企業基本面、追\n求安全邊際與複利成長的理性價值投資;賭場則代表著充斥短線投機、把買賣股票當作下注博弈\n的喧囂風氣。\n面對近年如此強勁的市場行情,作為富同投資的執行合夥人,我一直在想:當市場如此熱絡時,\n究竟應該如何管理各位合夥人所託付的資本?如果為了避免短期落後大盤,而開始追逐自己並不\n真正理解的熱門題材,那麼即使短期績效可能因此改善,我是否仍然是在按照富同成立以來所堅\n持的投資原則管理資本?\n這個問題在我心中反覆思考,而答案始終沒有改變。作為價值投資者,我很難說服自己,將各位\n合夥人辛苦累積並託付給富同的資本,投入那些主要依賴市場高度樂觀預期、股價已經充分反映\n甚至大幅超越合理估值的熱門題材。這並不代表否定 AI 或科技產業的長期價值。恰恰相反,我\n認為 AI 正在改變全球產業結構,也確實可能創造出許多具有長期競爭優勢的企業。問題從來不\n是「AI 好不好」,而是:一家好公司,是否值得用任何價格買進?這也是我在投資時始終重視\n估值與安全邊際的原因。\n我們不會知道下一次市場風向何時改變,也很難預測 AI 熱潮還能延續多久;但我們知道,投資\n人真正能夠控制的,從來不是市場下一步會怎麼走,而是自己用什麼價格買進什麼樣的企業,以\n及在市場情緒劇烈變化時,能不能維持理性與紀律。\n因此,當市場資金高度集中於少數熱門題材,而部分股票的價格快速反映極為樂觀的未來預期\n時,堅持安全邊際的富同投資,自然會面臨相對績效落後的壓力。富同截至第三季的報酬率只有\n溫和的 6.7%,與大盤爆發式的 68.2% 的報酬率形成極為明顯的差距。這代表我們今年所持有的\n企業與市場最熱門的資產之間,存在巨大的價格表現差異;而這也提醒我們,價值投資並不是一\n套可以永遠避免短期落後的投資方法。\n真正重要的是,在面對落後時,我們是否有足夠的紀律去檢視自己的決策,同時也有足夠的耐\n心,不因為短期績效壓力而輕易改變原本經過長期驗證的投資原則。「只投資自己看得懂的企\n業」,一直是巴菲特長期奉行的投資原則,也是富同投資成立以來不可動搖的投資紀律。\n\n在任何市場環境下,都會有受到高度追捧的企業,也會有因為缺乏市場話題、產業不熱門或短期\n成長性不受青睞,而被投資人忽略的企業。對我們而言,真正值得研究的,不是下一檔市場最熱\n門的股票,而是那些基本面紮實、競爭優勢明確、管理階層值得信任,而且市場價格仍低於我們\n所估算內在價值的企業。\n這套原則不僅是一種投資方法,也是一種面對不確定性的思考方式。它讓我們在市場狂熱時保持\n克制,在市場恐慌時保持冷靜,不因短期價格波動而輕易改變長期判斷。我也相信,這樣的投資\n方式與我們希望經營富同、以及希望過的生活,其實有著相同的底層邏輯:不追逐所有機會,只\n把時間與資本投入真正值得的地方。\n市場情緒終究會循環,熱門題材也終究會經歷不同階段的估值修正與重新評價。相較於預測市場\n何時轉向,我們更願意把時間花在研究企業本身。因為長期而言,企業真正創造的盈餘、自由現\n金流、競爭優勢與資本配置能力,才是支撐投資價值的重要基礎。\n因此,2026 年前三季的落後,對富同而言不只是績效上的數字,更是一場投資紀律的考驗。我\n會持續檢視自己的決策,但不會僅僅因為市場正在追逐某些熱門題材,就改變自己的投資標準。\n最後,隨信附上由蕭兆欽會計師審閱出具之財務報表,供各位合夥人參閱。若您對財務報表內容\n或投資組合有任何疑問,歡迎隨時與我聯繫。\n誠摯感謝各位合夥人在這段高度喧囂的市場環境中,依然選擇與富同站在一起。我們不預測市\n場,也不追逐市場。我們只是持續研究企業、等待合理價格,並在真正值得投資的時候,耐心地\n讓時間與複利發揮作用。\n祝各位 身體健康,生活愉快!\n吳卓逸\n2026 年 10 月 6 日"}, {"id": "2026Q2", "era": "era3", "title": "2026 Q2 季報", "date": "2026/07/07", "pdf_url": "http://www.wealthshare.com.tw/2026Q2.pdf", "ws": 4.1, "tr": 60.3, "pr": 59.3, "cash_pct": 9.16, "stock_pct": 89.18, "headline": "台股上半年大漲 17,162 點、單日當沖破兆元，現金降至 9.16% 逆向佈局冷門績優股", "quote": "當「錯過上漲」比「承擔損失」更令人害怕時，往往代表市場正處於非理性繁榮的階段。", "summary": "上半年台股躍居全球第五大股市，單日當沖達 26.17 萬戶、成交逾 1 兆元，估計 31.2 萬上班族辭職全職炒股，巴菲特指標攀升至 ~500%。富同負債降為 0、現金水位降至 9.16%，逆勢把資金投入被市場忽視的「無聊但高現金流」企業。", "full_letter": "績效檢討與展望\n2026 年上半年剛落幕,台灣股市經歷了一場足以寫入市場史的多頭行情。在 AI 浪潮與權值股的\n集體衝鋒下,加權指數大漲17,162 點,創下台股史上最強的上半年表現,總市值更一度躍居全球\n第五大股市。\n在市場情緒持續升溫的過程中,投資人對錯失行情(FOMO)的焦慮,已逐漸超越對風險的警\n覺。當「錯過上漲」比「承擔損失」更令人害怕時,往往代表市場正處於非理性繁榮的階段。然\n而,在指數屢創新高的同時,一些底層數據也透露出值得長期投資人留意的訊號。\n過去一年來,台灣投資人向券商借款買股的金額大幅成長,部分券商的放款業務甚至已接近內部\n風險控管上限;交易量快速攀升,一度造成券商系統壅塞。根據證交所統計,台股單日當沖戶數\n達 26 萬 1,735 戶,正式突破 2021 年貨櫃航運行情期間所創下的歷史紀錄,單日當沖買賣總金額\n亦首度突破新台幣 1 兆元。此外,根據求職平台調查,全台已有約 2.6% 的上班族辭去工作,成\n為全職投資人,推估人數約 31.2 萬人。\n另一方面,台股年線乖離率已創下歷史新高,而被許多價值投資人作為長期估值參考的「巴菲特\n指標」,亦已攀升至約 500%,遠高於過往被市場視為高估區間的水準。這些現象未必意味著市\n場即將反轉,但足以提醒我們,當市場對未來的樂觀預期愈高,投資人愈需要保持理性,避免讓\n情緒凌駕於紀律之上。\n面對富同投資今年上半年績效顯著落後大盤,身為合夥人的您,或許和我一樣,都難免感受到心\n理上的落差。然而,我們也必須清楚理解:短期相對績效的落後,並不必然代表長期投資框架的\n失效;真正危險的,往往是為了追趕市場,而放棄原本經過時間驗證的投資紀律。\n每一輪市場循環,都會出現令人心動的熱門題材,也都會考驗長期投資人的耐心。當市場資金快\n速湧向少數熱門標的時,堅持價值投資並不容易。最大的壓力,往往不是帳面虧損,而是當身邊\n的人似乎都在快速獲利時,自己仍選擇保持冷靜與克制。\n然而,我們始終相信,真正重要的,不是短期排名,而是長期是否能持續穩健地累積資本。\n股市存在的目的,是協助資本有效配置至優秀企業,而不是讓投資人每天都在價格波動中反覆下\n注。因此,我們更重視的是企業的內在價值、合理估值及安全邊際。這套以價值為核心的投資原\n則,不僅是一種投資方法,更是一種面對市場波動的思考方式。它讓我們在不同市場環境下,依\n然能夠保持理性與從容,不因短期情緒而改變長期原則,也讓投資與生活維持一致的節奏。\n展望 2026 年下半年,我們仍將堅持既有的投資紀律。從逆向思維來看,當市場資金過度集中於\n少數熱門標的時,反而可能使部分基本面穩健、競爭優勢明確的企業,因市場忽視而出現價格低\n於價值的機會。這類投資機會,通常不是在市場最樂觀時被發現,而是在情緒回歸理性後,才逐\n漸展現其真正價值。\n那些在牛市中看似平淡、甚至顯得有些「無聊」的企業,往往正是能夠穿越景氣循環、持續創造\n現金流與股東價值的企業。市場情緒終將回歸平靜,而企業長期累積的競爭力,才是決定投資成\n果的根本。\n最後,請各位合夥人參閱由蕭兆欽會計師出具之財務報表。如對財報內容有任何疑問,歡迎隨時\n與我聯絡,也誠摯感謝各位在喧囂的市場中,仍選擇與富同一起堅守理性。\n\n相信市場終究會獎勵理性,而不是喧囂;時間也終究會證明,原則比激情更有價值。\n祝大家 身體健康! 生活愉快! \n2026/7/7\n吳卓逸"}, {"id": "2026Q1", "era": "era3", "title": "2026 Q1 季報", "date": "2026/04/08", "pdf_url": "http://www.wealthshare.com.tw/2026Q1.pdf", "ws": -0.7, "tr": 9.8, "pr": 9.5, "cash_pct": 12.01, "stock_pct": 87.9, "headline": "美伊衝突推升油氣飆漲 68%、逾千家傳產跌破年線，以「品牌與通路護城河」逢低進場", "quote": "價格不等於價值，波動亦不等於風險；卓越的投資在於確保自己永遠不會因一次錯誤而離場。", "summary": "2026 年初完成增資至 20,170 股（91 名合夥人，9 位大股東持股 55%）。面對荷姆茲海峽危機與資金極度集中權值股、逾千檔傳產跌破年線的分化市況，富同將現金由 21.66% 大幅投入至 12.01%（股票部位增至 87.90%），逢低加碼定價錯誤的傳產龍頭。", "full_letter": "績效檢討與展望\n\n回顧第一季，自美國對伊朗展開軍事行動以來，因荷姆茲海峽作為全球最關鍵的石油運輸咽喉，其原油運輸量約占全球總量五分之一，市場一度面臨每日約1,000萬桶供應中斷的衝擊，推升油氣等大宗商品價格急劇上揚。自2月底戰事爆發以來，相關價格已累計上漲約68%，市場避險情緒顯著升溫。另一方面，AI產業獲利前景的不確定性亦持續干擾投資信心，使全球股市呈現劇烈震盪，美國科技股已修正至年線附近，台股亦回測季線支撐。然而，資金依舊高度集中於少數權值股，導致逾千家中小型及傳產企業股價跌破年線，市場結構分化加劇。\n\n在網路泡沫時期，巴菲特在科技股狂熱中展現出極高的紀律與定力。當時，「為何不投資微軟？」幾乎成為波克夏股東大會上的核心提問。巴菲特的回應簡單卻深刻：並非不看好，而是無法確定其未來的獲利模式。他認為，即使是最頂尖的專家，也很難預測哪些網路公司在未來6、7年後能真正賺到錢，當時市場上的獲利模式，多半建立在將籌碼「賣給下一個接手的人」。這段關於「能力圈」與「獲利本質」的洞見，在 AI 引發產業洗牌的今天，依舊發人深省。\n\n如今，全球投機氛圍再起，「新經濟時代」的敘事甚囂塵上。在 FOMO（錯失恐懼症）的驅使下，市場正試圖以未來十年的美夢來兌現今日的溢價。與此同時，巴菲特依然平靜地坐鎮奧馬哈，手中緊握創紀錄的現金儲備。這並非基於對市場轉折點的預測，而是源於其對投資本質的深刻理解：「價格不等於價值，波動亦不等於風險。」他選擇不參與這場近乎博弈的市場幻象，也提醒投資者：卓越的投資不在於做對了多少次，而在於確保自己永遠不會因一次錯誤而離場。\n\n從逆向思維出發，當優質企業因市場情緒而出現「定價錯誤」、股價跌破年線時，往往正是長期資金布局的良機。傳產企業的核心價值在於其抵禦時代更迭的「韌性」——品牌信賴與通路壁壘即是其護城河。儘管本季度投資組合報酬暫為-0.7%，我們依然堅信，價格與價值的偏離終將回歸。組合中企業穩健的獲利能力與持續的競爭優勢，將隨時間轉化為穩定且合理的報酬。更重要的是，這種以價值為核心的投資框架，使我們在各種市場環境下皆能保持從容，不為短期波動所擾，維持投資與生活節奏的長期一致性。\n\n請各位合夥人參閱由我們委託蕭兆欽會計師出具的財報資料，如有任何對財報內容或公司經營的疑問，也歡迎大家隨時與我聯絡並不吝指教。\n\n祝大家 身體健康！生活愉快！\n2026/4/8\n吳卓逸"}, {"id": "2025", "era": "era3", "title": "2025 年報（第 16 年）", "date": "2026/01/09", "pdf_url": "http://www.wealthshare.com.tw/2025annual.pdf", "ws": -0.5, "tr": 29.5, "pr": 25.7, "cash_pct": 21.66, "stock_pct": 78.33, "headline": "Q1 逢高獲利了結逾 3,100 萬安度 4 月關稅股災；總持股本益比 12 倍 vs 大盤 22 倍", "quote": "「偉大的技術」不等於「合理的投資價格」，富同的首要任務是避免那個「50% 的下跌」。", "summary": "2025 Q1 提前獲利了結逾 NT$3,100 萬，成功抵禦 4/9 川普關稅股災（三天暴跌 18.3%）；但隨後 AI FOMO 推升大盤全年大漲 5,928 點（巴菲特指標 347%），65% 非 AI 股仍在年線下。全年實現稅後淨利 NT$3,542 萬（歷史新高，配息率 9.8%），因提列 NT$925.7 萬績效酬勞與未實現損益縮水，帳面淨值報酬 -0.5%。", "full_letter": "致股東報告書: \n各位合夥人: \n2025年富同投資稅後淨利為35,423,283元,年底淨值為323,143,772元,每股淨值為17,317\n元,相較於年初股利分配後之每股淨值17,408元,每股帳面價值年度報酬率為-0.5%。台股\n大盤加權股價指數2024年底收盤23035.10點,2025年底收盤28963.6點,年度報酬率為 \n25.7%。台股大盤加權股價指數之報酬指數2024年底收盤50903.23點,2025年底收盤\n65905.98點,年度報酬率為29.5%。 \n台股2025年市場走勢宛如雲霄飛車,年初受到美國總統川普關稅政策不確定性而暴跌, 從去\n年第一季季報可以看出,我們獲利了結相當部分的持股(Q1出售資產盈餘超過3,100萬),\n也因此當台股股災爆發,一天蒸發9.7%總市值,三天重挫18.3%,最低點的年報酬率近 -25%\n時(2025/4/9 最低收盤點 17,391.76 點),我們依然展現了相當好的抗跌性。後來國安基金\n第9次進場,寫下了「股市創新高、國安基金續護盤」的先例,以及人工智慧 AI題材引發\n「害怕錯過(FOMO)」的投資熱潮,加權指數再創歷史年度收盤新高,全年上漲5,928點,\n繼去年之後再次創下台股史上年度最高漲點紀錄。 \n許多富同投資持有的優質股票,由於較不具題材性,連帶目前的本益比相對受到壓抑,但是\n他們有強勁的現金流、壟斷性的市場地位、低於 12 倍的本益比、高於 5% 的殖利率等優勢 \n。因此,暫時性的股價下跌並不代表這些公司內在價值受損,只是目前市場對這些「沉悶」\n的公司不感興趣,但我相信均值回歸終將發生。去年因為實現相當部位的資本利得(出售歷年\n累積的未實現盈餘),也因此產生較多的董監事報酬費用,連帶讓帳面報酬率出現負值,這 \n難免會讓人一時困惑。然而,這不是經營團隊與股東產生利益衝突的情形,而是我們都遞延\n收穫之前累積的資產增值,在今年分別以現金股利及董監事報酬形式發放,希望這樣的說明\n能讓合夥人們理解。換句話說,如果沒有歷年來的績效表現,就不會有現在的資本利得。績\n效費門檻「10年期公債殖利率 + 2%」比一般基金無論賺賠都收管理費公平得多,「如果不賺\n錢,經營團隊就做白工」的承諾在資產管理行業極其罕見,也代表我們對自己最高的堅持。 \n\n掌舵波克夏60年的股神巴菲特去年底卸下執行長職務,公司現金儲備已逼近4,000億美元,創\n下歷史新高。自2023年牛市開始以來,波克夏的現金從1,000億增至目前的數量,顯示出巴菲\n特對當前市場情況保持謹慎態度。回顧過去1999年科技股狂飆時,巴菲特也曾被質疑:「是\n不是已經跟不上新時代了?」他回答:「我確實看不懂這些公司的盈利模式,但我知道,當\n潮水退去,最終還是要回歸到企業如何賺錢的基本問題。」美國知名投資人,橡樹資本的創\n辦人霍華德·馬克斯近期發出的備忘錄也指出:『這次會否最終成為泡沬?我認為絕對會,絕\n對不會「這次不一樣」。』 他指出,AI 在當下已經超越了一項單純的技術,它變成了一種敘\n事、一種信仰,而傳統的估值工具在 AI 面前幾乎完全失效。 \n目前S&P 500指數的本益比接近歷史高點,尤其在席勒本益比這類長期估值指標上,更接近\n歷史高檔位置。巴菲特曾表示,當股市總市值/GDP國民生產毛額(俗稱巴菲特指標)逼近\n200%時,就意味著投資人正在「玩火」。目前美股該指標已達220%,台股該指標目前更高達\n347% (尚不包括上櫃公司),相較日本172%、韓國139%、中國65%,均高出許多。換個角度來\n看,現在股票市場能不能創新高,有相當程度依賴的是該國的投資人有多瘋狂,能夠將市值/\nGDP比率推高到什麼程度。在台美關稅談判結果尚未出爐,以及美國貿易擴張法232條款中,\n半導體相關政策仍處空窗期的當下,台灣股民絕對是世界上對股市,尤其是AI硬體產業鏈信\n仰最堅定的一群人。 \n然而,在過高的價位買入再好的企業,也難保日後不會造成實質損失或長期預期報酬率壓縮\n的風險。美股思科曾在2000年時成為全球市值最高的公司,它的淨利也從2000年的44億美元\n上升至2024年的103億美元,但那些在2000年3月買入思科股票並持有至今的股東,即使將歷\n年股息收益計入全部計入,總回報依然略低於 2000 年的高點。台股富邦媒在 2021 年疫情期\n間電子商務需求爆發時期,股價最高衝上 2,190元,去年底的收盤價只剩207.5元,現在富邦\n媒每股 EPS 約是 2021年的55%,但股價只有當年最高價的9.5% 。從這些例子可以確定一件\n事:再好的企業,當價格高到安全邊際消失,就不值得持有。 \n當周邊的退休族,菜籃族,上班族開口閉口都是AI股票時,我們選擇遠離擁擠的舞池。拒絕\n在賭桌上下注的理由,不是因為膽小,而是因為勝率不夠。「偉大的技術」不等於「合理的\n投資價格」,富同的原則是「投資我們能評量未來的公司」,若無法合理預估一家熱門公司\n\n五年後的現金流,我們寧可選擇置身事外。 當許多非AI概念股因為資金排擠效應,進而出現\n價值低估的現象時(目前約有 65% 個股仍在年線之下),也給了我們用合理價格買進了未來多\n年能持續創造現金流企業的一個機會。 \n以史為鑒,美股在過去半個世紀遇到過4次股票大跌的情況,有2次超過50%,2次接近\n50%。台股集中市場上市股票總市值/GDP國民生產毛額在2008年也曾看到 80% 的數值,還\n不到現在的 1/4。因為跌 50% 需要漲 100% 才能回本,所以富同的首要任務是避免那個「50% \n的下跌」。如果某一年市場修正 20-30%,富同的組合因為估值極低,可能只會波動 5-10%,\n甚至因為高股息而持平,這也是公司過去曾經發生的事實(2011及2022年)。 \n在當下炒作題材滿天飛的台股市場中,我們期許自己是一個「在瘋狂世界中保護財富」的避\n風港。目前我們總持股的加權本益比為12倍,相較於台股大盤的22倍來說,並不是因為我們\n選擇買便宜貨,而是我們嚴守安全邊際的原則,用合理的本益比來慎選個股。富同的董監事\n將大部分的身家財產都放在公司這裡,同樣承受著績效平淡的壓力,我們比任何人都渴望資\n產增值,但更重視在可承受風險範圍內、具備高度確定性的長期成長。我們不想因爲怕錯過\n行情而放低標準去買入過於昂貴的明星標的,寧可忍受暫時的績效落後,也不願冒本金永久\n損失的風險。我相信,負責任的投資態度,並不一定是追求最高的短期收益,而是在任何市\n場情緒下,都始終保持對資本的安全邊際與敬畏。耐心是投資中最昂貴的資本,衷心期盼各\n位股東也能一如既往地保持平常心來看待您手中富同的持股。 \n2026/1/9              \n吳卓逸"}, {"id": "2024", "era": "era3", "title": "2024 年報（第 15 年）", "date": "2025/01/10", "pdf_url": "http://www.wealthshare.com.tw/2024annual.pdf", "ws": 1.3, "tr": 31.7, "pr": 28.5, "cash_pct": 19.18, "stock_pct": 80.8, "headline": "台積電獨漲 81% 貢獻 3,856 點、非電子業下跌 3%，以 Cisco 與富邦媒示警高估值風險", "quote": "台股巴菲特指標達 297%；再好的企業，在過高價位買入也難保不造成長期報酬壓縮。", "summary": "台股大漲 5,104 點打破 1989 年紀錄，但高度集中於台積電（權重 37.8%）與 AI 股，非電子業反跌 3%、上千檔跌破年線。富同全年淨利 NT$2,451 萬（配息率 6.8%），帳面淨值微增 +1.3%，單年落後報酬指數 30.4%，以 2000 年思科與 2021 年富邦媒（2,190→333.5 元）案例警示泡沫風險。", "full_letter": "致股東報告書: \n各位合夥人: \n2024年富同投資稅後淨利為24,506,286元,年底淨值為326,347,651元,每股淨值為18,670\n元,相較於年初股利分配後之每股淨值18,430元,每股帳面價值年度報酬率為1.3%。台股大\n盤加權股價指數2023年底收盤17930.81點,2024年底收盤23035.1點,年度報酬率為 \n28.5%。台股大盤加權股價指數之報酬指數2023年底收盤38641.2點,2024年底收盤\n50903.23點,年度報酬率為31.7%。 \n台股2024年大漲5104.29點,創下台股史上年度最高漲點,刷新1989年上漲4505.08點、高懸\n35年的歷史紀錄。其中,台積電年漲482元,漲幅81.28%,幅度是2000年以來新高,市值衝\n上27.88兆元,占大盤權重增加至37.8%,年度貢獻大盤漲點高達3,856點,也帶動相關電子\n類股上漲33%。然而,在科技股藉AI及機器人題材股價飆漲的同時,許多傳產股反而因為資金\n排擠效應而出現價值低估的現象,非電子產業總計下跌3%,過半數約上千檔上市櫃股股價去\n年底跌破年線。 許多富同投資持有的優質股票,由於較不具題材性,連帶的本益比相對受到\n壓抑,故年度報酬率遠遜於大盤許多。 \n巴菲特曾表示,當股市總市值/GDP國民生產毛額(俗稱巴菲特指標)逼近200%時,就意味著\n投資人正在「玩火」,目前美股該指標已達203%。 美國GDP為全球的26%,佔全球總市值的\n比重卻接近50%。而歐盟 GDP佔美國的67%,股市總市值僅為美國的10%。單一檔蘋果股票,\n目前本益比40倍,市值比世界第六大經濟體英國的GDP還高。然而,2022年美股巴菲特指標\n曾一度觸及211%,標普500指數和那斯達克指數在接下來一年內分別重挫19%和33%。反觀台\n股,該指標目前已達297% (尚不包括上櫃公司)。相較日本157%,韓國81%,新加坡86%,英\n國85%,均高出許多。換個角度來看,現在股票市場能不能創新高,有相當程度依賴的是該\n國的投資人有多瘋狂,能夠將市值/GDP比率推高到什麼程度。 \n台灣的投資人目前應該是世上對股市最熱衷的一群人,2024年集中市場累計總成交金額達\n99.81兆元,較2023年的67.2兆元大增32.61兆元,增幅 48.53%。去年當沖成交值占比達\n\n35.85%,平均每日有約12萬名當沖戶把股市當成合法賭場。熱門股票價位有多高,在於股民\n願意花多少錢追逐,這反應出他們數分鐘至數小時內的感受,這時候基本面派不上用場,因\n為大家每天忙著衝進殺出,靠著直覺反應互相對賭! \n以史為鑒,美股在過去半個世紀遇到過4次股票大跌的情況,有2次超過50%,2次接近\n50%。台股集中市場上市股票總市值/GDP國民生產毛額在2008年也曾看到 80% 的數值,還\n不到現在的 1/3。相反的例子是新加坡的市值/GDP比率曾在2007年高達298%,現在卻剩不到\n1/3。這顯示出市值/GDP的比率在不同國家之間常有巨大的差異,而不同國家在歷史上該比\n率的波動也十分劇烈。也就是說,不僅不同國家的投資人對於當前股市所投入的熱情不同,\n單一國家的投資人在不同時期的樂觀或悲觀情緒差異也很大。 \n這些歷史數據意味著,如果在過高的價位買入再好的企業,也難保日後不會造成實質損失或\n長期預期報酬率壓縮的風險。美股思科的市值曾經超越當前的龍頭微軟,在2000年時成為全\n球市值最高的公司,它的淨利也從2000年的44億美元上升至2023年的128億美元,但那些在\n2000年3月買入思科股票並持有至今的股東,即使將歷年股息收益計入全部計入,總回報依\n然低於 2000 年的高點。台股富邦媒在 2021 年疫情期間電子商務需求爆發時期,股價最高衝\n上 2,190元,去年底的收盤價只剩333.5元,現在富邦媒每股 EPS 約是 2021年的七成,但股\n價只有當時的1成5 。 \n在富同投資的股票組合裡,我們關注的是那些有持續增長潛力的公司,而不是短期的市場波\n動。去年表現雖然不符期待,但過去五年的年複利報酬率 9.6%,其實算是相當穩健。只不過\n因為大盤過去五年繳出17.9% 年複利報酬率的驚人夢幻行情,相形之下,我們的表現顯得不\n夠理想。 不過,在一個炒作題材滿天飛的台股市場中,我會繼續嚴守安全邊際的原則,以合\n理的本益比來慎選個股,以降低本金永久損失的風險,並致力打造讓合夥人滿意的長期績\n效,也衷心期盼各位股東能一如既往地保持平常心來看待您手中富同的持股。 \n2025/1/10              \n吳卓逸"}, {"id": "2023", "era": "era3", "title": "2023 年報（第 14 年）", "date": "2024/01/10", "pdf_url": "http://www.wealthshare.com.tw/2023annual.pdf", "ws": 16.8, "tr": 31.5, "pr": 26.8, "cash_pct": 22.01, "stock_pct": 77.98, "headline": "AI 浪潮啟動、單年穩賺 +16.8%；偏好低週轉率好公司，並深情緬懷奇美創辦人許文龍", "quote": "保障安全的最好方法，並不是靠陷於險境時的解圍技巧，而是至始至終都應避免置身險境！", "summary": "2022 熊市逢低佈局於 2023 開花結果，富同大賺 +16.8%，同時將現金從 11.51% 逢高回補至 22.01%。批判台股 AI 當沖全年慘賠 239 億與單日週轉率破 100% 的賭場文化，並於文末分享前奇美主管在富同尚未開張時便出資相挺的感人合夥故事。", "full_letter": "致股東報告書:\n各位合夥人:\n2023年富同投資稅後淨利為13,419,416元,年底淨值為322,800,989元,每股淨值為19,146\n元,相較於年初股利分配後之每股淨值16,393元,每股帳面價值年度報酬率為16.8%。台股\n大盤加權股價指數2022年底收盤14137.69點,2023年底收盤17930.81點,年度報酬率為 \n26.8%。台股大盤加權股價指數之報酬指數2022年底收盤29388.8點,2023年底收盤\n38641.2點,年度報酬率為31.5%。\n2023年在AI狂潮席捲全球下,美股中科技股雲集的那斯達克指數勁升逾43%、費城半導體指\n數更飆漲65%。以個股來看,AI界的當紅炸子雞輝達和超微漲勢最強,股價分別暴漲近240%\n和130%。台灣的AI供應鏈相關產業受此激勵,帶動台股2023年上漲3,793點寫歷史次高,上\n市股票總市值達56.84兆元,創下年底市值的歷史新高。股票投資人開戶數在去年底已達\n1,251.21萬戶,53%⺠眾有交易帳戶,均為歷史新高紀錄。\n若以美國500家頂尖上市公司,占美國股市總市值約80%的標普500指數來看,2023年上漲\n24%,有約3/4是由輝達在內的7家大型科技股(蘋果、微軟、Alphabet、亞馬遜、輝達、特\n斯拉與Meta)所貢獻。換句話說,扣除這7家後,493家美國最好的公司2023年上漲幅度縮水\n為只剩6%。市場投資人給了這七雄很高的估值,以去年12月中的數字來看,平均本益比達32\n倍,最高的特斯拉甚至達63倍。目前,標普500指數本益比約25倍,也高於近三十年來中位\n數的17倍。\n在台股方面,2023年當沖成交值占比達37.87%,每日交易當沖比衝破六成的AI族群比比皆\n是。很多科技類股的股票週轉率更是不到一週,甚至是一天就破100%。然而,頻繁的轉手或\n當沖固然可以營造部分熱門股的火熱氣氛,進而引來更多害怕賺輸別人,擔心搶不夠快的買\n家繼續追捧,讓價格不斷攀升。但是,總和來看,當沖這種本質是零和的遊戲,最終還是莊\n家大獲全勝。全年當沖交易買進金額25.41兆元,賣出金額25.46兆元,全年當沖客總共慘賠\n\n239億,錢都貢獻給了政府稅收及證卷商手續費。事實上,我們經常提到整體市場當沖是虧錢\n的事實,不過,歷史也再再地提醒我們,人性貪婪及恐懼的循環不會停止。\n當沖客希望能在短期獲利出場,這個短期有時意味著幾小時內,所以不可能有耐心、也不會\n理性地去看任何的財務報表。部分上市櫃公司裡,這樣的股東就是他們大多數的投資人,他\n們如果不是一天就換一批新的股東(週轉率一天就破100%),那就是一個禮拜換一批股東。\n試想,當一家公司的股東完全不在意公司的營運,只在意有沒有人願意出更高的價格買進他\n要賣掉的股票,那這間公司經營層的思維與溝通會聚焦在哪裡?會不會就是盡量發布更多不\n知真實性如何的利多消息?反正沒有股東會去質疑充滿想像性的營收成長,而越是如此,是\n不是等於管理經層在暗示,為了吸引新的股東,希望現有股東趕快賣出持股?當不斷有新的\n買家做出情緒化的決策,股價這時就會出現非常離譜的價格。預測這種暴漲暴跌的股價其實\n不在我的能力圈範圍,雖然去年的整體績效因此遜於大盤不少,但是為了我們的長期利益,\n我時刻提醒自己保持安全邊際,而保障安全的最好方法,並不是靠讓自己陷於險境時的解圍\n技巧,而是至始至終都應避免置身險境!\n在富同投資的股票組合裡,我們偏好週轉率較低的公司,因為一家真正的好公司會尋求和珍\n視一群真正認識該企業價值的好股東,他們會坦誠和真實地說明商業沒有跳耀,只有長久堅\n持。一樣地,我們也希望我們公司股票的週轉率一直維持在很低,這樣就表示你們理解我們\n的經營和努力,認同我們的作法,也支持我們的期望。我希望喜歡富同投資的股東,年復一\n年地來參與我們的股東會,沒有比你們更好的合夥人了,我必將繼續全力以付,不忘所託。\n而我們選擇股票的標準,如同各位股東選擇富同一樣,只有當負責團隊為人誠信正直、具備\n所處產業經營智慧、且對工作充滿熱情活力,我們才會成為這些企業的合夥人。這樣一來,\n也才能讓好的資本被好的管理人使用,進而產生好的循環。我希望打造一個多元化的台股投\n資組合,持續以合理的本益比買股,為所有的股東分憂解勞、創造財富。衷心期盼各位股東\n能一如既往地保持平常心來看待您手中富同的持股。\n最後,我想要以一個小故事作為今年年報的結尾,希望能將這份感激與感動分享給大家。很\n令人不捨地,去年底奇美集團創辦人許文龍過世,他一直是我非常敬仰的企業家,更是胸襟\n廣闊的慈善家。大學時期,讀到許創辦人『觀念』這本書,就一直視奇美集團為幸福企業的\n\n象徵,後來進入業界應徵職缺的過程中,我還舉自己父母親的名字為例(吳奇煌與黃金\n美),跟面試人員說我注定是要來奇美集團服務的。有一次國外重要客戶的採購副總來訪,\n開完會議後向我們提出了相當特別的要求,並開玩笑地說希望我們一定要滿足他這個私人的\n欲望,他才願意下單。這位副總知道奇美是個很有文化的公司,有自己的博物館。因此,他\n一定要利用這次來台南的機會好好參觀。印象很深的是當時我的上司,也是我們現在的合夥\n人之一,向客戶介紹奇美博物館其中的一幅畫作後,他補充了一句:「這是我阿嘛畫的」。\n嚇了一跳之餘,我更好奇這樣的人到底是在什麼樣的環境長大的?\n後來我創業時,他竟邀約見面,以進一步了解我所提供的服務和想法,更提出認股的提議。\n當時富同投資第一年的成績都還沒看到,驚訝又感激之餘,我問他為什麼會主動做這樣的\n事。他說:「其實我很幸運,從小到大受到家族的庇蔭,可以過著不錯的生活」。我點一點\n頭。「我的長輩欣賞有才華的人,像是小提琴家或藝術家,希望可以幫助他們圓夢,有時出\n借一把小提琴或提供一張出國的機票,這些人這輩子就不一樣了」,「他們覺得這樣子錢才\n花的有意義,我希望自己也能效法他們,提供一份小的心意,給你這樣的年輕人一點鼓\n勵」。最後他說:「因為如果換成我是你,我也希望能遇到願意給我機會的人」,「同樣\n的,我也希望我的小孩長大後能遇到願意給他們機會的人」。\n去年聖誕前夕,Michelle 和我來到奇美博物館的咖啡廳,遙想許創辦人生前或許也常坐在這\n裡的一偶,看著眼前男女老少、大小朋友在戶外體驗充滿歐風浪漫氣息的野餐活動。我低著\n頭喝了一口沁涼的咖啡,緩緩地向 Michelle 提起,許創辦人曾說奇美博物館起碼可以讓台南\n人太熱時進來吹吹免費的冷氣...,一抬頭,才發現她的眼角早已經淚光閃閃。\n許創辦人精彩人生雖已謝幕,但是他致力讓所有人獲得幸福的精神,就像奇美博物館一樣,\n會永遠留存在這片土地世世代代人⺠的心中。而我認為自己感念許創辦人最好的方式,就是\n成為身邊心愛的人幸福的原因,也希望身為富同投資股東的你感到幸福。\n2024/1/10             \n吳卓逸"}, {"id": "2022", "era": "era2", "title": "2022 年報（第 13 年）", "date": "2023/01/09", "pdf_url": "http://www.wealthshare.com.tw/2022annual.pdf", "ws": 5.5, "tr": -18.7, "pr": -22.4, "cash_pct": 11.51, "stock_pct": 88.49, "headline": "聯準會暴力升息、台股重挫 4,081 點，富同逆勢大賺 +5.5% 完勝大盤 +24.2% Alpha", "quote": "當便宜的資金不見了，股民忙著出脫沒有基本面的標的，把好不容易存下的錢一口氣賠光。", "summary": "富同史上最具代表性的熊市代表作！俄烏戰爭＋Fed 暴力升息 4% 導致台股市值蒸發 12 兆、外資大賣 1.23 兆、當沖客慘賠 304 億。富同不僅逆勢繳出 +5.5% 正報酬（領先報酬指數 +24.2%），更在恐慌中將現金由 22.44% 大舉投入至 11.51%（股票部位拉高至 88.49%）。", "full_letter": "致股東報告書:\n各位合夥人:\n2022年富同投資稅後淨利為14,489,992元,年底淨值為266,963,354元,每股淨值為17,235\n元,相較於年初股利分配後之每股淨值16,330元,每股帳面價值年度報酬率為5.5%。台股大\n盤加權股價指數2021年底收盤18218.84點,2022年底收盤14137.69點,年度報酬率為 \n-22.4%。台股大盤加權股價指數之報酬指數2021年底收盤36138.47點,2022年底收盤\n29388.8點,年度報酬率為 -18.7%。\n台股加權指數去年下跌4081點,創史上第2高的單年跌點記錄。年底總市值為44.26兆元,較\n2021年底縮水12.02兆元,平均每位股⺠虧損超過100萬元,皆創史上最慘烈的紀錄。近一步\n來看,台股去年明顯量縮,集中市場累計總成交金額為59.57兆元,較2021年的95.51兆元減\n少35.94兆元,年減37.6%。此外,外資更是瘋狂賣出台股達1.23兆元,破歷史新高,比2020\n和2021兩年賣超的總合9,936億元還多,也創下外資有史以來首次連賣台股3年的紀錄。第三\n季美國10年期公債殖利率一度升破4%關卡、美元也刷新20年高點,股債市雙雙重挫,也讓\n市場遭受巨大的衝擊,逼得政府在第三季末起急忙祭出國安基金及限空令等措施,試圖穩定\n脆弱的投資人信心。\n回顧2022年,俄羅斯在2月入侵烏克蘭,導致食品和能源價格飆升,許多國家的通貨膨脹率\n升至數十年來的高檔。各國央行被迫一反過去疫情期間為了穩定市場所推出的寬鬆貨幣政\n策,紛紛透過大幅升息來打擊通膨。例如,去年美國聯準會展開了1980年代以來最緊縮的升\n息循環,基準利率調高超過4個百分點,利率區間來到4.25%-4.5%,創15年來的最高水準。\n央行將熱錢回收的結果,也讓資本市場跟著萎縮。彭博統計,MSCI 世界指數在 2022 年下跌\n超過 20%,使全球股市今年市值蒸發創紀錄達18兆美元(約台幣552兆)。以美國股市來說,\n標普500指數年跌19.4%,那斯達克指數年跌33.1%,道瓊年跌8.9%,紛紛創下2008年金融危\n機以來以來最大跌幅。\n\n在量化寬鬆時期,市場資金充沛,散戶人氣沸騰,大家追逐著有夢最美的熱門股票,想像未\n來充滿無限可能的投機行情。有些上市櫃公司高層會趁這個時候出來畫大餅圈錢,賣力推銷\n宏圖願景讓投資人買單,搭配部分新聞媒體與業配投資名嘴不斷推波助瀾,一些本業虧損的\n投機股也能被炒作到天價。然而,當便宜的資金不見了,股⺠們開始一窩蜂忙著出脫這些沒\n有基本面的標的,結果就是把好不容易存下來的錢一口氣賠光。統計2022年當沖交易金額約\n23.1兆元,占台股成交金額約38.8%,扣除手續費與稅等成本之後,估算全年當沖客慘賠\n304.38億元,就是許多散戶真實的寫照。\n展望2023年,因通膨率持續高得令人無法接受,預期美國聯準會仍將致力打擊通貨膨脹,並\n保持較高的利率。美國聯準會前主席葛林斯潘指出,美國爆發經濟衰退將是最有可能出現的\n結果。國際貨幣基金總裁喬治艾娃甚至警告,今年全球三分之一地區預估將步入衰退,2023 \n年將是比 2022 年更艱困的一年。隨著利率上升、景氣衰退,導致消費者信心指數不斷走\n跌。因此商品去化緩慢,庫存成本增加,許多產業現在面臨生產過剩的難題。金融市場也會\n持續去槓桿,風險資產的價格料將持續進行修正。\n為了降低本金永久損失的風險,以及在未來可能的股市回檔時有進場撿便宜的資金,我會持\n續嚴守安全邊際的原則,在能力圈的範圍內,慎選我能夠理解的優質企業,確保我們的長期\n績效能夠讓合夥人滿意。截至去年底,富同投資組合均是上市櫃體質良好的公司,這些公司\n具備持久的競爭優勢和具吸引力的回報。我們選擇股票的標準,如同各位股東選擇富同一\n樣,只有當負責團隊為人誠信正直、具備所處產業經營智慧、且對工作充滿熱情活力,我們\n才會成為這些企業的合夥人。這樣一來,也才能讓好的資本被好的管理人使用,進而產生好\n的循環。我希望打造一個多元化的台股投資組合,持續以合理的本益比買股,為所有的股東\n分憂解勞、創造財富。衷心期盼各位股東能一如既往地保持平常心來看待您手中富同的持\n股。\n2023/1/9             \n吳卓逸"}, {"id": "2021", "era": "era2", "title": "2021 年報（第 12 年）", "date": "2022/01/10", "pdf_url": "http://www.wealthshare.com.tw/2021annual.pdf", "ws": 20.0, "tr": 27.1, "pr": 23.7, "cash_pct": 22.44, "stock_pct": 77.56, "headline": "航海王與少年股神狂潮、當沖客全年虧損 453 億，富同穩健斬獲 +20.0% 並維持高現金戒備", "quote": "在滿街都是少年股神的華麗包裝下，真實的投資市場上，永遠充滿風險的威脅及損失的痛楚。", "summary": "2021 年台股成交量飆至 95 兆、當沖占比破 41%（成本 1,142 億、淨虧 453 億），巴菲特指標觸及 271%。富同在不追逐航運與元宇宙題材下，仍憑藉低估價值股重估斬獲 +20.0% 佳績，同時預警 2022 年 Fed 升息縮表風險，維持 22.44% 現金防線。", "full_letter": "致股東報告書: \n各位合夥人: \n2021年富同投資稅後淨利為14,789,482元,年底淨值為248,788,827元,每股淨值為17,253\n元,相較於年初股利分配後之每股淨值14,381元,每股帳面價值年度報酬率為20.0%。台股\n大盤加權股價指數2020年底收盤14732.53點,2021年底收盤18218.84點,年度報酬率為 \n23.7%。台股大盤加權股價指數之報酬指數2020年底收盤28441.36點,2021年底收盤\n36138.47點,年度報酬率為 27.1%。 \n回顧2021年,加權指數曾因本土疫情爆發,在三級警戒影響下一度回測萬五支撐,然而在全\n世界缺料、缺工、缺船、缺櫃、缺港、缺貨車司機等連鎖效應,導致供應鏈徹底瓦解,進而\n不斷推升運價,航運股順勢衝高。另外,受惠於疫情所帶動對科技產品晶片需求,以及5G、\n電動車、元宇宙等科技應用,難得一見的缺貨潮也讓半導體股持續走升。加上央行維持近乎\n零利率的超級寬鬆貨幣政策,使得金融資產價值大幅上升,台股指數也跟著水漲船高。 \n儘管外資在2021年累計賣超4,540億元,連2年大賣台股近1兆元,然而在市場資金充沛,散\n戶人氣沸騰下,全年集中市場成交量放大至95兆元,較上一年度大增近95%,再創歷史新\n高,單日成交量最高超過7,800億元,更是5年前日均量的10倍以上。國內自然人交易比重從\n2020年的62%提升至2021年的68%,交易人數也超過540萬人,為歷年最多。而當沖交易金\n額約39兆元的交易量,占比超過41%,均創下歷史新紀錄。當沖比最高時,集中市場超過\n50%、櫃買中心超過60%,元宇宙題材像宏達電等個股甚至衝到70%。 \n2021年當沖交易雖然創造出超過39兆元的成交量能,概算當沖總收益金額為690億元,但扣\n掉證交稅與手續費的當沖成本約1,142億元,全年度當沖交易虧損的金額竟然高達453億元\n(2020年虧損的金額177億元)。雖然不是每個當沖投資人都是虧損,但市場累積起來的龐\n大虧損,也讓我們見證到在這樣令人陶醉的投機氛圍裡,在滿街都是少年股神的華麗包裝\n下,真實的投資市場上,永遠充滿風險的威脅及損失的痛楚。 \n\n如果以巴菲特指標來看,去年底台股上市公司市值/GDP 已經來到破紀錄的2.71倍,比起有\n紀錄以來的平均值約1.59倍高出約70%。對比交易狂熱的散戶和謹慎保守的外資,我們更要\n提醒自己保持理性,冷靜地去看待炒作的標的與行情。 \n展望2022年,美國聯準會將加速QE退場,加快升息腳步,並著手縮減資產負債表。因此,貨\n幣政策將逐步回歸正常,金融市場也將持續去槓桿,預期風險資產的價格將有所修正。因\n此,縱使我們無從得知市場的瘋狂與泡沫會延續多久,但是依然堅守價值投資的判斷依據,\n尤其在資金大狂潮已將多數熱門股推漲到脫離基本面的當下。為了降低本金永久損失的風\n險,以及在未來可能的股市回檔時有進場撿便宜的資金,我還是會嚴守安全邊際的原則,在\n能力圈的範圍內,慎選我能夠理解的優質企業,確保我們的長期績效能夠讓合夥人滿意。 \n截至去年底,富同投資組合均是上市櫃體質良好的公司,這些公司具備持久的競爭優勢和具\n吸引力的回報。我們選擇股票的標準,如同各位股東選擇富同一樣,只有當負責團隊為人誠\n信正直、具備所處產業經營智慧、且對工作充滿熱情活力,我們才會成為這些企業的合夥\n人。這樣一來,也才能讓好的資本被好的管理人使用,進而產生好的循環。我希望打造一個\n多元化的台股投資組合,持續以合理的本益比買股,為所有的股東分憂解勞、創造財富。衷\n心期盼各位股東能一如既往地保持平常心來看待您手中富同的持股。 \n2022/1/10              \n吳卓逸"}, {"id": "2020", "era": "era2", "title": "2020 年報（第 11 年）", "date": "2021/01/11", "pdf_url": "http://www.wealthshare.com.tw/2020annual.pdf", "ws": 5.6, "tr": 27.1, "pr": 22.8, "cash_pct": 28.19, "stock_pct": 71.81, "headline": "疫情熔斷後無限 QE 催生 130 檔翻倍飆股，富同拉高現金至 28.19% 並首揭 30 年 7% 初心", "quote": "就像登山一樣，或許有時走得慢，但只要腳步踩得穩、避免跌落山谷，總會到達風光明媚的山頂。", "summary": "2020 年 3 月美股四次熔斷後央行無限 QE，台積電大漲 60% 貢獻大盤六成漲幅，前 20 大市值企業僅 4 檔漲逾 4%。未押注電子股的富同全年獲利 +5.6%，拉高現金水位至 28.19%（巴菲特指標首破 228%），坦言成立滿 30~40 年若能實現 7% 年複利即感欣慰。", "full_letter": "致股東報告書: \n各位合夥人: \n2020年富同投資稅後淨利為8,707,138元,年底淨值為205,142,097元,每股淨值為14,952\n元,相較於年初股利分配後之每股淨值14,157元,每股帳面價值年度報酬率為5.6%。台股大\n盤加權股價指數2019年底收盤11997.14點,2020年底收盤14732.53點,年度報酬率為 \n22.8%。台股大盤加權股價指數之報酬指數2019年底收盤22373.36點,2020年底收盤\n28441.36點,年度報酬率為 27.1%。相較於台股及國際股市,雖然我們去年的表現相對遜\n色許多,但累計自2010創立以來,富同投資之累積報酬率為185.6%,年複利報酬率為\n10.0%,還是比大盤略高一些。 \n『時代』雜誌封面,給2020年打了個大紅叉。該雜誌指出,美國人今年得要有超過100歲,\n才可能經歷過⻄西班牙流感,也就是上一場最嚴重的疫情;或今年得要有90歲,才可能經歷過\n經濟大蕭條,也就是上一場最嚴重的經濟衰退;或是今年得要有80歲,才可能經歷過二次世\n界大戰的死亡無數。但在這短短的一年當中,美國人一次經歷了這所有一切。然而,在實體\n經濟無比糟糕的一年裡,美國股市卻上演標普上漲16.3%,道瓊上漲7.2%,那指飆升43.6%的\n輝煌成績。 \n去年年初受到疫情衝擊,全球股市暴跌,美股3月熔斷高達4次,台股同步下挫,3月份低點來\n到8523.63點。不過在各國祭出振興措施,啟動無限量資金寬鬆政策後,全股主要股市紛紛不\n畏疫情逆勢猛漲。台灣在防疫得宜,國安基金政策護盤加上中美貿易戰的效應下,投資人更\n是勇於追逐風險性資產,許多受惠於疫情或轉單題材的個股紛紛水漲船高。 \n2020年買股成為全⺠民運動,台股集中市場成交值日均量2007億元,全年成交值達49.43兆\n元,比前一年的1200億元增加67%,較過去五年平均31.07兆元成長59%,創下歷史新紀錄。\n即使外資去年賣超達5,302億元的歷史新高,然而在市場資金充沛,散戶人氣沸騰下,台股漲\n幅超過一倍高達130檔,大幅超越2019年81檔及2018年14檔,口罩股美德醫療-DR漲幅更達23\n\n倍,寫下飆股歷史新頁。而權值王台積電也不斷刷新歷史價,全年漲幅高達60.1%,市值高達\n13.61兆元,年增5.16兆元,貢獻大盤六成漲幅,上市櫃市值更攀至創紀錄的49.2兆元。 \n然而,實體經濟與金融市場不斷脫節的走勢,連央銀總裁楊金龍都忍不住出來示警。他指\n出,超寬鬆貨幣政策導致金融市場劇烈震盪,雖然實體經濟仍相對低迷,但部分金融市場則\n呈現強勁反彈,恐加劇對金融不穩定的擔憂,甚至資產泡沫化的疑慮。從去年台股交易人數\n達438萬人及日當沖交易戶數逼近13萬戶,日當沖交易曾達39.4%等歷年新高數據可以窺見,\n比起股市是否過熱的風險,許多投資人更擔心錯過賺大錢的機會。去年集中市場當日成交值\n曾衝上4096.86億元,也是史上首度破4000億元。這顯示無論股市老手或新人都難以抗拒誘\n惑,一起加入掏金的狂歡派對。 \n如果以巴菲特指標來看,去年底台股上市公司市值/GDP 已經來到破紀錄的2.28倍,比起有\n紀錄以來的平均值約1.53倍高出約50%(金融海嘯前的最高紀錄是1.8,後跌至 0.81)。對比\n前仆後繼的散戶和謹慎保守的外資,我們更要提醒自己保持理性,謹記巴菲特的名言「在別\n人貪婪時恐懼」,冷靜地去看待炒作的標的與行情。另外,台股前20大市值企業,去年只有\n不到半數的8檔股票繳出股價正報酬率的表現,而其中又只有4檔的股價報酬率大於4%,除了\n台積電上漲60.1%外,分別是聯發科68.4%,台達電73.6%及聯電187%。也就是說,如果像富\n同投資這樣比較保守,而且投資組合中沒有押注電子股的投資人,就算投資標的全部都是產\n業龍頭股,而且市值都是前20大,去年的報酬率也不會太好看。這樣的說明,一來是為了安\n慰自己去年相對平庸的表現,及給我們的合夥人一個交代,二來也是如實地描述在這樣的市\n場高點和投機氛圍裡,縱使我們無從得知市場的瘋狂與泡沫會延續多久,但依然堅守價值投\n資的判斷依據。 \n近來無論是去吃喜酒,上餐館,或是喝咖啡,總是不乏聽見有人大談股票經,彷彿買什麼賺\n什麼,聽眾也跟著打探明牌,準備共襄盛舉。在這個眾人陶醉的大多頭市場,確實很容易令\n人忘記投資市場上永遠充滿風險的威脅以及損失的痛楚。 對理性的投資者來說,唯一重要的\n因素是股票價格與內在價值之間的差距。我會提醒自己不要付出過高的代價,尤其在大家有\n恃無恐地錢進股市,大量資金使部分熱門股的股價上漲到脫離基本面的當下。歷史上有許多\n著名的經濟學家,最終都在股市泡沫後的崩跌中,痛苦的認知到自己無法準確預估市場的不\n\n理性程度。我們在瘋狂的牛市裡,縱使無法像其他創造出高報酬的投資人一樣,手舞足蹈地\n慶祝自己的勝利,但為了降低本金永久損失的風險,以及在未來可能的股市回檔時有進場撿\n便宜的資金,我還是會嚴守安全邊際的原則,在能力圈的範圍內,慎選我能夠理解的優質企\n業,確保我們的長期績效能夠讓合夥人滿意。就像登山一樣,或許有時我們會走的比較慢,\n進度會落後其他人,但只要我們腳步踩得穩,而且避免不慎跌落山谷,我們總會到達風光明\n媚的山頂。雖然去年的表現不如大盤許多,難免會感到些許失落,但我會繼續努力,將眼光\n放遠。如果在富同投資成立滿30年甚或40年時,我們實現了為合夥人帶來7%年複利報酬率的\n預期成績,那我會感到很高興。 \n截至去年底,富同投資組合均是上市櫃體質良好的公司,這些公司具備持久的競爭優勢和具\n吸引力的回報。我們選擇股票的標準,如同各位股東選擇富同一樣,只有當負責團隊為人誠\n信正直、具備所處產業經營智慧、且對工作充滿熱情活力,我們才會成為這些企業的合夥\n人。這樣一來,也才能讓好的資本被好的管理人使用,進而產生好的循環。我希望打造一個\n多元化的台股投資組合,持續以合理的本益比買股,為所有的股東分憂解勞、創造財富。衷\n心期盼各位股東能一如既往地保持平常心來看待您手中富同的持股。 \n2021/1/11              \n吳卓逸"}, {"id": "2019", "era": "era2", "title": "2019 年報（第 10 年）", "date": "2020/01/10", "pdf_url": "http://www.wealthshare.com.tw/2019annual.pdf", "ws": 15.2, "tr": 28.9, "pr": 23.3, "cash_pct": 14.41, "stock_pct": 85.44, "headline": "成立滿十年累積 +170.5%（CAGR 10.5%），引凱因斯「選美理論」與麥可貝瑞示警被動 ETF 泡沫", "quote": "理性的投資者相信，他們心中最美的女孩終會站上選美比賽的受獎臺。", "summary": "2019 年台灣上市企業前三季獲利年減 19%，但 Fed 預防性降息三次、全球負利率債券達 17 兆美元，熱錢推升台股大漲 28.9%。富同憑藉 2018 熊市佈局反彈 +15.2%，成立十年複利 10.5% 仍領先大盤，同時援引波克夏 35% 現金警惕大型股估值泡沫。", "full_letter": "致股東報告書: \n各位合夥人: \n2019年富同投資稅後淨利為10,538,639元,年底淨值為188,004,705元,每股淨值為14,909\n元,相較於年初股利分配後之每股淨值12,942元,每股帳面價值年度報酬率為15.2%。台股\n大盤加權股價指數2018年底收盤9727.41點,2019年底收盤11997.14點,年度報酬率為 \n23.3%。台股大盤加權股價指數之報酬指數2018年底收盤17354.55點,2019年底收盤\n22373.36點,年度報酬率為 28.9%。相較於台股及國際股市,雖然我們去年的表現相對遜\n色,但累計自2010創立以來,富同投資之累積報酬率為170.5%,年複利報酬率為10.5%,顯\n然還是比大盤出色。 \n國際貨幣基金(IMF)對去年國際股市普遍走揚曾評論,低利率環境驅使投資人追逐較高收\n益,導致風險性的資產價位被高估。投資人似乎相信,聯準會(Fed)和其他央行會迅速採\n取行動因應金融情勢急縮,提供防止股價大跌的助力,也就是 Fed 將實施寬鬆措施為股市護\n盤。IMF指出,投資人相信央行會出手救市,忽略了國際貿易政策衝突和全球經濟展望不明的\n潛在風險,從去年市場波動率大致維持在低點可見一斑。 \n因此,當 IMF 報告指出企業獲利展望不明,已降低根據基本面算出的股票估值,但去年迄今\n美國股價依舊照漲不誤。而美國在2019年下半年,果然如投資人所期待地連續預防性降息三\n次,導致全球債券殖利率持續下滑並創歷史新低,也讓全球負殖利率債券的金額升至創紀錄\n的17兆美元。前 Fed 主席葛林斯潘 (Alan Greenspan) 甚至判斷,沒有任何辦法能阻止美國\n陷入全球公債負收益的趨勢。龐大且急欲尋求「有息資產」避風港的資金加上被動型指數基\n金(ETF)的推波助瀾,大幅拉升大型股的本益比,也讓全球主要股市不斷創下新高。 \n去年的台灣股市,就是上述現象的實例。儘管根據證期局統計,上市公司累計前三季稅前盈\n餘1兆4,391億元,年減19%,創下2012年以來最大衰退幅度。經濟部最新的統計也顯示,累\n計去年前11月接單總額4407.7億美元,年減5.9%,且為連續13個月負成長。前10月的總出\n口,雖然受惠於轉單效應,但也衰退2.4%。然而,外資熱錢還是不斷湧入,買超達2,442億\n\n元,持有台股比重也創42% 的歷史新高。不只如此,象徵散戶資金的證券劃撥帳戶餘額來到2\n兆708億元,改寫歷史新高紀錄。在外資和散戶都大舉加碼下,根據央行最新統計,去年11\n月股市交易活絡,平均股價指數為11,559點,創下1990年2月(平均股價指數11,983點)、\n30年以來新高。2019年第四季集中市場指數不斷地突破29年半來的新高點(史上次高)、市\n值36.7兆元更創下歷史新高。 \n這種情況讓我想到經濟大師凱因斯曾以選美理論來比喻股票市場,他認為投資大眾包括專業\n投資人,在股票市場的行為,就像在選美比賽中猜誰會得冠軍,大家選的不是自己認為最漂\n亮的那位,而是去猜大多數人認為會得后冠的那位。大家都猜測不論是美國或台灣,執政者\n為了選舉考量,一定會政策護盤,所以有恃無恐地錢進股市。大家都猜其他散戶會申購\nETF,而ETF的標的物都是大型股,所以跟著進場加碼耳熟能詳的大型股。在十年前金融海嘯\n大賺,電影『大賣空』主角的麥可貝瑞(Michael Burry)去年九月接受彭博專訪時就示警,ETF\n已經出現泡沫,大量資金湧入被動式基金,基金經理人只能被迫不斷買進,使標的物公司的\n股價持續上漲到脫離企業基本面。 \n處在這個眾人陶醉的大多頭行情,很容易令人忘記投資市場上永遠充滿了風險的威脅以及損\n失的痛楚。 然而,如果投資人不是太健忘,不過就在兩年前,美銀報告顯示主動式基金贖回\n金額破歷史新高,基金經理人瘋狂賣股籌錢,幾乎手上有什麼賣什麼。在2018年,2月份散\n戶才信心十足,證券劃撥存款餘額創歷史新高,到10月份散戶信心就大潰散,股票融資餘額\n寫下金融海嘯後最低。這說明了僅憑猜測大眾想法而投資的風險,有可能大家上半年才一窩\n蜂高價搶入的ETF,到了下半年又一窩蜂賤價殺出。凱因斯也是在1929年大崩盤的慘賠教訓\n後體認到,短期的價格泡沫或許來自人性衝動、股市狂熱和羊群效應等因素刺激,然而對理\n性的投資者來說,唯一重要的因素是股票價格與內在價值之間的差距。換句話說,理性的投\n資者相信,他們心中最美的女孩終會站上選美比賽的受獎臺。 \n2018年底,我們面對的是散戶信心低迷的市場,去年卻180度大轉彎,面對散戶趨之若鶩地\n追逐可能已經評價過高的大型企業股票。因此,我們的課題變成要在大家信心十足的市場\n裡,謹慎地保持投資彈性,以便對未來可能的資產價格調整做好準備。我們並不孤單,巴菲\n特 2019年在給股東的信函透露,波克夏希望把手上過多的流動性,投入該公司將永久持有的\n\n企業,不過能這麼做的機會並不多,而長期前景良好的企業價格已突破天際。因此,根據波\n克夏2019年半年報,巴菲特持有現金比重約達35%。雖然在瘋狂的牛市裡,這樣相對保守的\n操作會讓短期投資績效落後於大盤,但為了降低本金永久損失的風險,以及在未來可能的股\n市回檔時有進場撿便宜的資金,我還是會嚴守安全邊際的原則,慎選我能夠理解的優質企\n業,確保我們的長期績效能夠讓合夥人滿意。 \n截至去年底,富同投資組合均是上市櫃體質良好的公司,這些公司具備持久的競爭優勢和具\n吸引力的回報。我們選擇股票的標準,如同各位股東選擇富同一樣,只有當負責團隊為人誠\n信正直、具備所處產業經營智慧、且對工作充滿熱情活力,我們才會成為這些企業的合夥\n人。這樣一來,也才能讓好的資本被好的管理人使用,進而產生好的循環。我希望打造一個\n多元化的「台股投資組合」,持續以合理的本益比買股,為所有的股東分憂解勞、創造財\n富。衷心期盼各位股東能一如既往地保持平常心來看待您手中富同的持股。 \n2020/1/10              \n吳卓逸"}, {"id": "2018", "era": "era2", "title": "2018 年報（第 9 年）", "date": "2019/01/09", "pdf_url": "http://www.wealthshare.com.tw/2018annual.pdf", "ws": 1.3, "tr": -4.8, "pr": -8.6, "cash_pct": 16.27, "stock_pct": 83.73, "headline": "全球 93% 資產收黑、國慶次日崩跌 660 點，富同正報酬 +1.3% 並大舉逢低加碼至 83.7%", "quote": "「持有」與「空手」的勝負短期難分軒輊，但「長期持有」與「長期空手」的成敗十分顯而易見。", "summary": "中美貿易戰導致外資賣超 3,675 億（史上次高），德銀統計全球 93% 資產全年負報酬。富同展現極強防禦力逆勢收紅 +1.3%（Alpha +6.1%），更將 2017 年底保留的 31.31% 現金大舉投入一半（降至 16.27%），引用巴菲特 1942 年 1 萬美元變 5,100 萬案例鼓勵合夥人長期持有。", "full_letter": "致股東報告書: \n各位合夥人: \n台股史上最長16個月、345天的萬點行情在2018年國慶日次日大跌660點之下終結。全年外資\n賣超3675億,不但終結連6年買超紀錄,更是僅次於2008年金融海嘯當年賣超4700億元的史\n上第二高賣超紀錄。在熱錢大舉轉向,國際金融情勢持續動盪之際,融資餘額創下近30年來\n封關日最低水位1263億元,也讓大盤最終下跌915點。對比2018年元月台股加權指數創下27\n年來新高達11270點,下修幅度更達1543點,由此可見資本市場多麽難以捉模。 \n放眼去年國際主要股市也是一片慘綠,英國股市因為脫歐議題而重跌,法國股市則因黃背心\n動亂而重挫,德國及日本股市因為汽車關稅議題而大跌,美國和中國股市則因舉世矚目的貿\n易大戰而下跌,香港、韓國、台灣股市則因中美貿易戰而受波及。德意志銀行(Deutsche \nBank)日前發佈一份報告,指出到2018年12月20日止,全球高達93%的資產總報酬率(以美\n元計價)是負值,包括公債、高收債、全球股市及原物料皆下滑1.2%、2.6%、8.6%和9%。摩\n根士丹利(Morgan Stanley)更直指「若有人希望搞清楚為何今年投資多種資產這麼困難,\n那是因為今年根本無處可躲。」 \n2018年富同投資稅後淨利為9,314,736元,年底淨值為155,013,294元,每股淨值為13,682\n元,相較於年初股利分配後之每股淨值13,503元,每股帳面價值年度報酬率為1.3%。相較於\n台股及國際股市,雖然我們去年的表現不算顯眼,但也保值許多。累計自2010創立以來,富\n同投資之累積報酬率為134.8%,年複利報酬率為9.9%。 \n面對當前散戶信心低迷的時刻,或許是我們重溫巴菲特智慧的好時機。他曾說,身為投資\n者,你可以不必每天追蹤市場新聞,只需要做好一件事情:戰勝悲觀和恐慌情緒,對市場和\n未來始終保持樂觀。無論市場如何波動,都堅持看好股市,並且「長期持有」。1942年投資\n美國股市大盤1萬美元,並且一直持有到現在,到2018年會變成5,100萬美元 (年復利率約12%\n計)。同時期被悲觀和恐懼情緒所支配,試圖做空美國股市的投資者們,沒有一個存活到現\n\n在。面對股市震盪,「買入並持有」仍是最佳策略,並透過持有多樣股票、分批進場的方式\n來降低風險。 這也是我們富同投資一直以來所秉持的投資原則。 \n而紐約大學經濟學教授沃爾夫(Edward Wolff)研究美國人口財富結構的結果發現,前10%\n的富豪掌握約84%的股票價值。長期來看,美國股市在許多散戶因沒有閒錢或選擇觀望的情\n況下,反而導致美國貧富差距不斷加大。沃爾夫研究指出,美國2016年家庭財富中位數比經\n濟大衰退開始前下滑34%。股市榮景並不會自動產生雨露均沾的效果,這也是為什麼經濟雖\n然每年穩健成長,但一般⺠民眾實質所得幾乎沒有變化。以富比世富豪榜為例,該財經雜誌\n1982年首度推出全美400大富豪榜,自那之後累計有1,500人上榜過。這些富豪有一共通點:\n沒人是賣空者。「持有」與「空手」的勝負在短時間內或許難分軒輊,但「長期持有」與\n「長期空手」的成敗卻十分顯而易見。 \n截至去年底,富同投資組合均是上市櫃體質良好的公司,這些公司具備持久的競爭優勢和具\n吸引力的回報。我們選擇股票的標準,如同各位股東選擇富同一樣,只有當負責團隊為人誠\n信正直、具備所處產業經營智慧、且對工作充滿熱情活力,我們才會成為這些企業的合夥\n人。這樣一來,也才能讓好的資本被好的管理人使用,進而產生好的循環。我希望打造一個\n多元化的「台股投資組合」,持續以合理的本益比買股,為所有的股東分憂解勞、創造財\n富。衷心期盼各位股東能一如既往地保持平常心來看待您手中富同的持股。 \n2019/1/9              \n吳卓逸"}, {"id": "2017", "era": "era2", "title": "2017 年報（第 8 年）", "date": "2018/01/11", "pdf_url": "http://www.wealthshare.com.tw/2017annual.pdf", "ws": 9.7, "tr": 19.5, "pr": 15.0, "cash_pct": 31.31, "stock_pct": 68.69, "headline": "台股睽違 17 年重返萬點，富同將現金拉高至史上最高 31.31% 並明示「鮮少碰電子科技股」", "quote": "當我們是在結冰的湖面上溜冰時，一定得靠岸邊近一點。", "summary": "台股首度萬點封關、台積電與蘋概股領漲。富同全年 +9.7% 達成 7% 目標但落後大盤 9.8%，首度明確歸納兩大原因：(1) 持股壓低至七成不到（現金 31.31% 史上最高）；(2) 鮮少投資變化過快的電子科技類股，引述巴菲特 1999 年波克夏落後 S&P500 40.9% 的歷史先例堅守能力圈。", "full_letter": "致股東報告書: \n各位股東女士、先生: \n台股在2017年5月重返暌違17年的萬點,站上時間至今已經長達7個月,指數更一度改寫27年\n新高。最後加權股價指數大漲15%,並創下首次萬點封關的紀錄。外資去年持續大買台股,\n尤其是電子類股,龍頭權值股台積電市值增幅達26.4%,市值增加1.24兆元,蘋果概念股也有\n好幾檔市值增幅2~3倍的表現。 \n2017年富同投資稅後淨利為6,294,020元,年底淨值為146,910,714元,每股淨值為14,045\n元,相較於年初股利分配後之每股淨值12,808元,每股帳面價值年度報酬率為9.7%。累計自\n2010創立以來,富同投資之累積報酬率為131.8%,年複利報酬率為11.1%。 \n如同您上頁所看到的,我們年度報酬率雖達到預期 7% 的目標,卻遠不及大盤表現亮眼。歸\n納原因有二: \n1. 保守的投資策略:如同去年年報所提,如果市值依然居高不下,在沒有物美價廉的標的\n物出現時,我們還是會採取較為保守的投資策略。2017年我們大多數時間的持股比例只\n有7成不到,因為歷史性的市值高點同時意味著股票價格可能過高,追逐過高的價位又意\n味著本金損失的風險提高。當我們是在結冰的湖面上溜冰時,一定得靠岸邊近一點。 \n2. 鮮少投資電子科技類股:我只投資自己有能力估算其內在價值的公司,電子科技類股雖\n然這兩年來備受外資青睞,但是其產業變化之快,常常不同外資對同檔股票也有南轅北\n轍的目標價。這樣的產業並不是我的優勢圈,我相信長期來說,聚焦在自己有把握的領\n域會比強迫自己一知半解所有領域,更能發揮投資效益。 \n其實,股票市場市值的變化往往起起伏伏且無法預測,有時高價的股票意味著公司未來十數\n年甚或數十年的盈餘已經完全反應在股價上,就像1989年六月的金融股,好幾檔股價都破千\n元,本益比80~690不等。近三十年過去,當年高價買入的投資人,看著現在金融股的價\n位,可能還是會不勝唏噓吧。 \n\n股神巴菲特所經營的波克夏公司,在1999年的帳面價值僅增加0.5%,然而同年的 S&P 500卻\n繳出21%的好成績,兩者差異20.5%。令人吃驚的是,波克夏公司當年的股票市值更下跌\n19.9%,與S&P500差異40.9%。1999年正是美國科技類股狂熱的期間,股神的美譽對比當\n下相形見絀的成績,可以想像當時會有多少的冷嘲熱諷與壓力。 \n引述巴菲特當年的年報,他強調不懂高科技產業並不會讓他感到沮喪,並認爲要預測在變化\n快速產業中經營的公司前景,是超出自己的能力範圍。再者,他相信整體公司獲利成長率與\nGDP成長率應大致相符,一旦投資人回復理性,市場就會跟著有所調整,尤其是那些被過度\n樂觀所高估的產業。 \n除了台股市值外,2017年當沖買賣及權證成交金額也瀕創歷史新高,全年上市櫃現股當沖成\n交值達6.97兆元、占比達20.52%,雙雙創新高。然而,投資與投機只是一線之隔,尤其當參\n與者都沈浸在歡愉的氣氛中時更是如此。毫無疑問,有些人透過此類不用實際負擔股票本\n金,一天有數百槓桿比率的現股當沖交易賺到大錢。在過去兩年台股指數持續攀升時,當日\n買進後就賣出的當沖操作者績效會令人羨慕不已,因此吸引越來越多人參與其中,它會使人\n上癮,讓人很難回到謹慎評估投資標的的正軌,漸漸忘記這類的投機操作,不管資產真實的\n價值,只看下一個人會用多少價格買進的觀念,也可能使人一貧如洗,尤其是在行情破滅\n時。 \n截至去年底,富同投資組合均是上市櫃體質良好的公司。我們選擇股票的標準,如同各位股\n東選擇富同一樣,只有當負責團隊為人誠信正直、具備所處產業經營智慧、且對工作充滿熱\n情活力,我們才會成為這些企業的合夥人。這樣一來,也才能讓好的資本被好的管理人使\n用,進而產生好的循環。 \n最後,衷心期盼各位股東能一如既往地保持平常心來看待您手中富同的持股,也希望自己能\n為所有的股東分憂解勞、創造財富,以不辜負大家對富同投資之期望。 \n2018/1/11              \n吳卓逸"}, {"id": "2016", "era": "era2", "title": "2016 年報（第 7 年）", "date": "2017/01/13", "pdf_url": "http://www.wealthshare.com.tw/2016annual.pdf", "ws": 10.1, "tr": 15.6, "pr": 11.0, "cash_pct": 25.81, "stock_pct": 74.19, "headline": "2015 滿倉抄底開花結果賺 +10.1% 並逢高獲利減碼，現金回升至 25.81% 禮讚台灣「隱形冠軍」", "quote": "不看股市，你會與經濟脫節；看了股市，你會與事實脫節。", "summary": "外資買超 3,100 億推升台積電與大立光（台積電單檔貢獻近半市值增幅），逾五百檔中小股反跌破年線。富同逢高獲利了結，現金由 3.82% 大幅拉升至 25.81%，同時剖析川普保護主義、一例一休、富人稅導致 9 兆資金外流與當沖降稅隱憂，強調押注台灣「隱形冠軍」企業家。", "full_letter": "致股東報告書: \n各位股東女士、先生: \n首先向各位股東致上萬分謝意,因為有你們的支持,富同投資才有服務大家的機會! \n2016年台股收盤指數為9253.5點,是史上第3次收在9千點之上的封關指數,封關總市值達\n27.25兆元更是改寫歷史新高。主要原因在於去年外資大買台股,買超金額超過新台幣3,100\n億元,為新興亞洲之冠,令台股登上九千點的歷史高檔區。外資青睞的台積電、大立光市值\n增幅分別達26.9%及67%,讓這兩家公司市值頻創歷史新高,其他外資大買的股票如台塑化及\n鴻海,市值漲幅也有42.1%及15.5%。單是台積電就貢獻1.3兆元或近一半的台股市值增幅,而\n過半數以上的中小型股去年股價不漲反跌,五百多檔股價甚至跌破年線。也就是說,投資人\n若沒有台積電這檔股票,報酬馬上少掉一半,多數甚至根本難有獲利。 \n這樣分歧的走向, 引用奧斯卡影帝丹佐‧華盛頓的話「不看新聞,你會與世界脫節;看了新\n聞,你會與事實脫節。」套用在去年的股市上,「不看股市,你會與經濟脫節;看了股市,\n你會與事實脫節。」似乎也謂之成理。 \n由於去年的台股市值大都處於歷史高檔區,因此我們的投資就變得相對保守一些。一些外資\n或媒體追逐的熱門股票,我們也盡量避免隨之起舞。年度10.1%的報酬率雖不及大盤亮眼,\n所幸也達到我們預期 7% 的報酬目標。未來一年,如果市值依然居高不下,在沒有物美價廉\n的標的物出現時,我們還是會採取較為保守的投資策略。 \n新的一年開始,幾個與投資相關的議題,為您整理分享如下: \n就台灣經濟來看,今年一例一休上路,勞保費率調高,營利事業所得稅預計增加等政策,企\n業的營運成本將不斷地墊高,且十五到六十四歲勞動人口史無前例地減少,國發會預測從\n2016到2061年,每年平均減少十八萬人,加上人口老化速度全球第一,將使國內生產力不\n足,消費不振,日漸不利於台灣未來的經濟發展。 \n\n就國際環境來看,央行總裁彭淮南去年底指出,海關統計台灣去年對美貿易順差約53.5億美\n元,約當GDP比率達7.8%,超前大陸、德國及日本,尤其台灣輸出中間財到大陸的比重居\n高,萬一美中貿易戰開打,台灣也將跟著受影響,可預見台灣將會受重傷。 \n長期以來台灣的產業均以替美國企業代工為主,甚至幫美國企業在大陸找到了替代工廠,教\n會了中國相當多的技術,而中國的紅色供應鏈成長茁壯後,反過來利用規模與價格戰血洗市\n場,逐步蠶食台廠的商機,反而變成台灣最大的勁敵,加上其背後又有中國政府撐腰,撒錢\n挖腳的新聞更是一樁接著一樁。 \n如今川普喊出「美國製造」的新保護主義政策,重商思維更從用人上一覽無遺。提名國務卿\n提勒森是艾克森美孚石油執行長、商務部長羅斯是投資大亨、財政部長米努欽來自高盛,整\n體內閣商業年資高達83年,是美國史上最有資本家經驗的內閣。再者,川普的主軸很清楚,\n就是把中國視為頭號敵人。他從選戰時就不斷強調中國對美國的巨額貿易順差,損及美國利\n益及搶走美國工人的工作。 \n如果中美的分歧越大,台海的情勢也就跟著越趨緊張,對台灣經濟影響所及決不單只是陸客\n來台旅遊與否的問題。近來餐飲業者海霸王的聲明稿、台積電董事長張忠謀婉拒出任總統府\n資政、及製鞋大廠豐泰在中國遭到查稅等,都反映出許多在大陸有投資的企業,經營上已經\n面臨巨大的衝擊與困境。一旦之後美國自給率提高,大陸出口動能趨緩,台灣又遲遲無法有\n效突破區域經濟協議的框架,未來我們的經濟發展該如何延續? \n就台灣資本市場而言,過去幾年影響台股最大的因素,其實還是投資人信心。而造成國內投\n資人對台股缺乏信心的原因,證所稅及富人稅是最大的干擾。雖然自然人的證所稅已修法廢\n除,但占交易比重越來越大的法人,稅率卻從之前的10%拉到12%,導致本土法人機構成了稅\n改下最大的受災戶。富人稅方面,45%最高稅率加上二代健保2%,及兩稅合一扣抵減半的種\n種負擔,不但是台灣資金連續25季外流,累計逾9兆元,也使得國內銀行爛頭寸不斷創新高,\n一樣是超過9兆元。⺠民眾若不是把錢匯往國外,就是寧可定存利息不斷縮水,也不願投資。前\n兩者的金額相加,台灣不但可以多出150棟台北101大樓,也可以多蓋20條高鐵。 \n\n本國自然人在集中市場成交金額占比創歷年新低的同時,只要分離課稅20%的外資,在厚此\n薄彼的畸型稅制下成了台股的中流砥柱,持有台股比重屢創新高,成了主宰市場的莊家。未\n來在美國升息趨勢確立,企業減稅和保護主義的新政引領下,若美元持續走強,外資會不會\n繼續加碼台股,將是很大的變數,去年蘋果概念股幾乎一支獨秀,今年的續航力如何,更直\n接牽動今年台股的走向。 \n央行統計資料顯示,台灣直接金融占比從⺠民國92年起持續縮減,104年已降至20.53%,是歷\n史新低水準。對比美國、歐盟等直接金融比重都在7、8成以上,更加凸顯台灣的資本市場逐\n漸喪失基本功能。也就是說,企業越來越少願意直接在公開市場發行股票、債券來籌資,相\n反的,越來越只能仰賴銀行等金融機構放款,這種間接金融的方式取得資金。資本市場因制\n度面的限制,連大企業都籌資不易,遑論中小企業,大家只能轉向銀行去籌資,不僅造成負\n債比例升高,一旦市場出現重大變動,銀行緊縮銀根,企業資金馬上斷炊,公司營運立即面\n臨困難。再者,新創企業本就不容易從間接金融管道取得資金,等於扼殺產業的未來可能\n性。 \n在普遍投資人都對台股缺乏信心下唯一的例外,是現股當沖交易戶數創下新高,累積開戶數\n一路增加到超過112萬戶,現股當日沖銷交易占市場比重則從2014年約3.7%增加到超過10%,\n若把資卷互抵當沖也算進來,佔台股比重更高達16%以上。這顯示本國投資人追逐差價風氣\n日盛,而台股漸漸變成隨著消息風向快進快出的投機市場,大眾追求的不再是公司獲利的盈\n餘分配,而是盡快贏錢閃人。通常當市場狀況越糟,這樣幾近於博弈的投機風氣就越盛,結\n果便是更進一步使震盪加劇。 \n日前政府為了刺激交易量,端出的辦法竟是當沖證交稅降稅,反而是鼓勵散戶積極參與這種\n上沖下洗,有你無我的零和遊戲。這種把投資當賭博,把股市當賭場的結果,留給投資人\n的,會是個個腰纏萬貫,還是負債累累,就留待時間來告訴我們吧!然而,資本市場這樣不\n健康的發展趨勢,無疑的也將對經濟發展造成深遠的傷害。  \n引用經典名著雙城記的開場白來為去年的股市及富同投資的表現做個總結:『 這是最好的時\n代,也是最壞的時代;這是智慧的時代,也是愚蠢的時代;這是信仰的時代,也是懷疑的時\n\n代 。』套用在股票市場,我們或許可以理解成---縱使大環境充滿不確定,市場總會替我們汰\n弱留強;無論景氣再壞,總會有前景值得期待的公司出現;就算盲從跟風的羊群效應方興未\n艾,但我們需要堅持的,不過就是不要讓外在的噪音壓過自己內在的心聲而已。 \n展望新的一年,顯然的無論個體公司或整體產業,都面臨了前所未見的課題,也凸顯我們所\n處的是個變動難測的年代。然而,不少殷實的企業家,他們不常出現在媒光燈前,卻常站在\n戰場最前線。即使沒有政府支援,沒有FTA,他們一樣拿下訂單,並躋身為全球供應鏈不可\n或缺的一角。他們常常是產業中的隱形冠軍,不過公司名字卻連銀行理專都不清楚。我在理\n智上和情感上都相信,如果不去投資這樣的公司和企業家,只把錢拿去寄定存,那我就是跟\n自己的財富過不去。而過去幾年富同投資的績效表現,就是最佳的佐證。 \n截至去年底,富同投資組合均是上市櫃體質良好的公司。我們選擇股票的標準,如同各位股\n東選擇富同一樣,只有當負責團隊為人誠信正直、具備所處產業經營智慧、且對工作充滿熱\n情活力,我們才會成為這些企業的合夥人。這樣一來,也才能讓好的資本被好的管理人使\n用,進而產生好的循環。 \n最後,衷心期盼各位股東能一如既往地保持平常心來看待您手中富同的持股,也希望自己能\n為所有的股東分憂解勞、創造財富,以不辜負大家對富同投資之期望。 \n2017/1/13              \n吳卓逸"}, {"id": "2015", "era": "era1", "title": "2015 年報（第 6 年）", "date": "2016/01/11", "pdf_url": "http://www.wealthshare.com.tw/2015annual.pdf", "ws": -0.9, "tr": -6.9, "pr": -10.4, "cash_pct": 3.82, "stock_pct": 96.18, "headline": "台股衝上萬點後暴跌 2,811 點！富同上半年先行獲利了結、下半年近滿倉 96.2% 逆勢抄底", "quote": "在歷史上每次空頭市場的恐慌退潮後，股價總能收復失土，市況低迷時進場對長期績效必有助益。", "summary": "大盤從 10,014 急殺至 7,203 點、融資餘額創 2009 年以來新低。富同上半年分批獲利了結繳出 NT$978 萬稅後淨利（配息率 8.0%），下半年更把現金大舉投入至僅剩 3.82%（持有 25 檔個股）。雖因年底帳面未實現虧損首見 -0.9% 負報酬並誠懇致歉，但仍大幅跑贏報酬指數 +6.0%。", "full_letter": "致股東報告書：\n\n各位股東女士、先生：\n\n首先向各位股東致上萬分謝意，因為有你們的支持，富同投資才有服務大家的機會！在2014年的年報裡，我用“理性的人總是錯過了派對的高潮”為富同投資的表現做註解。2015年前半年，台股的資金派對持續火熱，更一度使指數來到10,014點，上市公司市值也突破金融風暴前近25兆的紀錄，創下約29兆的歷史新紀錄。然而，行情總在充滿希望中結束，緊接著而來的，是令人措手不及的暴跌2,811點，在八月下探最低點7,203，上下震幅高達2,811點。集中市場融資餘額也一路降至約1,500億元，創2009年5月以來新低，顯示散戶信心徹底崩盤。最後，台股以8,338.06點，較去年底下跌969.2點封關，在去年封關日創下25年新高後，大盤指數今年不僅未上演所謂的選舉行情，反而像是潑了投資人大眾一桶冷水。\n\n在2015年上半年，我們分批進行獲利了結，將過去幾年在資產負債表上累積的未實現盈餘，轉換為可分配給股東的已實現收入。加上來自持股所獲得的現金股利，讓今年的稅後淨利共計新台幣9,782,385元。然而，我們的表現不免也受到大盤的衝擊，導致今年資產負債表上第一次出現了未實現損失，進而也使得富同投資第一次年度報酬率為負值。總結來說，公司資產為新台幣111,699,672元，債務為新台幣2,540,191元，淨值則為新台幣109,159,481元，每股淨值為新台幣13,152元。合計公司淨值較期初股東權益減少新台幣997,295元，相當於貶值0.9%。對於去年無法幫公司創造正報酬率，在此也向各位股東致歉，希望大家能多多包涵！\n\n回顧去年，影響台股最大的因素，我想首推投資人信心。而造成國內投資人對台股缺乏信心的原因，證所稅及富人稅是最大的干擾。被多數投資人視為洪水猛獸的證所稅，在漂亮的口號下推出，卻在另一個漂亮的口號下廢除。一改再改的修法過程，凸顯了國家法令的不確定性，這樣的不確定性對台灣資本市場造成極大的衝擊。其中，法人最低稅率從之前的10%拉到12%，這次卻未同步修改回到10%，導致法人機構反而成了稅改下最大的受災戶。富人稅方面，四五%最高稅率加上二代健保二%，及兩稅合一扣抵減半的種種負擔，不但加速台灣資金外流到可怕的地步，也使得國內銀行爛頭寸再創新高。投資人若不是把錢匯往國外，就是寧可把資金放在銀行定存，就是不願買台股，也因此，本國自然人在集中市場成交金額占比創歷年新低。只要分離課稅二○%的外資，在厚此薄彼的畸型稅制下竟成了台股的中流砥柱，持有台股比重屢創新高，幾乎已成了主宰市場的莊家。\n\n在普遍投資人都對台股缺乏信心下唯一的例外，是現股當沖交易戶數創下新高。這顯示本國投資人追逐差價風氣日盛，而台股漸漸變成隨著消息風向快進快出的投機市場，大眾追求的不再是公司獲利的盈餘分配，而是有你無我的零和遊戲。通常當市場狀況越糟，這樣幾近於博弈的投機風氣就越盛，結果便是更進一步使震盪加劇。此外，沒有股息股利分配，沒有業績公告，也不用看財務報表的新藥股一躍成為炒作名牌，去年台股漲幅最高的一檔生技股，全年漲幅竟高達952%，而這種現象在過去兩三年可謂層出不窮。然而，這種反覆的投機炒作，最後留給投資人的，是個個腰纏萬貫，還是像曾經風光一時的金磚四國基金，在近5年間規模暴跌88%，讓高盛終於決定在去年底認賠關門一樣，就留待時間來告訴我們吧！\n\n就大環境來看，目前台灣經濟狀況不佳，去年出口年減十．六%，不論是占了近四成的中國香港，還是占了兩成的東協市場，出口金額都呈雙位數下跌，陷入六年來最嚴重的衰退。不但中國的紅色供應鏈利用規模與價格戰血洗市場，蠶食台廠的商機，紅色資金更是靠著中國股市大漲帶動企業市值暴增，加上背後又有中國政府撐腰，讓撒錢挖腳及購併台廠的新聞一樁接著一樁的上演。在國際經濟面，美國在今年已展開升息循環，伴隨美國經濟仍呈現緩步復甦態勢，通膨快速上揚風險不大。反觀歐洲，情況正好相反，負利率正席捲全歐洲。目前全球債市共有13個國家出現負殖利率，當中有12個是歐洲國家，而鑒於歐洲央行已暗示將擴大寬鬆貨幣的政策力道，歐洲的負利率情況還會進一步深化。\n\n展望新的一年，顯然的無論個體公司或整體產業，都面臨了前所未見的課題，也凸顯我們所處的是個變動難測的年代。就投資而言，直接面對這樣的挑戰，是避免損失唯一的機會，而我們最該在意的還是投資標的真實價值。美國聯準會前主席葛林斯班在他的書中曾提到，二次世界大戰結束後至今，每一次的空頭市場都沒有完全回吐上一個多頭市場的漲幅。換句話說，長期而言股價歷經實質經濟成長後，多頭市場中有一部分的資本利得，將成為股票持有者永久性的利得。也就是說，在歷史上每次空頭市場的恐慌退潮後，股價總能收復失土，雖然在市況低迷時進場，短期績效不一定好看，但是對長期績效一定有所助益。不過，目前台股市值24.5兆仍屬高檔，因此，我們謹慎的態度看起來還是必要的。\n\n截至去年底，富同投資組合共計25檔個股，均是上市櫃體質良好的公司。我們選擇股票的標準，如同各位股東選擇富同一樣，只有當負責團隊為人誠信正直、具備所處產業經營智慧、且對工作充滿熱情活力，我們才會成為這些企業的合夥人。這樣一來，也才能讓好的資本被好的管理人使用，進而產生好的循環。\n\n最後，衷心期盼各位股東能一如既往地保持平常心來看待您手中富同的持股，也希望自己能為所有的股東分憂解勞、創造財富，以不辜負大家對富同投資之期望。\n\n2016/1/11\n吳卓逸"}, {"id": "2014", "era": "era1", "title": "2014 年報（第 5 年）", "date": "2015/01/12", "pdf_url": "http://www.wealthshare.com.tw/2014annual.pdf", "ws": 7.1, "tr": 11.4, "pr": 8.1, "cash_pct": 12.96, "stock_pct": 87.03, "headline": "成立五年首度小幅落後大盤，拒絕追逐虧損飆漲 100% 新藥股，闡述「寧可落後、絕不永久虧損」", "quote": "理性的人總是錯過了派對的高潮——保守的懲罰只是落後大盤，本夢比的錯誤則是資本永久損失。", "summary": "2014 年台股上半年狂炒新藥股、下半年蘋概與物聯網飆漲，市值登 27 兆創 25 年高點。富同堅守 20 檔基本面個股繳出 +7.1%，首次落後大盤 4.3%；並深度解析台灣製造業微利化、45% 富人稅與巴菲特 1964–1998 利率決定股市長期走勢之經典論述。", "full_letter": "致股東報告書：\n\n各位股東女士、先生：\n\n首先向各位股東致上萬分謝意，因為有各位的參與和支持，富同投資才有服務大家的機會！\n\n2014年我們稅後淨利共計新台幣6,631,905元，公司資產為新台幣95,783,246元，債務為新台幣1,372,390元，淨值則為新台幣94,410,856元，每股淨值為新台幣14,155元。合計公司淨值較期初股東權益增加新台幣6,258,956元，相當於增值7.1%。\n\n“理性的人總是錯過了派對的高潮”，這或許可以為富同投資2014年的表現做個註解。去年也是富同投資成立五年來，表現第一次落後於大盤。其實，戰勝市場的平均水平並不是一件容易的工作。實務上，長期跟上市場的平均水平就已經是一件十分困難的工作。光是稅負與手續費這兩項大盤指數不需負擔，而法人卻省不掉的成本，就可以影響兩者1~5%，甚或更高的差異。\n\n回顧2014年的台股市場，上半年市場炒作的是最投機、最有想像空間的新藥股，似乎只要貼上新藥的標籤，股價就可漫無邊際地無限上漲。很多新藥股即便是虧損連連，但是漲幅卻是100% 起跳。下半年在蘋果最新手機問世的旋風下，相關供應鏈及物聯網的科技股雨露均霑，也紛紛拉出50%以上的驚人漲幅。在這樣的氛圍下，許多投資人紛紛不落人後，證券劃撥帳戶餘額一路飆上1.5兆元，接連數月創下歷史新高紀錄，顯示散戶不斷籌備銀彈，加碼股市。\n\n不過，就像從去年底至今年各季給各位合夥人的季報所指出的，上市台股的市值目前已來到史無前例的高點，約達27兆元，去年封關日的指數也創下了25年新高。因此，迄今為止，我們謹慎的態度看起來還是必要的。也許我們太過小心，但是我寧願接受因為過度保守而招致的懲罰，也不願意因為相信本夢比這種投資思維而導致的錯誤結果。前者的懲罰是表現落後大盤，後者的錯誤將為我們的資本造成永久性的損失。\n\n在產業結構面，許多大型製造業在中國低廉勞力的紅利已漸耗盡，大都出現毛利率、營業利益率逐步走跌，但利息、匯兌占純益比率卻節節高升的反差現象，這顯示台灣製造業本業微利化的困境和企業利用財務操作美化帳面的風險。另外，企業儲蓄近年持續攀升，表示企業並未將營業盈餘用來增加投資，進行產業升級。這也將是台灣企業未來中長期發展的警訊。\n\n在租稅結構面，2014年通過的稅改法案，不僅最高所得稅率從40%上升到45%，兩稅合一的可扣抵稅額比率減半，加上之前實施的股利扣取2%二代健保補充保費，幾乎都是衝著股市投資人而來。相較於外資採分離課稅，最高稅率20%，租稅負擔相差一倍多。因此，有越來越多有錢人不是想辦法化身成外資，就是將錢搬到香港，享受股利百分之百免稅的優惠。\n\n整體而言，台灣去年至今的經濟發展算是處於相對樂觀的格局。一來是美國經濟復甦，促使外銷訂單迭創新高，二來是原油價格走跌，對於能源大量仰賴進口的台灣也是正面因素。然而，對於股市而言，最重要的影響因素或許不是經濟增長本身，而是利率的消長。\n\n對於經濟增長與股市的關係，巴菲特曾以美國1964-1998年這34年的股市表現為例子做出了精辟的解釋。他把美國股市的這34年分為前17年與後17年。在前17年間，美國經濟高速增長，但利率水平則不斷上升，美國長期國債收益率從1964年底的4.20%一路上升到1981年底的13.65%。在這種情況下，美國道瓊斯指數幾乎在原地踏步。後17年，在美聯儲緊縮貨幣政策壓制下，美國經濟陷入不振，同時名目利率快速下降，到1998年底，美國長期國債收益率降到了5.09%，但後17年中，美國道瓊斯股票指數從875點大漲到9181點，漲幅達10倍。\n\n巴菲特的解釋，並不表示實體經濟的增長與股市存在著負相關，而是說明了決定股市上升的一個重要因素，在於名目利率如何變化。他認為，一個地區的股票在短期內的走勢，取決於包含實體經濟等的多重因素，但長期的走勢，則很大程度取決於金融市場的名目利率高低。當名目利率低時，股票指數就會上漲；當名目利率高時，股票指數要往上漲是不容易的。\n\n展望新的一年，可以預見未來市場的匯率、利率及油價的波動都將更為劇烈，對於投資來說，面對這樣的環境既是挑戰，卻也充滿機會。不過，與其猜測升息時間點或擔心總體經濟問題，我們更在意的還是投資標的真實價值。\n\n截至去年底，富同投資組合共計20檔個股，均是上市櫃體質良好的公司。我們選擇股票的標準，如同各位股東選擇富同一樣，只有當負責團隊為人誠信正直、具備所處產業經營智慧、且對工作充滿熱情活力，我們才會成為這些企業的合夥人。這樣一來，也才能讓好的資本被好的管理人使用，進而產生好的循環。\n\n最後，衷心期盼各位股東能一如既往地保持平常心來看待您手中富同的持股，也希望自己能為所有的股東分憂解勞、創造財富，以不辜負大家對富同投資之期望。\n\n2015/1/12\n吳卓逸"}, {"id": "2013", "era": "era1", "title": "2013 年報（第 4 年）", "date": "2014/01/09", "pdf_url": "http://www.wealthshare.com.tw/2013annual.pdf", "ws": 21.7, "tr": 15.1, "pr": 11.8, "cash_pct": 17.3, "stock_pct": 81.03, "headline": "連四年完勝大盤！大賺 +21.7%、配息率衝上 12.9% 史上最高，首委外部會計師查核並拉高現金至 17.3%", "quote": "與其猜測 QE 退場時間或擔心總體經濟問題，我們更在意的還是投資標的真實價值。", "summary": "QE3 資金浪潮推升全球股市，富同 18 檔持股大放異彩，帳面價值暴增 +21.7%（Alpha +6.6%），EPS 1,744 元、每股配息 1,569 元（殖利率 12.9% 創 16 年最高！），同時首度啟用外部會計師查核簽證並逢高累積 17.30% 現金部位。", "full_letter": "致股東報告書: \n \n各位股東女士、先生: \n \n首先向各位股東致上萬分謝意,因為有各位的參與和支持,富同投資才有服務大\n家的機會! \n \n2013年我們稅後淨利共計新台幣7,567,262元,公司資產為新台幣67,481,820元,\n債務為新台幣3,313,740元,淨值則為新台幣64,168,080元,每股淨值為新台幣\n14,785元。合計公司淨值較期初股東權益增加新台幣11,446,888元,相當於增值\n21.7%。目前公司整體財務結構相當穩健,對於未來富同投資在台股市場的長期\n表現也持樂觀態度。 \n \n回顧2013年,在美國持續推出量化寬鬆政策(QE)後,一波波從QE1到QE3所引起\n的資金浪潮帶動之下,全球主要國家股票指數頻創新高,包括美國、德國、法國\n等歐美國家,以及亞洲新興市場的股市,如泰國、印尼、印度等,都曾創下金融\n風暴後的歷史高點。也因此,雖然台灣經濟表現並不好,全年經濟成長率未保住\n2%,表現卻還是相對突出。然而,QE絕不是股市及經濟的萬靈丹,QE退場更是\n明年經濟及股市的最大變數。 \n \n截至去年底,富同投資組合共計18檔個股,均是上市櫃體質良好的公司。我們選\n擇股票的標準,如同各位股東選擇富同一樣,只有當負責團隊為人誠信正直、具\n備所處產業經營智慧、且對工作充滿熱情活力,我們才會成為這些企業的合夥人。\n這樣一來,也才能讓好的資本被好的管理人使用,進而產生好的循環。 \n \n展望新的一年,股市已在紛雜和不確定之中拉開序曲,全球經濟也將持續在復甦\n與崩解之間來回擺盪,可以預見未來市場的波動將更為劇烈,對於投資來說,面\n對這樣的環境既是挑戰,卻也充滿機會。因此,與其猜測QE退場時間或擔心總\n體經濟問題,我們更在意的還是投資標的真實價值。\n\n最後,衷心期盼各位股東能一如既往地保持平常心來看待您手中富同的持股,也\n希望自己能為所有的股東分憂解勞、創造財富,以不辜負大家對富同投資之期\n望。 \n \n \n2014/1/9              \n吳卓逸"}, {"id": "2012", "era": "era1", "title": "2012 年報（第 3 年）", "date": "2013/01/12", "pdf_url": "http://www.wealthshare.com.tw/2012annual.pdf", "ws": 17.3, "tr": 12.9, "pr": 8.9, "cash_pct": 1.53, "stock_pct": 97.0, "headline": "清償全數銀行借款展開 15 年零金融負債紀律，97% 滿倉大賺 +17.3%，精闢拆解「通膨即 300% 所得稅」", "quote": "長期把錢存在銀行就像撲克牌「投降輸一半」，6% 實質支出通膨相當於對 2% 定存課徵 300% 所得稅。", "summary": "2012 年全數清償短期銀行借款，從此維持無金融借款體質；以 97.0% 高持股（22 檔個股）斬獲 +17.3%（連三年領先大盤），現金股利報酬率高達 9.5%。年報長文精闢分析證所稅復徵衝擊，並以台灣 27 年經常性支出年增 5.9% 論證長期持有優質股權對抗通膨的必要性。", "full_letter": "致股東報告書: \n \n各位股東女士、先生: \n \n首先向各位股東致上萬分謝意,因為有各位的參與和支持,富同投資才有服務大\n家的機會! \n \n2012年我們稅後淨利共計新台幣3,530,876元,公司資產為新台幣39,895,992元,\n債務為新台幣760,000元,淨值則為新台幣39,135,992元,每股淨值為新台幣\n13,222元。合計公司淨值較期初股東權益增加新台幣5,762,034元,相當於增值\n17.27%。目前公司整體財務結構相當穩健,對於未來富同投資在台股市場的長期\n表現也持樂觀態度。 \n \n回顧2012年,國內外影響股市的政策因素相當多,其中有兩項對未來整體股市衝\n擊較大的政策效應值得我們一起來關注。 \n \n1. 證所稅效應:台灣的股票市場成立六十年來,已經有過四次課徵又停徵紀錄\n的證所稅,在停徵26年後,自102年1月1日起實施復徵。課徵內容簡介如下: \n個人\n證券\n交易\n所得 \n課徵綜合所得稅 \n102 年~103 年度,設算所得就源扣繳與核實課稅雙軌制 \n104 年度起,核實課稅單軌制 \n設算\n所得\n就源\n扣繳 \n一、上市、上櫃及興櫃股票,除應核實課稅者外,得選擇設算所得就源扣\n繳,同一年度不得變更 \n \n股價指數 \n推計純益率 \n(A) \n稅率 \n(B) \n依出售金額就源扣繳 \n(A)×(B) \n \n 8,499.99 點以下 \n  0% \n20% \n0 ‰ \n8,500~9,499.99 點 \n0.1% \n20% \n0.2 ‰ \n9,500~10,499.99 點 \n0.2% \n20% \n0.4 ‰ \n10,500 點以上 \n0.3% \n20% \n0.6 ‰ \n \n核實\n計算\n所得 \n二、應核實課稅之情形 \n \n1.課稅方式:分開計稅、合併報繳 \n2.單一稅率:15% \n3.所得=出售收入-原始取得成本-必要費用 \n4.盈虧互抵:當年度自同一個人證券交易所得中減除,虧損不得後延 \n5.長期持有優惠:持有股票1 年以上,所得減半課稅;IPO 股票於上市、\n上櫃以後繼續持有滿3 年以上者,按所得1/4 課稅\n\n對一般自然人而言,雖然有兩年設算所得就源扣繳與核實課稅雙軌制的緩衝期間,\n讓選擇設算所得就源扣繳的個別投資人在台股指數8,500點以下時可以免除稅負。\n但長期看來,無論是自然人或法人,在未來投資台股時,都必須要付出更多的交\n易成本來賺取投資報酬。 \n \n需要注意的是,賦稅的增加會不會影響資金留在台灣的意願? 如果資金紛紛外逃\n而使得台灣資本市場萎縮,造成企業籌資困難、股權流動不易,進而迫使企業資\n本支出減緩,勞動薪資停滯,那恐怕就是政府、企業、股民及全民皆輸的局面。\n會不會是這樣子,日後市場會告訴我們答案。 \n \n而對我們的股東而言,在兩稅合一下,雖然富同投資因證券交易所得而必須繳納\n更多營利事業所得稅額,但這增加的稅負將計入股東可扣抵稅額帳戶。在未來發\n放現金股利時,股東也將有更多的可扣抵稅額來抵減個人股東的綜所稅,故對個\n人股東的實質稅負影響較低。不過,公司繳納的所得稅得在股東未來申報綜合所\n得稅時才可以扣抵,這對股東會有些許的所得遞延效應。 \n2. 熱錢效應: 在美國聯準會示範下,美、英、日、歐洲央行紛紛啟動史上首見\n的超級貨幣寬鬆政策。短期內,雖然國際熱錢湧入,股市、房市短線上揚收紅的\n機率增高,但長期看來,卻可能對台灣的物價及出口帶來雙重打擊。 \n台灣的原物料大量仰賴進口,美元貶值推升了原物料的漲勢,衝擊本來已經高漲\n的民生物價,引發輸入性通貨膨脹,更削弱了台灣的購買力,進而抑制國內消費,\n使得內需市場廠商獲利衰減。台幣升值的龐大壓力,也不利於台灣出口業的競爭\n力。其結果反應在股市上,就形成台股基本面不佳,這也就是所謂“無基之彈”\n的寫照。 \n \n另外,大舉印鈔造成的結果,就是全球利率低到見底,無法對抗通貨膨脹,形成\n實質負利率。根據天下雜誌去年年底的報導,香港二○一二年實質利率(定存利\n率減去通貨膨脹率)為負4.08%,新加坡負4.41%。通膨相對較不嚴重的台灣,\n利率也有負0.6%。 \n一般來說,通貨膨脹率是政府及央行希望能控制的指標,因為高漲的物價將相對\n的使得存款越來越薄。1985 年台灣的消費者物價指數為65.81,2011 年成長到\n營利\n事業\n證券\n交易\n所得 \n1.維持在最低稅負制課徵 \n2.自102 年度起,扣除額50 萬元,稅率12%~15%(原扣除額200 萬元,稅率10%) \n3.持有3 年以上,減半課稅 \n4.虧損當年度扣除及後延5 年\n\n108.01,過去27 年的平均物價年增率1.85%,算是非常溫和。也因為大家較重\n視此一指標,並相信通膨影響有限,所以國人普遍還是喜歡定存這樣的理財方\n式。 \n然而,進一步檢視國人的平均經常支出,在1985 年需支出5,250 元/月,如果以\n平均物價年增率1.85%計算,現在應該也只需要8,610 元/月即可,但實際上到\n了2011 年卻已成長到24,657 元/月。也就是說過去27 年經常性支出的平均年增\n率高達5.9%,我們的生活支出成長速度遠比政府統計的通貨膨脹率還快三倍以\n上!而且,目前政府債務越積越多,對於如何有效控制通膨也會越來越力不從心。\n畢竟,通膨的情況可以使得政府的債務相對較為便宜,而不斷發行公債,以債養\n債的結果,也讓惡性通膨的怪獸蠢蠢欲動。 \n巴菲特曾說:通貨膨脹是一種税,而且這種税比我們的立法者所制定的任何税都\n更具毁滅性,它具有可怕的消耗資本的能力。因此,如果只是把錢存在銀行,這\n種看似安全的做法卻隱藏著最危險的陷阱,因為資產的實質購買力勢必受到嚴重\n侵蝕,錢也只會越存越薄。 \n對於一個只依靠存摺上2%利息收入過生活的人而言,零通膨時期100%的所得税\n和通膨時期2%的通貨膨脹率是一樣的。兩種情況都會使存款人没有任何實際收\n入,任何所花的錢都直接來自於資本。一般存款人會對300%的所得税感到氣憤\n不已,但卻不會注意到6%的通貨膨脹率,或更確切的說---經常性支出的平均年\n增率,在經濟上就相當於300%的所得税。 \n換個角度來看,100 萬的存款在利率2%但通膨率6%的情況下,存了20 年後的實\n質購買力約為現在的44 萬元。以撲克牌遊戲來形容,長期將錢存在銀行就像是\n投降輸一半一樣,資產的實質購買力不僅不會有增加的機會,卻是肯定得大打折\n扣。因此,銀行存款的資產配置應該只是為了應付日常生活開銷的選項之一,而\n不適合當作長期投資的考量。事實上,假設未來我們的實際通貨膨脹率(經常性\n支出的平均年增率)為6%,任何投資的報酬率在超過這個水平之前,都應該看作\n只是補充購買力,而不是資產增值。 \n那麼,投資人應該如何處置自己的資產呢?我相信,在通貨膨脹的時期,投資優\n質股票的短期風險雖然較高,但長期而言會比起購買債券或持有現金更有機會彌\n補通膨造成的購買力損失,甚至取得實質收益。而透過選擇優質股票,讓所有合\n夥人獲得投資報酬,便是富同投資服務所有股東的核心價值。 \n截至去年底,富同投資組合共計22檔個股,持有的台股部位達新台幣38,700,216\n元,均是上市櫃體質良好的公司。我們選擇股票的標準,如同各位股東選擇富同\n一樣,只有當負責團隊為人誠信正直、具備所處產業經營智慧、且對工作充滿熱\n情活力,我們才會成為這些企業的合夥人。這樣一來,也才能讓好的資本被好的\n\n管理人使用,進而產生好的循環。 \n \n展望新的一年,股市已在紛雜和不確定之中拉開序曲,全球經濟也將持續在復甦\n與崩解之間來回擺盪,可以預見未來市場的波動將更為劇烈,對於投資來說,面\n對這樣的環境既是挑戰,卻也充滿機會。 \n \n最後,衷心期盼各位股東能一如既往地保持平常心來看待您手中富同的持股,也\n希望自己能為所有的股東分憂解勞、創造財富,以不辜負大家對富同投資之期\n望。 \n \n \n2013/1/12                 \n吳卓逸"}, {"id": "2011", "era": "era1", "title": "2011 年報（第 2 年）", "date": "2012/01/10", "pdf_url": "http://www.wealthshare.com.tw/2011annual.pdf", "ws": 3.3, "tr": -18.0, "pr": -21.2, "cash_pct": 1.43, "stock_pct": 98.11, "headline": "歐債危機台股重挫 21%、OTC 慘跌 34.8%，富同滿倉 98.1% 竟逆勢獲利 +3.3%（Alpha +21.3%）", "quote": "台股跌幅甚至勝過遭遇地震、海嘯及核電危機的日本股市，但我們領先大盤幅度較去年更為優異。", "summary": "成立第二年即面臨歐債風暴酷考，集中市場暴跌 1,900 點（-21.2%）。富同透過嚴選 18 檔高安全邊際個股並善用 NT$400 萬短期信貸，在極端空頭年繳出 +3.3% 正報酬與 7.5% 現金股利，創下單年 +21.3% 驚人超額報酬，從此奠定「空頭鐵壁」招牌。", "full_letter": "致股東報告書: \n \n各位股東女士、先生: \n \n首先向各位股東致上萬分謝意, 因為有各位的參與和支持,富同投資才有服務大\n家的機會! \n \n回顧2011年,台股集中市場總共下跌1900點,跌幅高達21%,台股店頭市場跌幅\n更是高達34.78%。台股跌幅甚至勝過遭遇地震、海嘯及核電危機的日本股市。 \n \n在這個空頭市場的環境下,雖然我們每股的報酬率未能達到7% 的預期水準,但\n整體績效領先報酬指數及股價指數的幅度相較2010年是更為優異。2011年我\n們稅後淨利共計新台幣2,130,905元,合計淨值較期初股東權益增加新台幣\n841,958元,較期初淨值增加3.3%。  \n \n目前富同投資資產新台幣30,793,041元,債務為新台幣4,410,223元,負債占資\n產比為14.32%,公司淨值則為新台幣26,382,818元,整體財務結構相當穩健,也\n看得出我們對於未來富同投資在台股市場的長期表現持樂觀態度。 \n \n截至去年底富同投資組合共計18檔個股,持有的台股部位達新台幣30,211,053\n元,均是上市櫃體質良好的公司。我們選擇股票的標準,如同各位股東選擇富同\n一樣,只有當負責團隊為人誠信正直、具備所處產業經營智慧、且對工作充滿熱\n情活力,我們才會成為這些企業的合夥人。這樣一來,也才能讓好的資本被好的\n管理人使用,進而產生好的循環。 \n \n展望新的一年,可以預見股市的波動總是起起伏伏,期盼未來各位股東保持平常\n心來看待您手中富同的持股,繼續保有健康且愉快的生活方式。希望富同投資能\n為所有的股東分憂解勞、創造財富,進而讓我們的合夥人能更聚焦在自己的專業\n領域上,我們也將盡力達成大家對富同投資之期望。"}, {"id": "2010", "era": "era1", "title": "2010 年報（創始元年）", "date": "2011/01/10", "pdf_url": "http://www.wealthshare.com.tw/2010annual.pdf", "ws": 22.6, "tr": 13.6, "pr": 9.6, "cash_pct": 9.02, "stock_pct": 90.98, "headline": "波克夏合夥制台灣啟航！1,400 萬創始股本佈局 17 檔個股，首年暴賺 +22.6%（歷史最高年度報酬）", "quote": "只有當負責團隊為人誠信正直、具備產業經營智慧且充滿熱情，我們才會成為這些企業的合夥人。", "summary": "2010 年 4 月以資本額 NT$1,400 萬成立富同投資，確立「0% 固定管理費、公債殖利率 +2% 超額 25% 分潤、7% 長期複利目標、90% 盈餘現金配息」之台版波克夏架構。首年配置 17 檔優質股（搭配 NT$360 萬短期信貸，負債比 17.64%），一舉斬獲 +22.6% 報酬（Alpha +9.0%）。", "full_letter": "致股東報告書: \n \n各位股東女士、先生: \n \n首先向各位股東及共同發起人致上萬分謝意! 因為有各位的參與和支持,富同投\n資在去年正式成立了! \n \n2010年我們稅後淨利共計新台幣762,222元,其他屬股票尚未實現利益共計新台\n幣 2,401,738元,合計淨值增加新台幣3,163,960元,較期初淨值增加22.6%。  \n \n由上頁富同投資表現與台股大盤指數之比較表可以看出,過去一年的整體績效\n領先報酬指數及股價指數,每股報酬率有達成公司7%的衡量標準,是一個好的\n開始。 \n \n目前富同投資資產新台幣20,840,960元,債務為新台幣3,677,000元,負債占資\n產比為17.64%,公司淨值則為新台幣17,163,960元,整體財務結構相當穩健,也\n看得出我們對於未來台股市場的走向持樂觀態度。 \n \n截至去年底富同投資組合共計17檔個股,持有的台股部位達新台幣 18,960,100\n元,均是上市櫃體質良好的公司。我們選擇股票的標準,如同各位股東選擇富同\n一樣,只有當負責團隊為人誠信正直、具備所處產業經營智慧、且對工作充滿熱\n情活力,我們才會成為這些企業的合夥人。這樣一來,才能讓好的資本被好的管\n理人使用,進而產生好的循環。 \n \n展望新的一年,可以預見股市的波動總是起起伏伏,期盼未來各位股東保持平常\n心來看待您手中富同的持股,繼續保有健康且愉快的生活方式,讓我們來為您的\n投資分憂解勞,我們也將盡力達成大家對富同投資之期望。"}]};
+
+const state = {
+  tab: "overview",
+  period: "16y",
+  scale: "linear",
+  barmode: "compare",
+  roll: "3",
+  era: "all",
+  search: ""
+};
+
+const fmtNum = (n, d = 0) => n == null ? "--" : Number(n).toLocaleString("zh-TW", { minimumFractionDigits: d, maximumFractionDigits: d });
+const fmtPct = (n, d = 1, sign = true) => n == null ? "--" : ((sign && n > 0 ? "+" : "") + Number(n).toFixed(d) + "%");
+const fmtWan = (n) => n == null ? "--" : ("NT$" + (n / 10000).toFixed(1) + "萬");
+const escHtml = (s) => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+
+/* Tooltip helpers */
+const tipEl = document.getElementById("chartTip");
+function showTip(evt, htmlStr) {
+  tipEl.innerHTML = htmlStr;
+  tipEl.classList.add("show");
+  moveTip(evt);
+}
+function moveTip(evt) {
+  const pad = 14;
+  const w = tipEl.offsetWidth || 220;
+  const h = tipEl.offsetHeight || 120;
+  let x = (evt.clientX || 0) + pad;
+  let y = (evt.clientY || 0) - h - 10;
+  if (x + w > window.innerWidth - 10) x = Math.max(10, (evt.clientX || 0) - w - pad);
+  if (y < 10) y = (evt.clientY || 0) + pad;
+  tipEl.style.left = x + "px";
+  tipEl.style.top = y + "px";
+}
+function hideTip() { tipEl.classList.remove("show"); }
+
+/* Theme toggle */
+function applyTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  localStorage.setItem("ws_ui_theme", theme);
+  const icon = document.getElementById("themeIcon");
+  if (theme === "light") {
+    icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+  } else {
+    icon.innerHTML = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+  }
+}
+const savedTheme = localStorage.getItem("ws_ui_theme");
+if (savedTheme === "light" || savedTheme === "dark") applyTheme(savedTheme);
+document.getElementById("themeToggle").addEventListener("click", () => {
+  applyTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark");
+});
+
+/* Tab navigation */
+function switchTab(tabId) {
+  state.tab = tabId;
+  document.querySelectorAll(".tab-panel").forEach(p => p.classList.toggle("active", p.id === "tab-" + tabId));
+  document.querySelectorAll("[data-tab]").forEach(b => b.classList.toggle("active", b.dataset.tab === tabId));
+  window.scrollTo({ top: 0, behavior: "instant" });
+  hideTip();
+}
+document.querySelectorAll("[data-tab]").forEach(btn => {
+  btn.addEventListener("click", () => switchTab(btn.dataset.tab));
+});
+
+/* Period toggle */
+document.querySelectorAll("[data-period]").forEach(btn => {
+  btn.addEventListener("click", () => {
+    state.period = btn.dataset.period;
+    document.querySelectorAll("[data-period]").forEach(b => b.classList.toggle("active", b.dataset.period === state.period));
+    renderOverviewKpis();
+    renderWealthChart();
+  });
+});
+
+/* Scale toggle */
+document.querySelectorAll("[data-scale]").forEach(btn => {
+  btn.addEventListener("click", () => {
+    state.scale = btn.dataset.scale;
+    document.querySelectorAll("[data-scale]").forEach(b => b.classList.toggle("active", b.dataset.scale === state.scale));
+    renderWealthChart();
+  });
+});
+
+/* Bar mode toggle */
+document.querySelectorAll("[data-barmode]").forEach(btn => {
+  btn.addEventListener("click", () => {
+    state.barmode = btn.dataset.barmode;
+    document.querySelectorAll("[data-barmode]").forEach(b => b.classList.toggle("active", b.dataset.barmode === state.barmode));
+    renderAnnualChart();
+  });
+});
+
+/* Rolling toggle */
+document.querySelectorAll("[data-roll]").forEach(btn => {
+  btn.addEventListener("click", () => {
+    state.roll = btn.dataset.roll;
+    document.querySelectorAll("[data-roll]").forEach(b => b.classList.toggle("active", b.dataset.roll === state.roll));
+    renderRolling();
+  });
+});
+
+/* Reports filter & search */
+document.querySelectorAll("#eraFilter .chip").forEach(ch => {
+  ch.addEventListener("click", () => {
+    state.era = ch.dataset.era;
+    document.querySelectorAll("#eraFilter .chip").forEach(c => c.classList.toggle("active", c.dataset.era === state.era));
+    renderReports();
+  });
+});
+document.getElementById("repSearch").addEventListener("input", (e) => {
+  state.search = e.target.value.trim().toLowerCase();
+  renderReports();
+});
+
+/* ======================================================================== */
+/* RENDER TAB 1: KPIS, WEALTH CHART, ANNUAL CHART, LEDGER TABLE             */
+/* ======================================================================== */
+function renderOverviewKpis() {
+  const m = state.period === "16y" ? WS_DATA.metrics_16y : WS_DATA.metrics_1675y;
+  const is16 = state.period === "16y";
+  document.getElementById("c1EndLbl").textContent = is16 ? "2025" : "2026 Q3";
+  document.getElementById("periodSummaryText").textContent = is16
+    ? "目前檢視口徑：16 年完整日曆年度（2010–2025，均已完成 CPA 查核並扣除所得稅、交易費與董監績效酬勞）。"
+    : "目前檢視口徑：含最新 2026 Q3 季報共 16.75 年（2010–2026/09/30；2026 前三季為會計師核閱數，尚未扣年底董監酬勞）。";
+
+  const cards = [
+    {
+      label: is16 ? "16 年淨複利 CAGR" : "16.75 年淨複利 CAGR",
+      val: fmtPct(m.ws.cagr_pct, 2, false),
+      cls: "c-cyan",
+      sub: `報酬指數 ${m.tr.cagr_pct.toFixed(2)}% ｜ 股價指數 ${m.pr.cagr_pct.toFixed(2)}%`
+    },
+    {
+      label: "NT$100 萬複利終值",
+      val: fmtWan(m.ws.final_1m),
+      cls: "c-emerald",
+      sub: `累積 ${fmtPct(m.ws.cum_pct, 1)}（報酬指數 ${fmtWan(m.tr.final_1m)}）`
+    },
+    {
+      label: "夏普比率 Sharpe (16Y)",
+      val: m.ws.sharpe.toFixed(2),
+      cls: "c-cyan",
+      sub: `年化波動 ${m.ws.vol_pct.toFixed(2)}% vs 大盤 ${m.tr.vol_pct.toFixed(2)}%`
+    },
+    {
+      label: "空頭年勝率 (4/4 全勝)",
+      val: "100%",
+      cls: "c-emerald",
+      sub: `4 次熊市均賺 +2.3% vs 大盤 -12.1%（最差 -0.9%）`
+    },
+    {
+      label: "16 年配息率 / 均殖利率",
+      val: `${WS_DATA.meta.avg_payout_16y.toFixed(0)}% / ${WS_DATA.meta.avg_div_yield_16y.toFixed(1)}%`,
+      cls: "c-amber",
+      sub: `累配 NT$1.56 億 · 0% 固定管理費`
+    },
+    {
+      label: "2026 Q3 淨值與股票水位",
+      val: "89.5%",
+      cls: "c-indigo",
+      sub: `每股 NT$16,659（規模 3.36 億 · 十年最高持股）`
+    }
+  ];
+  document.getElementById("overviewKpis").innerHTML = cards.map(c => `
+    <div class="kpi">
+      <div class="kpi-label">${c.label}</div>
+      <div class="kpi-val ${c.cls}">${c.val}</div>
+      <div class="kpi-sub">${c.sub}</div>
+    </div>
+  `).join("");
+}
+
+function renderWealthChart() {
+  const is16 = state.period === "16y";
+  const m = is16 ? WS_DATA.metrics_16y : WS_DATA.metrics_1675y;
+  const labels = ["2009底", ...WS_DATA.series.filter(x => !x.is_quarterly).map(x => x.label)];
+  if (!is16) labels.push("2026Q3");
+
+  const n = labels.length;
+  const noReinv = WS_DATA.cashflow_sim.no_reinv.slice(0, n).map(x => x.total);
+  const seriesDefs = [
+    { name: "台股報酬指數", color: "var(--amber)", vals: m.tr.curve, dash: "", w: 2.3 },
+    { name: "50/50 混合組合", color: "var(--indigo)", vals: m.blend50.curve, dash: "", w: 2.3 },
+    { name: "台股股價指數", color: "var(--ink-3)", vals: m.pr.curve, dash: "4 4", w: 1.7 },
+    { name: "富同純領息(不投入)", color: "var(--emerald)", vals: noReinv, dash: "5 4", w: 1.9 },
+    { name: "富同投資(全複利)", color: "var(--cyan)", vals: m.ws.curve, dash: "", w: 3.1 }
+  ];
+
+  const W = 920, H = 350, PL = 66, PR = 26, PT = 22, PB = 42;
+  const cw = W - PL - PR, ch = H - PT - PB;
+  const allVals = seriesDefs.flatMap(s => s.vals);
+  const maxV = Math.max(...allVals) * 1.07;
+  const minV = state.scale === "log" ? 850000 : 0;
+
+  const xOf = (i) => PL + (i / (n - 1)) * cw;
+  const yOf = (v) => {
+    if (state.scale === "log") {
+      const a = Math.log10(minV), b = Math.log10(maxV);
+      return PT + ch - ((Math.log10(Math.max(v, minV)) - a) / (b - a)) * ch;
+    }
+    return PT + ch - ((v - minV) / (maxV - minV)) * ch;
+  };
+
+  // Y grid ticks
+  const yTicks = state.scale === "log"
+    ? [1e6, 2e6, 3e6, 5e6, 8e6, 10e6].filter(t => t <= maxV * 1.05)
+    : Array.from({ length: 6 }, (_, i) => Math.round((maxV / 5) * i / 100000) * 100000);
+
+  let svg = `<svg class="chart-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="NT$100萬累積成長曲線">`;
+  yTicks.forEach(t => {
+    const y = yOf(t);
+    svg += `<line x1="${PL}" y1="${y}" x2="${W - PR}" y2="${y}" stroke="var(--border)" stroke-dasharray="3 3"/>`;
+    const lbl = t === 0 ? "0" : (t / 10000).toFixed(0) + "萬";
+    svg += `<text x="${PL - 9}" y="${y + 4}" text-anchor="end" fill="var(--ink-3)" font-size="11" font-family="var(--mono)">${lbl}</text>`;
+  });
+
+  // Area under WS
+  const wsPts = m.ws.curve.map((v, i) => `${xOf(i).toFixed(1)},${yOf(v).toFixed(1)}`);
+  svg += `<defs><linearGradient id="wsArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--cyan)" stop-opacity="0.22"/><stop offset="100%" stop-color="var(--cyan)" stop-opacity="0.01"/></linearGradient></defs>`;
+  svg += `<path d="M ${wsPts[0]} L ${wsPts.join(" L ")} L ${xOf(n - 1).toFixed(1)},${(PT + ch).toFixed(1)} L ${PL},${(PT + ch).toFixed(1)} Z" fill="url(#wsArea)"/>`;
+
+  // Lines
+  seriesDefs.forEach(s => {
+    const d = s.vals.map((v, i) => `${i === 0 ? "M" : "L"} ${xOf(i).toFixed(1)} ${yOf(v).toFixed(1)}`).join(" ");
+    svg += `<path d="${d}" fill="none" stroke="${s.color}" stroke-width="${s.w}" ${s.dash ? `stroke-dasharray="${s.dash}"` : ""} stroke-linecap="round" stroke-linejoin="round"/>`;
+  });
+
+  // X labels & hover hitboxes
+  labels.forEach((lbl, i) => {
+    const x = xOf(i);
+    if (i === 0 || i === n - 1 || i % 2 === 1) {
+      svg += `<text x="${x}" y="${H - 14}" text-anchor="middle" fill="var(--ink-3)" font-size="11" font-family="var(--mono)">${lbl}</text>`;
+    }
+    // Dots for WS and TR
+    svg += `<circle cx="${x}" cy="${yOf(m.ws.curve[i])}" r="3.4" fill="var(--cyan)" stroke="var(--bg)" stroke-width="1.4"/>`;
+    svg += `<circle cx="${x}" cy="${yOf(m.tr.curve[i])}" r="2.6" fill="var(--amber)"/>`;
+    const bw = cw / (n - 1);
+    svg += `<rect x="${(x - bw / 2).toFixed(1)}" y="${PT}" width="${bw.toFixed(1)}" height="${ch}" fill="transparent" class="w-hit" data-idx="${i}"/>`;
+  });
+  svg += `</svg>`;
+
+  const box = document.getElementById("chartWealth");
+  box.innerHTML = svg;
+  box.querySelectorAll(".w-hit").forEach(el => {
+    const idx = Number(el.dataset.idx);
+    const tipHtml = `
+      <div class="tip-hd">${labels[idx]}（期初 100 萬）</div>
+      <div class="tip-row"><span class="tip-k">富同投資(全複利)</span><span class="tip-v c-cyan">${fmtWan(m.ws.curve[idx])}</span></div>
+      <div class="tip-row"><span class="tip-k">50/50 混合組合</span><span class="tip-v c-indigo">${fmtWan(m.blend50.curve[idx])}</span></div>
+      <div class="tip-row"><span class="tip-k">台股大盤報酬指數</span><span class="tip-v c-amber">${fmtWan(m.tr.curve[idx])}</span></div>
+      <div class="tip-row"><span class="tip-k">台股大盤股價指數</span><span class="tip-v">${fmtWan(m.pr.curve[idx])}</span></div>
+      <div class="tip-row"><span class="tip-k">富同純領息(含累息)</span><span class="tip-v c-emerald">${fmtWan(noReinv[idx])}</span></div>
+    `;
+    el.addEventListener("mouseenter", e => showTip(e, tipHtml));
+    el.addEventListener("mousemove", moveTip);
+    el.addEventListener("mouseleave", hideTip);
+    el.addEventListener("click", e => showTip(e, tipHtml));
+  });
+}
+
+function renderAnnualChart() {
+  const rows = [...WS_DATA.series.filter(x => !x.is_quarterly), WS_DATA.series[WS_DATA.series.length - 1]];
+  const isAlpha = state.barmode === "alpha";
+  document.getElementById("barLegend").innerHTML = isAlpha
+    ? `<span class="leg-item"><span class="leg-dot" style="background:var(--emerald)"></span>正超額報酬（富同勝大盤）</span>
+       <span class="leg-item"><span class="leg-dot" style="background:var(--rose)"></span>負超額報酬（大盤勝富同）</span>`
+    : `<span class="leg-item"><span class="leg-dot" style="background:var(--cyan)"></span>富同投資淨報酬率 (%)</span>
+       <span class="leg-item"><span class="leg-dot" style="background:var(--amber)"></span>台股大盤報酬指數 (%)</span>
+       <span class="leg-item"><span class="leg-dot" style="background:rgba(16,185,129,0.22);border:1px solid var(--emerald)"></span>大盤空頭年（富同 4/4 全勝）</span>`;
+
+  const W = 920, H = 330, PL = 54, PR = 20, PT = 22, PB = 42;
+  const cw = W - PL - PR, ch = H - PT - PB;
+  const vals = isAlpha ? rows.map(r => r.alpha_tr) : rows.flatMap(r => [r.ws, r.tr]);
+  const maxV = Math.max(35, ...vals) + 6;
+  const minV = Math.min(-25, ...vals) - 6;
+  const yOf = (v) => PT + ch - ((v - minV) / (maxV - minV)) * ch;
+  const y0 = yOf(0);
+  const step = cw / rows.length;
+
+  let svg = `<svg class="chart-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="年度報酬率柱狀圖">`;
+  [-60, -40, -20, 0, 20, 40, 60].filter(t => t >= minV && t <= maxV).forEach(t => {
+    const y = yOf(t);
+    svg += `<line x1="${PL}" y1="${y}" x2="${W - PR}" y2="${y}" stroke="${t === 0 ? "var(--ink-3)" : "var(--border)"}" ${t === 0 ? 'stroke-width="1.3"' : 'stroke-dasharray="3 3"'}/>`;
+    svg += `<text x="${PL - 8}" y="${y + 4}" text-anchor="end" fill="var(--ink-3)" font-size="11" font-family="var(--mono)">${t > 0 ? "+" : ""}${t}%</text>`;
+  });
+
+  rows.forEach((r, i) => {
+    const cx = PL + step * (i + 0.5);
+    const isBear = r.tr < 0;
+    if (isBear) {
+      svg += `<rect x="${(PL + step * i + 2).toFixed(1)}" y="${PT}" width="${(step - 4).toFixed(1)}" height="${ch}" rx="4" fill="rgba(16,185,129,0.09)"/>`;
+    }
+    if (isAlpha) {
+      const bw = Math.min(26, step * 0.56);
+      const yv = yOf(r.alpha_tr);
+      const top = Math.min(y0, yv);
+      const bh = Math.max(2, Math.abs(y0 - yv));
+      svg += `<rect x="${(cx - bw / 2).toFixed(1)}" y="${top.toFixed(1)}" width="${bw.toFixed(1)}" height="${bh.toFixed(1)}" rx="3" fill="${r.alpha_tr >= 0 ? "var(--emerald)" : "var(--rose)"}" opacity="0.9"/>`;
+    } else {
+      const bw = Math.min(16, step * 0.34);
+      // WS bar
+      const yw = yOf(r.ws);
+      svg += `<rect x="${(cx - bw - 1).toFixed(1)}" y="${Math.min(y0, yw).toFixed(1)}" width="${bw.toFixed(1)}" height="${Math.max(2, Math.abs(y0 - yw)).toFixed(1)}" rx="2.5" fill="var(--cyan)"/>`;
+      // TR bar
+      const yt = yOf(r.tr);
+      svg += `<rect x="${(cx + 1).toFixed(1)}" y="${Math.min(y0, yt).toFixed(1)}" width="${bw.toFixed(1)}" height="${Math.max(2, Math.abs(y0 - yt)).toFixed(1)}" rx="2.5" fill="var(--amber)" opacity="0.88"/>`;
+    }
+    const shortLbl = r.label === "2026 Q3" ? "26Q3" : r.label.slice(2);
+    svg += `<text x="${cx.toFixed(1)}" y="${H - 14}" text-anchor="middle" fill="${isBear ? "var(--emerald)" : "var(--ink-3)"}" font-weight="${isBear ? "800" : "600"}" font-size="11" font-family="var(--mono)">${shortLbl}</text>`;
+    svg += `<rect x="${(PL + step * i).toFixed(1)}" y="${PT}" width="${step.toFixed(1)}" height="${ch}" fill="transparent" class="b-hit" data-idx="${i}"/>`;
+  });
+  svg += `</svg>`;
+
+  const box = document.getElementById("chartAnnual");
+  box.innerHTML = svg;
+  box.querySelectorAll(".b-hit").forEach(el => {
+    const r = rows[Number(el.dataset.idx)];
+    const tipHtml = `
+      <div class="tip-hd">${r.label}${r.tr < 0 ? "（台股空頭年）" : ""}${r.is_quarterly ? " YTD" : ""}</div>
+      <div class="tip-row"><span class="tip-k">富同投資淨報酬</span><span class="tip-v c-cyan">${fmtPct(r.ws)}</span></div>
+      <div class="tip-row"><span class="tip-k">台股大盤報酬指數</span><span class="tip-v c-amber">${fmtPct(r.tr)}</span></div>
+      <div class="tip-row"><span class="tip-k">相對報酬指數 Alpha</span><span class="tip-v ${r.alpha_tr >= 0 ? "pos" : "neg"}">${fmtPct(r.alpha_tr)}</span></div>
+      <div class="tip-row"><span class="tip-k">台股大盤股價指數</span><span class="tip-v">${fmtPct(r.pr)}</span></div>
+      <div class="tip-row"><span class="tip-k">期末現金水位</span><span class="tip-v c-emerald">${r.cash_pct.toFixed(1)}%</span></div>
+    `;
+    el.addEventListener("mouseenter", e => showTip(e, tipHtml));
+    el.addEventListener("mousemove", moveTip);
+    el.addEventListener("mouseleave", hideTip);
+    el.addEventListener("click", e => showTip(e, tipHtml));
+  });
+}
+
+function renderLedgerTable() {
+  const head = `<thead><tr>
+    <th>期間</th><th>富同報酬</th><th>大盤報酬指數</th><th>Alpha(報酬)</th><th>大盤股價指數</th>
+    <th>期初淨值</th><th>期末分配前</th><th>每股股利</th><th>殖利率</th><th>期末股數</th><th>總資產(萬)</th>
+  </tr></thead>`;
+  const rows = [...WS_DATA.series].reverse().map(r => {
+    const cls = r.is_quarterly ? "q-row" : (r.tr < 0 ? "bear-row" : "");
+    return `<tr class="${cls}">
+      <td>${r.label}${r.tr < 0 ? ' <span class="pill emerald" style="padding:1px 5px;font-size:10px">空頭勝</span>' : ""}${r.is_quarterly ? ' <span class="pill cyan" style="padding:1px 5px;font-size:10px">YTD</span>' : ""}</td>
+      <td class="num ${r.ws >= 0 ? "pos" : "neg"}">${fmtPct(r.ws)}</td>
+      <td class="num ${r.tr >= 0 ? "pos" : "neg"}">${fmtPct(r.tr)}</td>
+      <td class="num ${r.alpha_tr >= 0 ? "pos" : "neg"}">${fmtPct(r.alpha_tr)}</td>
+      <td class="num ${r.pr >= 0 ? "pos" : "neg"}">${fmtPct(r.pr)}</td>
+      <td class="num">${fmtNum(r.nav_start)}</td>
+      <td class="num">${fmtNum(r.nav_pre)}</td>
+      <td class="num">${r.div_ps != null ? fmtNum(r.div_ps) : "--"}</td>
+      <td class="num">${r.div_yield != null ? r.div_yield.toFixed(1) + "%" : "--"}</td>
+      <td class="num">${fmtNum(r.shares)}</td>
+      <td class="num">${(r.assets / 10000).toFixed(0)}</td>
+    </tr>`;
+  }).join("");
+  document.getElementById("tblLedger").innerHTML = head + `<tbody>${rows}</tbody>`;
+}
+
+/* ======================================================================== */
+/* RENDER TAB 2: ERAS, ROLLING, RISK MATRIX                                 */
+/* ======================================================================== */
+function renderEras() {
+  const badges = ["emerald", "cyan", "amber"];
+  document.getElementById("eraCards").innerHTML = WS_DATA.eras.map((e, i) => `
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:6px">
+        <span class="pill ${badges[i]}">${e.span}（${e.years}年）</span>
+        <span style="font-size:11.5px;font-family:var(--mono);color:var(--ink-3)">均現金 ${e.avg_cash_pct}%</span>
+      </div>
+      <div style="font-size:16px;font-weight:800;margin-bottom:10px">${e.name}</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div class="mini-stat">
+          <div class="mini-k">富同年化 / 累積</div>
+          <div class="mini-v c-cyan">${e.ws_cagr.toFixed(2)}%</div>
+          <div class="mini-s">累積 ${fmtPct(e.ws_cum, 1)}</div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-k">大盤報酬年化 / 累積</div>
+          <div class="mini-v c-amber">${e.tr_cagr.toFixed(2)}%</div>
+          <div class="mini-s">累積 ${fmtPct(e.tr_cum, 1)}</div>
+        </div>
+      </div>
+      <div style="margin-top:9px;font-size:12.5px;color:var(--ink-2)">
+        年化超額 Alpha：<strong class="${e.alpha_tr_cagr >= 0 ? "pos" : "neg"} num">${fmtPct(e.alpha_tr_cagr, 2)}/年</strong>
+      </div>
+    </div>
+  `).join("");
+}
+
+function renderRolling() {
+  const rd = WS_DATA.rolling[state.roll];
+  const rows = rd.rows;
+  document.getElementById("rollStats").innerHTML = `
+    <div class="mini-stat"><div class="mini-k">${state.roll} 年滾動正報酬率</div><div class="mini-v c-emerald">${rd.pos_pct.toFixed(0)}%</div><div class="mini-s">${rows.length}/${rows.length} 期全數正報酬</div></div>
+    <div class="mini-stat"><div class="mini-k">達成 &ge;7% 目標比率</div><div class="mini-v c-cyan">${rd.gt7_pct.toFixed(1)}%</div><div class="mini-s">富同長期絕對報酬門檻</div></div>
+    <div class="mini-stat"><div class="mini-k">富同滾動區間 (Min~Max)</div><div class="mini-v">${rd.ws_min.toFixed(1)}%–${rd.ws_max.toFixed(1)}%</div><div class="mini-s">對比大盤 ${rd.tr_min.toFixed(1)}%–${rd.tr_max.toFixed(1)}%</div></div>
+    <div class="mini-stat"><div class="mini-k">勝過股價指數 / 報酬指數</div><div class="mini-v c-amber">${rd.beat_pr_pct.toFixed(0)}% / ${rd.beat_tr_pct.toFixed(0)}%</div><div class="mini-s">跨多空循環相對勝率</div></div>
+  `;
+
+  const W = 920, H = 310, PL = 54, PR = 24, PT = 20, PB = 44;
+  const cw = W - PL - PR, ch = H - PT - PB;
+  const maxV = Math.max(20, ...rows.flatMap(r => [r.ws_cagr, r.tr_cagr])) + 3;
+  const minV = 0;
+  const xOf = (i) => rows.length === 1 ? PL + cw / 2 : PL + (i / (rows.length - 1)) * cw;
+  const yOf = (v) => PT + ch - ((v - minV) / (maxV - minV)) * ch;
+
+  let svg = `<svg class="chart-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="滾動年化報酬圖">`;
+  for (let t = 0; t <= maxV; t += 5) {
+    const y = yOf(t);
+    svg += `<line x1="${PL}" y1="${y}" x2="${W - PR}" y2="${y}" stroke="var(--border)" stroke-dasharray="3 3"/>`;
+    svg += `<text x="${PL - 8}" y="${y + 4}" text-anchor="end" fill="var(--ink-3)" font-size="11" font-family="var(--mono)">${t}%</text>`;
+  }
+  // 7% hurdle reference line
+  const y7 = yOf(7);
+  svg += `<line x1="${PL}" y1="${y7}" x2="${W - PR}" y2="${y7}" stroke="var(--emerald)" stroke-width="1.6" stroke-dasharray="6 4"/>`;
+  svg += `<text x="${W - PR - 4}" y="${y7 - 5}" text-anchor="end" fill="var(--emerald)" font-size="11" font-weight="700">7% 目標線</text>`;
+
+  const dTr = rows.map((r, i) => `${i === 0 ? "M" : "L"} ${xOf(i).toFixed(1)} ${yOf(r.tr_cagr).toFixed(1)}`).join(" ");
+  const dWs = rows.map((r, i) => `${i === 0 ? "M" : "L"} ${xOf(i).toFixed(1)} ${yOf(r.ws_cagr).toFixed(1)}`).join(" ");
+  svg += `<path d="${dTr}" fill="none" stroke="var(--amber)" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>`;
+  svg += `<path d="${dWs}" fill="none" stroke="var(--cyan)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>`;
+
+  const bw = rows.length > 1 ? cw / (rows.length - 1) : cw;
+  rows.forEach((r, i) => {
+    const x = xOf(i);
+    svg += `<circle cx="${x}" cy="${yOf(r.tr_cagr)}" r="3.2" fill="var(--amber)"/>`;
+    svg += `<circle cx="${x}" cy="${yOf(r.ws_cagr)}" r="4" fill="var(--cyan)" stroke="var(--bg)" stroke-width="1.5"/>`;
+    if (rows.length <= 8 || i % 2 === 0 || i === rows.length - 1) {
+      svg += `<text x="${x}" y="${H - 14}" text-anchor="middle" fill="var(--ink-3)" font-size="10.5" font-family="var(--mono)">${r.period.replace(/20(\d\d)/g,"$1")}</text>`;
+    }
+    svg += `<rect x="${(x - bw / 2).toFixed(1)}" y="${PT}" width="${bw.toFixed(1)}" height="${ch}" fill="transparent" class="r-hit" data-idx="${i}"/>`;
+  });
+  svg += `</svg>`;
+
+  const box = document.getElementById("chartRolling");
+  box.innerHTML = svg;
+  box.querySelectorAll(".r-hit").forEach(el => {
+    const r = rows[Number(el.dataset.idx)];
+    const tipHtml = `
+      <div class="tip-hd">${r.period}（${state.roll} 年滾動年化）</div>
+      <div class="tip-row"><span class="tip-k">富同投資 CAGR</span><span class="tip-v c-cyan">${r.ws_cagr.toFixed(2)}%</span></div>
+      <div class="tip-row"><span class="tip-k">台股大盤報酬指數</span><span class="tip-v c-amber">${r.tr_cagr.toFixed(2)}%</span></div>
+      <div class="tip-row"><span class="tip-k">台股大盤股價指數</span><span class="tip-v">${r.pr_cagr.toFixed(2)}%</span></div>
+      <div class="tip-row"><span class="tip-k">年化超額 (vs 報酬)</span><span class="tip-v ${r.alpha_tr >= 0 ? "pos" : "neg"}">${fmtPct(r.alpha_tr, 2)}</span></div>
+    `;
+    el.addEventListener("mouseenter", e => showTip(e, tipHtml));
+    el.addEventListener("mousemove", moveTip);
+    el.addEventListener("mouseleave", hideTip);
+    el.addEventListener("click", e => showTip(e, tipHtml));
+  });
+}
+
+function renderRiskMatrix() {
+  const m16 = WS_DATA.metrics_16y, m17 = WS_DATA.metrics_1675y;
+  const cols = [
+    { name: "富同投資（淨值）", d16: m16.ws, d17: m17.ws, cls: "q-row", extra: true },
+    { name: "50% 富同 + 50% 報酬指數", d16: m16.blend50, d17: m17.blend50, cls: "hl-row" },
+    { name: "30% 富同 + 70% 報酬指數", d16: m16.blend30, d17: m17.blend30, cls: "" },
+    { name: "台股大盤報酬指數（含息）", d16: m16.tr, d17: m17.tr, cls: "" },
+    { name: "台股大盤股價指數（不含息）", d16: m16.pr, d17: m17.pr, cls: "" }
+  ];
+  const htmlTbl = `<thead><tr>
+    <th>標的 / 組合</th>
+    <th>16Y CAGR<br>(2010–25)</th>
+    <th>16.75Y CAGR<br>(含2026 Q3)</th>
+    <th>年化波動率<br>(16Y Std)</th>
+    <th>夏普比率<br>(Rf=1.5%)</th>
+    <th>Sortino<br>(MAR=1.5%)</th>
+    <th>最大年度回撤<br>(MDD)</th>
+    <th>Calmar 比率</th>
+    <th>最差 / 最佳年</th>
+    <th>Beta / 相關性</th>
+    <th>上行 / 下行捕獲</th>
+  </tr></thead><tbody>` + cols.map(c => `
+    <tr class="${c.cls}">
+      <td>${c.name}</td>
+      <td class="num c-cyan">${c.d16.cagr_pct.toFixed(2)}%</td>
+      <td class="num">${c.d17.cagr_pct.toFixed(2)}%</td>
+      <td class="num">${c.d16.vol_pct.toFixed(2)}%</td>
+      <td class="num ${c.d16.sharpe >= 0.9 ? "pos" : ""}">${c.d16.sharpe.toFixed(2)}</td>
+      <td class="num">${c.d16.sortino != null ? c.d16.sortino.toFixed(2) : "--"}</td>
+      <td class="num ${c.d16.mdd_pct > -10 ? "pos" : "neg"}">${c.d16.mdd_pct.toFixed(2)}%</td>
+      <td class="num">${c.d16.calmar != null ? c.d16.calmar.toFixed(2) : "--"}</td>
+      <td class="num">${c.d16.worst_yr != null ? fmtPct(c.d16.worst_yr) + " / " + fmtPct(c.d16.best_yr) : "--"}</td>
+      <td class="num">${c.extra ? `${c.d16.beta.toFixed(2)} / ${c.d16.corr.toFixed(2)}` : (c.name.includes("報酬指數（") ? "1.00 / 1.00" : "--")}</td>
+      <td class="num">${c.extra ? `${c.d16.up_capture.toFixed(1)}% / <span class="pos">${c.d16.down_capture.toFixed(1)}%</span>` : "--"}</td>
+    </tr>
+  `).join("") + `</tbody>`;
+  document.getElementById("tblRiskMatrix").innerHTML = htmlTbl;
+}
+
+/* ======================================================================== */
+/* RENDER TAB 3: ALLOCATION CHART, FEE CHART, BALANCE SHEET TABLE           */
+/* ======================================================================== */
+function renderAllocChart() {
+  const rows = WS_DATA.series;
+  const W = 920, H = 310, PL = 48, PR = 20, PT = 20, PB = 44;
+  const cw = W - PL - PR, ch = H - PT - PB;
+  const step = cw / rows.length;
+  const yOf = (p) => PT + ch - (p / 100) * ch;
+
+  let svg = `<svg class="chart-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="資產配置堆疊圖">`;
+  [0, 25, 50, 75, 100].forEach(t => {
+    const y = yOf(t);
+    svg += `<line x1="${PL}" y1="${y}" x2="${W - PR}" y2="${y}" stroke="var(--border)" stroke-dasharray="3 3"/>`;
+    svg += `<text x="${PL - 7}" y="${y + 4}" text-anchor="end" fill="var(--ink-3)" font-size="11" font-family="var(--mono)">${t}%</text>`;
+  });
+
+  const debtPts = [];
+  rows.forEach((r, i) => {
+    const cx = PL + step * (i + 0.5);
+    const bw = Math.min(28, step * 0.68);
+    const hStk = (r.stock_pct / 100) * ch;
+    const hCash = (r.cash_pct / 100) * ch;
+    const yStk = PT + ch - hStk;
+    const yCash = yStk - hCash;
+
+    svg += `<rect x="${(cx - bw / 2).toFixed(1)}" y="${yStk.toFixed(1)}" width="${bw.toFixed(1)}" height="${hStk.toFixed(1)}" fill="var(--cyan)" opacity="0.82"/>`;
+    svg += `<rect x="${(cx - bw / 2).toFixed(1)}" y="${yCash.toFixed(1)}" width="${bw.toFixed(1)}" height="${hCash.toFixed(1)}" fill="var(--emerald)" opacity="0.85"/>`;
+    debtPts.push(`${cx.toFixed(1)},${yOf(r.debt_pct).toFixed(1)}`);
+
+    const lbl = r.is_quarterly ? r.label.replace("2026 ", "26") : r.label.slice(2);
+    svg += `<text x="${cx.toFixed(1)}" y="${H - 14}" text-anchor="middle" fill="${r.label === "2026 Q3" ? "var(--amber)" : "var(--ink-3)"}" font-weight="${r.label === "2026 Q3" ? "800" : "600"}" font-size="10.5" font-family="var(--mono)">${lbl}</text>`;
+    svg += `<rect x="${(PL + step * i).toFixed(1)}" y="${PT}" width="${step.toFixed(1)}" height="${ch}" fill="transparent" class="a-hit" data-idx="${i}"/>`;
+  });
+
+  svg += `<polyline points="${debtPts.join(" ")}" fill="none" stroke="var(--amber)" stroke-width="2.2" stroke-linejoin="round"/>`;
+  rows.forEach((r, i) => {
+    const cx = PL + step * (i + 0.5);
+    svg += `<circle cx="${cx.toFixed(1)}" cy="${yOf(r.debt_pct).toFixed(1)}" r="2.8" fill="var(--amber)"/>`;
+  });
+  svg += `</svg>`;
+
+  const box = document.getElementById("chartAlloc");
+  box.innerHTML = svg;
+  box.querySelectorAll(".a-hit").forEach(el => {
+    const r = rows[Number(el.dataset.idx)];
+    const tipHtml = `
+      <div class="tip-hd">${r.label}（總資產 ${fmtWan(r.assets)}）</div>
+      <div class="tip-row"><span class="tip-k">股票投資比重</span><span class="tip-v c-cyan">${r.stock_pct.toFixed(2)}%（${fmtWan(r.stocks)}）</span></div>
+      <div class="tip-row"><span class="tip-k">現金及約當現金</span><span class="tip-v c-emerald">${r.cash_pct.toFixed(2)}%（${fmtWan(r.cash)}）</span></div>
+      <div class="tip-row"><span class="tip-k">總負債比</span><span class="tip-v c-amber">${r.debt_pct.toFixed(2)}%（${r.bank_loan > 0 ? "含銀借" : "無銀借"}）</span></div>
+      <div class="tip-row"><span class="tip-k">同期富同報酬</span><span class="tip-v">${fmtPct(r.ws)}</span></div>
+    `;
+    el.addEventListener("mouseenter", e => showTip(e, tipHtml));
+    el.addEventListener("mousemove", moveTip);
+    el.addEventListener("mouseleave", hideTip);
+    el.addEventListener("click", e => showTip(e, tipHtml));
+  });
+}
+
+function renderFeeChart() {
+  const rows = WS_DATA.series.filter(x => !x.is_quarterly);
+  const W = 540, H = 250, PL = 42, PR = 42, PT = 18, PB = 36;
+  const cw = W - PL - PR, ch = H - PT - PB;
+  const step = cw / rows.length;
+  const yFee = (p) => PT + ch - (p / 4.5) * ch;
+  const yAb = (p) => PT + ch - (p / 22.0) * ch;
+
+  let svg = `<svg class="chart-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="績效酬勞與門檻圖">`;
+  [0, 1, 2, 3, 4].forEach(t => {
+    const y = yFee(t);
+    svg += `<line x1="${PL}" y1="${y}" x2="${W - PR}" y2="${y}" stroke="var(--border)" stroke-dasharray="3 3"/>`;
+    svg += `<text x="${PL - 6}" y="${y + 4}" text-anchor="end" fill="var(--amber)" font-size="10" font-family="var(--mono)">${t}%</text>`;
+  });
+  [0, 5, 10, 15, 20].forEach(t => {
+    const y = yAb(t);
+    svg += `<text x="${W - PR + 6}" y="${y + 4}" text-anchor="start" fill="var(--cyan)" font-size="10" font-family="var(--mono)">${t}%</text>`;
+  });
+
+  const abPts = [], hPts = [];
+  rows.forEach((r, i) => {
+    const cx = PL + step * (i + 0.5);
+    const bw = Math.min(18, step * 0.58);
+    const yf = yFee(r.rem_pct);
+    svg += `<rect x="${(cx - bw / 2).toFixed(1)}" y="${yf.toFixed(1)}" width="${bw.toFixed(1)}" height="${(PT + ch - yf).toFixed(1)}" rx="2.5" fill="${r.label === "2025" ? "var(--rose)" : "var(--amber)"}" opacity="0.82"/>`;
+    abPts.push(`${cx.toFixed(1)},${yAb(r.ab_pct).toFixed(1)}`);
+    hPts.push(`${cx.toFixed(1)},${yAb(r.hurdle).toFixed(1)}`);
+    if (i % 2 === 0 || i === rows.length - 1) {
+      svg += `<text x="${cx.toFixed(1)}" y="${H - 12}" text-anchor="middle" fill="var(--ink-3)" font-size="10" font-family="var(--mono)">${r.label.slice(2)}</text>`;
+    }
+    svg += `<rect x="${(PL + step * i).toFixed(1)}" y="${PT}" width="${step.toFixed(1)}" height="${ch}" fill="transparent" class="f-hit" data-idx="${i}"/>`;
+  });
+  svg += `<polyline points="${hPts.join(" ")}" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-dasharray="4 3"/>`;
+  svg += `<polyline points="${abPts.join(" ")}" fill="none" stroke="var(--cyan)" stroke-width="2.4" stroke-linejoin="round"/>`;
+  rows.forEach((r, i) => {
+    const cx = PL + step * (i + 0.5);
+    svg += `<circle cx="${cx.toFixed(1)}" cy="${yAb(r.ab_pct).toFixed(1)}" r="2.8" fill="var(--cyan)"/>`;
+  });
+  svg += `</svg>`;
+
+  const box = document.getElementById("chartFees");
+  box.innerHTML = svg;
+  box.querySelectorAll(".f-hit").forEach(el => {
+    const r = rows[Number(el.dataset.idx)];
+    const tipHtml = `
+      <div class="tip-hd">${r.label} 年績效酬勞明細</div>
+      <div class="tip-row"><span class="tip-k">已實現稅前報酬 a/b</span><span class="tip-v c-cyan">${r.ab_pct.toFixed(2)}%</span></div>
+      <div class="tip-row"><span class="tip-k">5Y公債+2% 門檻 c</span><span class="tip-v c-rose">${r.hurdle.toFixed(1)}%</span></div>
+      <div class="tip-row"><span class="tip-k">提列董監酬勞</span><span class="tip-v c-amber">NT$${fmtNum(r.rem_ntd)}</span></div>
+      <div class="tip-row"><span class="tip-k">佔期初淨值費率</span><span class="tip-v">${r.rem_pct.toFixed(2)}%</span></div>
+      <div class="tip-row"><span class="tip-k">當年度帳面總報酬</span><span class="tip-v">${fmtPct(r.ws)}</span></div>
+    `;
+    el.addEventListener("mouseenter", e => showTip(e, tipHtml));
+    el.addEventListener("mousemove", moveTip);
+    el.addEventListener("mouseleave", hideTip);
+    el.addEventListener("click", e => showTip(e, tipHtml));
+  });
+}
+
+function renderBalanceTable() {
+  const head = `<thead><tr>
+    <th>期間</th><th>總資產</th><th>現金及約當現金</th><th>現金%</th><th>股票總部位</th><th>股票%</th>
+    <th>總負債</th><th>負債%</th><th>稅後淨利</th><th>董監酬勞</th><th>費率%</th><th>未實現損益(OCI)</th>
+  </tr></thead>`;
+  const rows = [...WS_DATA.series].reverse().map(r => `<tr class="${r.is_quarterly ? "q-row" : ""}">
+    <td>${r.label}</td>
+    <td class="num">${fmtNum(r.assets)}</td>
+    <td class="num">${fmtNum(r.cash)}</td>
+    <td class="num c-emerald">${r.cash_pct.toFixed(2)}%</td>
+    <td class="num">${fmtNum(r.stocks)}</td>
+    <td class="num c-cyan">${r.stock_pct.toFixed(2)}%</td>
+    <td class="num">${fmtNum(r.debt)}</td>
+    <td class="num ${r.debt_pct > 10 ? "warn" : ""}">${r.debt_pct.toFixed(2)}%</td>
+    <td class="num">${r.net_inc != null ? fmtNum(r.net_inc) : "--"}</td>
+    <td class="num">${r.rem_ntd != null ? fmtNum(r.rem_ntd) : "--"}</td>
+    <td class="num ${r.rem_pct >= 2.5 ? "neg" : ""}">${r.rem_pct != null ? r.rem_pct.toFixed(2) + "%" : "--"}</td>
+    <td class="num ${r.oci != null && r.oci < 0 ? "neg" : ""}">${r.oci != null ? fmtNum(r.oci) : "--"}</td>
+  </tr>`).join("");
+  document.getElementById("tblBalance").innerHTML = head + `<tbody>${rows}</tbody>`;
+}
+
+/* ======================================================================== */
+/* RENDER TAB 4: ALL 19 REPORTS WITH EXPANDABLE CLEAN FULL LETTER           */
+/* ======================================================================== */
+function renderReports() {
+  const q = state.search;
+  const list = WS_DATA.reports.filter(r => {
+    if (state.era !== "all" && r.era !== state.era) return false;
+    if (!q) return true;
+    const hay = `${r.id} ${r.title} ${r.headline} ${r.quote} ${r.summary} ${r.full_letter}`.toLowerCase();
+    return hay.includes(q);
+  });
+
+  if (!list.length) {
+    document.getElementById("reportList").innerHTML = `<div class="card" style="text-align:center;color:var(--ink-3)">找不到符合「${escHtml(state.search)}」的年季報內容，請改用其他關鍵字。</div>`;
+    return;
+  }
+
+  document.getElementById("reportList").innerHTML = list.map(r => {
+    const alpha = r.ws - r.tr;
+    const isBear = r.tr < 0;
+    return `<article class="rep-card">
+      <div class="rep-top">
+        <div class="rep-id-group">
+          <span class="rep-title">${escHtml(r.title)}</span>
+          <span class="rep-date">${escHtml(r.date)}</span>
+          ${isBear ? '<span class="pill emerald">空頭年逆轉勝</span>' : ""}
+        </div>
+        <div class="rep-metrics">
+          <span class="pill ${r.ws >= 0 ? "cyan" : "rose"}">富同 ${fmtPct(r.ws)}</span>
+          <span class="pill amber">大盤報酬 ${fmtPct(r.tr)}</span>
+          <span class="pill ${alpha >= 0 ? "emerald" : "rose"}">Alpha ${fmtPct(alpha)}</span>
+          <span class="pill">股票 ${r.stock_pct.toFixed(1)}% / 現金 ${r.cash_pct.toFixed(1)}%</span>
+        </div>
+      </div>
+      <h3 class="rep-headline">${escHtml(r.headline)}</h3>
+      <blockquote class="rep-quote">「${escHtml(r.quote)}」</blockquote>
+      <p class="rep-summary">${escHtml(r.summary)}</p>
+      <div class="rep-actions">
+        <button class="btn-sm primary toggle-letter" data-rid="${r.id}">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          展開完整致股東報告書原文（${r.full_letter.length.toLocaleString()} 字）
+        </button>
+        <a class="btn-sm" href="${r.pdf_url}" target="_blank" rel="noopener noreferrer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          開啟官方原檔 PDF
+        </a>
+      </div>
+      <div class="rep-letter-box" id="letter-${r.id}">${escHtml(r.full_letter)}</div>
+    </article>`;
+  }).join("");
+
+  document.querySelectorAll(".toggle-letter").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const box = document.getElementById("letter-" + btn.dataset.rid);
+      const open = box.classList.toggle("open");
+      btn.childNodes[btn.childNodes.length - 1].textContent = open
+        ? " 收合完整致股東報告書原文"
+        : ` 展開完整致股東報告書原文（${box.textContent.length.toLocaleString()} 字）`;
+    });
+  });
+}
+
+/* Initial Render */
+renderOverviewKpis();
+renderWealthChart();
+renderAnnualChart();
+renderLedgerTable();
+renderEras();
+renderRolling();
+renderRiskMatrix();
+renderAllocChart();
+renderFeeChart();
+renderBalanceTable();
+renderReports();
+
+/* Dismiss floating tooltip on scroll/tap outside */
+window.addEventListener("scroll", hideTip, { passive: true });
+</script>
+</body>
+</html>
