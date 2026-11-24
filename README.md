@@ -1,5 +1,7 @@
-# 富同投資（WealthShare）2010–2026 Q3 歷年年季報統整與量化回測終端
+# 侍其資本 SHAKYA CAPITAL｜富同投資（WealthShare）2010–2026 Q3 季報法證回測終端
 
-基於富同投資官方網站 41 份公開 PDF（16 份年度年報、3 份 2026 最新季報、13 份會計師查核報告及 9 份制度文件）製作。
+收錄並法證查核富同投資成立以來共 41 份官方年報、會計師查核報告與季報 PDF，完整還原 16 年含息再投入 CAGR 與台股大盤報酬指數對比。
 
-線上檢視（GitHub Pages，支援深淺色切換與手機行動終端體驗）：https://simonshih78.github.io/wealthshare-backtest/
+- 線上檢視：https://simonshih78.github.io/wealthshare-backtest/
+- 研究總目錄：https://simonshih78.github.io/
+- 研究製作：[侍其資本 SHAKYA CAPITAL](https://www.facebook.com/ShakyaCapital)
